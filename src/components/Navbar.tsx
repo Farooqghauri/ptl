@@ -10,7 +10,7 @@ export default function Navbar() {
         {/* Logo */}
         
           <Image
-          src="/loggo.PNG"   // path relative to /public
+          src="/loggo.png"   // path relative to /public
             alt="Company Logo"
             width={30}        // set dimensions
             height={30}
