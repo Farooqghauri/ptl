@@ -18,7 +18,7 @@ export default function Footer() {
           <h3 className="font-bold text-lg mb-2">Contact</h3>
           <p className="text-sm">📍 Lahore, Pakistan</p>
           <p className="text-sm">📞 +92-333-0500-177</p>
-          <p className="text-sm">📧 info@pakistantoplawyers.com</p>
+          <p className="text-sm">📧 contact@pakistantoplawyers.com</p>
         </div>
       </div>
       <div className="text-center text-xs mt-4">
