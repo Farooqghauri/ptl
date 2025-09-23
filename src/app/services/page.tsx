@@ -114,9 +114,9 @@ export default function Services() {
       </div>
 
       <div className="mt-12 text-center">
-        <h2 className="text-xl font-bold text-blue-900 mb-2">Contact Pakistan's Top Lawyers</h2>
+        <h2 className="text-xl font-bold text-blue-900 mb-2">Contact Pakistan&apos;s Top Lawyers</h2>
         <p className="text-gray-700 mb-4">
-          Need legal advice or representation? <Link href="/contact" className="text-blue-700 hover:underline">Contact us</Link> today for a free consultation with Pakistan's leading lawyers.
+          Need legal advice or representation? <Link href="/contact" className="text-blue-700 hover:underline">Contact us</Link> today for a free consultation with Pakistan&apos;s leading lawyers.
         </p>
         <Link
           href="/contact"
