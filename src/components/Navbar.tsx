@@ -21,14 +21,17 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
         <div className="flex items-center">
-          <Image
-            src="/loggo.png"
-            alt="Company Logo"
-            width={40}
-            height={40}
-            priority
-          />
-        </div>
+  <Link href="/" aria-label="Go to Home">
+    <Image
+      src="/loggo.png"
+      alt="Company Logo"
+      width={40}
+      height={40}
+      priority
+      className="cursor-pointer"
+    />
+  </Link>
+</div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-4 text-sm font-bold text-blue-900">
