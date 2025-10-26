@@ -1,130 +1,242 @@
+"use client";
+
 import Link from "next/link";
-import ServicesAnimation from "../../components/ServicesAnimation";
+import Script from "next/script";
+import Lottie from "lottie-react";
+import PTLAIAnimation from "@/animations/PTL_AI.json";
+import Image from "next/image";
 
-export const metadata = {
-  title: "Legal Services in Pakistan | PTL",
-  description:
-    "Find expert lawyers in Pakistan for family law, criminal defense, property disputes, and corporate business. PTL connects you with trusted legal professionals in Karachi, Lahore, Islamabad, and nationwide.",
-  keywords:
-    "Pakistan lawyers, family lawyer Karachi, divorce lawyer Lahore, criminal lawyer Islamabad, property lawyer Pakistan, corporate lawyer, legal services Pakistan, SECP compliance, business law, child custody, inheritance, bail, legal advice",
-};
+// ✅ Types
+interface Service {
+  name: string;
+  slug: string;
+  description: string;
+  details: string;
+}
 
-const servicesList = [
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+// ✅ AI Tools / Services for Lawyers in Pakistan
+const servicesList: Service[] = [
   {
-    name: "Family & Divorce Lawyers",
-    slug: "family-divorce",
-    description: `PTL offers expert family law services including divorce, child custody, guardianship, khula, and maintenance cases. Our lawyers in Karachi, Lahore, Islamabad, and other cities provide compassionate legal support for families.`,
-    details: `We help with marriage registration, child adoption, domestic violence cases, and family mediation. Our family lawyers ensure your rights are protected in all Pakistani courts.`
+    name: "AI Legal Drafting Assistant",
+    slug: "ai-legal-drafting",
+    description:
+      "Generate professional legal drafts instantly using PTL’s AI trained on Pakistani case law and judicial language.",
+    details:
+      "From contracts and petitions to affidavits and agreements — create flawless legal documents in Urdu or English, customized for Pakistan’s courts and law practices.",
   },
   {
-    name: "Criminal Defense Lawyers",
-    slug: "criminal-defense",
-    description: `Facing criminal charges? PTL connects you with experienced criminal defense lawyers for bail, FIR registration, trial representation, and appeals. Our network covers Karachi, Lahore, Islamabad, and nationwide.`,
-    details: `We handle cases involving theft, fraud, cybercrime, narcotics, anti-terrorism, and white-collar crime. Our lawyers protect your rights and provide strategic defense at every stage.`
+    name: "AI Legal Research & RAG Engine",
+    slug: "ai-legal-research",
+    description:
+      "Search and summarize Pakistani case laws, acts, and judgments using AI-powered retrieval tools.",
+    details:
+      "Our Retrieval-Augmented Generation (RAG) system finds relevant precedents from local databases and provides concise legal research summaries to save hours of manual work.",
   },
   {
-    name: "Property & Real Estate Lawyers",
-    slug: "property-real-estate",
-    description: `Resolve property disputes, inheritance issues, and land transfers with PTL’s property lawyers. We assist with ownership verification, mutation, DHA land issues, and fraud cases across Pakistan.`,
-    details: `Our legal experts help with property registration, succession certificates, and real estate contracts. Get reliable advice for property matters in Karachi, Lahore, Islamabad, and other regions.`
+    name: "AI Case Summary Generator",
+    slug: "ai-case-summary",
+    description:
+      "Summarize lengthy case judgments, FIRs, and petitions into short, structured briefs.",
+    details:
+      "Upload any PDF or Word document and get instant summaries — perfect for lawyers handling multiple cases or preparing court submissions.",
   },
   {
-    name: "Corporate & Business Lawyers",
-    slug: "corporate-business",
-    description: `PTL provides corporate law services for SECP registration, business contracts, taxation, labor law, and regulatory compliance. Our lawyers support startups and established companies throughout Pakistan.`,
-    details: `We assist with company formation, partnership agreements, intellectual property, workplace law, and dispute resolution. Grow your business with PTL’s legal expertise.`
+    name: "AI Urdu Legal Translator",
+    slug: "ai-urdu-translator",
+    description:
+      "Translate legal documents between Urdu and English with complete accuracy and legal context retention.",
+    details:
+      "Built for Pakistani lawyers, PTL ensures translations maintain official legal terminologies as used in court documents and acts.",
+  },
+  {
+    name: "AI Client Chatbot",
+    slug: "ai-client-chatbot",
+    description:
+      "Deploy a smart legal chatbot that answers client queries and collects case details automatically.",
+    details:
+      "Your digital assistant operates 24/7, helping clients understand services, book consultations, and share case details securely.",
+  },
+  {
+    name: "AI Task & Reminder Manager",
+    slug: "ai-task-reminder",
+    description:
+      "Stay organized with automated case reminders, filing deadlines, and court hearing alerts.",
+    details:
+      "Integrated with PTL’s AI, it keeps track of your cases and tasks — helping lawyers meet critical timelines effortlessly.",
+  },
+  {
+    name: "AI Legal Opinion Analyzer",
+    slug: "ai-legal-opinion-analyzer",
+    description:
+      "Evaluate and enhance legal opinions using advanced AI reasoning aligned with Pakistani laws.",
+    details:
+      "Analyze drafts, legal notes, or opinions to identify weaknesses, missing citations, or potential contradictions.",
+  },
+  {
+    name: "AI Document Checker",
+    slug: "ai-document-checker",
+    description:
+      "Ensure your legal documents are error-free and contain all mandatory clauses under Pakistani regulations.",
+    details:
+      "PTL AI cross-checks contracts, affidavits, and agreements for missing sections or inconsistencies — ensuring legal compliance before submission.",
   },
 ];
 
-const faqs = [
+// ✅ FAQs
+const faqs: FAQ[] = [
   {
-    question: "How do I find the best lawyer in Pakistan?",
-    answer: "PTL connects you with verified and experienced lawyers in Karachi, Lahore, Islamabad, and all major cities. Search by legal service or location to find the right lawyer for your case."
+    question: "What makes PTL’s AI tools unique for Pakistani lawyers?",
+    answer:
+      "PTL’s AI tools are trained on local case laws, Urdu and English legal language, and Pakistani court formats — giving lawyers accurate, jurisdiction-specific assistance.",
   },
   {
-    question: "Can PTL help overseas Pakistanis with legal issues?",
-    answer: "Yes, PTL specializes in helping overseas Pakistanis with property disputes, family law, and business matters. Contact us for remote legal consultations and representation."
+    question: "Can I generate or translate legal documents in Urdu?",
+    answer:
+      "Yes. PTL’s AI can draft, translate, and summarize legal content in both Urdu and English while maintaining professional accuracy.",
   },
   {
-    question: "What types of cases do PTL lawyers handle?",
-    answer: "Our lawyers handle family law, criminal defense, property disputes, corporate law, inheritance, child custody, bail, and more. Visit our service pages for details."
+    question: "Is my confidential case data secure?",
+    answer:
+      "Absolutely. PTL ensures end-to-end encryption and follows strict cybersecurity standards to protect all user and client data.",
   },
   {
-    question: "How do I contact PTL for legal advice?",
-    answer: "You can contact us through our online form, WhatsApp, or phone. Visit our Contact page for details and get a free initial consultation."
+    question: "Do these AI tools replace lawyers?",
+    answer:
+      "No. PTL’s AI tools are designed to assist lawyers — not replace them — by automating repetitive tasks and enhancing accuracy and efficiency.",
+  },
+  {
+    question: "Can overseas Pakistani lawyers use PTL?",
+    answer:
+      "Yes. PTL is fully accessible online, allowing overseas legal professionals to draft, translate, and analyze documents related to Pakistani law.",
   },
 ];
 
 export default function Services() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-10">
-      <h1 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
-        Legal Services in Pakistan – Find Trusted Lawyers
-      </h1>
-      <p className="text-gray-700 leading-relaxed mb-4">
-        <span className="font-semibold">Pakistan&apos;s Top Lawyers (PTL)</span> is your reliable platform for finding the best lawyers in Pakistan. We connect individuals, families, and businesses with verified legal professionals for all types of cases. Whether you need a family lawyer in Karachi, a criminal defense attorney in Lahore, or a property lawyer in Islamabad, PTL is here to help.
-      </p>
-      <p className="text-gray-700 leading-relaxed mb-8">
-        Our network covers all major cities and regions, offering expert legal advice, representation, and support. We specialize in family law, criminal defense, property disputes, and corporate business law. PTL ensures transparency, confidentiality, and professionalism in every case. <Link href="/contact" className="text-blue-700 hover:underline">Contact us</Link> for a free consultation.
-      </p>
+    <main className="max-w-7xl mx-auto px-6 py-12 text-gray-800">
+      {/* ✅ Structured Data for SEO */}
+      <Script id="ptl-faq-jsonld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        })}
+      </Script>
 
-      {/* Animation Section */}
-      <div className="flex justify-center mb-12">
-        <ServicesAnimation />
+      {/* ✅ Header Section */}
+      <section className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-4 leading-tight">
+          AI Tools for Lawyers in Pakistan
+        </h1>
+        <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          Transform your legal practice with PTL — Pakistan’s first suite of
+          AI-powered tools built exclusively for lawyers, advocates, and law
+          firms. Draft, research, translate, and analyze — all in one secure
+          legal AI platform.
+        </p>
+      </section>
+
+      {/* ✅ Lottie Animation (Rounded, Responsive, Optimized) */}
+      <div className="relative flex justify-center items-center mb-20">
+        <div className="w-full max-w-[700px] aspect-[16/9] rounded-5xl overflow-hidden shadow-xl">
+          <Lottie
+            animationData={PTLAIAnimation}
+            loop
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </div>
       </div>
 
-      <h2 className="text-2xl font-bold text-blue-900 mb-6">Our Practice Areas</h2>
-      <ul className="space-y-12">
-        {servicesList.map((service) => (
-          <li key={service.slug} className="border-b pb-8">
-            <h3 className="text-xl font-semibold text-blue-900 mb-2">
+      {/* ✅ AI Tools Section */}
+      <section>
+        <h2 className="text-3xl font-bold text-blue-900 mb-10 text-center">
+          Explore PTL’s AI Tools for Legal Professionals
+        </h2>
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {servicesList.map((service) => (
+            <li
+              key={service.slug}
+              className="border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all bg-white"
+            >
+              <h3 className="text-2xl font-semibold text-blue-800 mb-3">
+                <Link href={`/services/${service.slug}`} className="hover:underline">
+                  {service.name}
+                </Link>
+              </h3>
+              <p className="text-gray-700 mb-2">{service.description}</p>
+              <p className="text-gray-600 mb-4">{service.details}</p>
               <Link
                 href={`/services/${service.slug}`}
-                className="hover:underline"
+                className="text-blue-700 font-medium hover:underline"
               >
-                {service.name}
+                Learn more →
               </Link>
-            </h3>
-            <p className="text-gray-700 leading-relaxed mb-2">
-              {service.description}
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-2">
-              {service.details}
-            </p>
-            <Link
-              href={`/services/${service.slug}`}
-              className="text-blue-700 font-medium hover:underline"
-            >
-              Learn more &rarr;
-            </Link>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-      <div className="mt-12">
-        <h2 className="text-xl font-bold text-blue-900 mb-4">Frequently Asked Questions</h2>
-        <ul className="space-y-6">
-          {faqs.map((faq, idx) => (
-            <li key={idx}>
-              <h4 className="font-semibold text-blue-800">{faq.question}</h4>
+      {/* ✅ FAQ Section */}
+      <section className="mt-24">
+        <h2 className="text-2xl font-bold text-blue-900 mb-8 text-center">
+          Frequently Asked Questions
+        </h2>
+        <ul className="space-y-6 max-w-3xl mx-auto">
+          {faqs.map((faq, index) => (
+            <li
+              key={index}
+              className="bg-gray-50 p-5 rounded-xl shadow-sm border border-gray-100"
+            >
+              <h4 className="font-semibold text-blue-800 mb-2">{faq.question}</h4>
               <p className="text-gray-700">{faq.answer}</p>
             </li>
           ))}
         </ul>
-      </div>
+      </section>
 
-      <div className="mt-12 text-center">
-        <h2 className="text-xl font-bold text-blue-900 mb-2">Contact Pakistan&apos;s Top Lawyers</h2>
-        <p className="text-gray-700 mb-4">
-          Need legal advice or representation? <Link href="/contact" className="text-blue-700 hover:underline">Contact us</Link> today for a free consultation with Pakistan&apos;s leading lawyers.
-        </p>
-        <Link
-          href="/contact"
-          className="inline-block bg-blue-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
-        >
-          Get Legal Help
-        </Link>
-      </div>
+      {/* ✅ CTA Section */}
+      <section className="mt-24 text-center">
+        <div className="max-w-3xl mx-auto">
+          <Image
+            src="/ai-law-banner.png"
+            alt="AI Tools for Lawyers in Pakistan"
+            width={800}
+            height={300}
+            className="mx-auto rounded-3xl shadow-md object-cover"
+            priority
+          />
+          <h2 className="text-2xl font-bold text-blue-900 mt-8 mb-3">
+            Empower Your Legal Practice with AI
+          </h2>
+          <p className="text-gray-700 mb-6">
+            From drafting and research to client communication — PTL’s AI tools
+            help Pakistani lawyers save time, improve accuracy, and stay ahead
+            in the digital era.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-block bg-blue-900 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+          >
+            Request Free Demo
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pakistan's Top Lawyers (PTL)
 
-## Getting Started
+A modern web platform connecting overseas Pakistanis with verified lawyers in Pakistan. Built with Next.js 15, React 19, and TypeScript.
 
-First, run the development server:
+## 🚀 Features
 
+- **Lawyer Directory**: Browse and search verified lawyers by city and practice area
+- **AI-Powered Tools**: Document summarization, legal chat, and case law search
+- **Authentication**: Secure user management with Clerk
+- **Image Upload**: Cloudinary integration for profile pictures and documents
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **SEO Optimized**: Rich metadata and structured data for better search rankings
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: MongoDB with Mongoose
+- **Authentication**: Clerk
+- **Image Storage**: Cloudinary
+- **AI Services**: Groq API
+- **PDF Processing**: PDF.js
+- **Animations**: Lottie React
+
+## 📦 Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd ptl
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Configure your environment variables in `.env.local`:
+```env
+# Database
+MONGODB_URI=mongodb://localhost:27017/ptl
 
-## Learn More
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
 
-To learn more about Next.js, take a look at the following resources:
+# Cloudinary
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# AI Services
+GROQ_API_KEY=your_groq_api_key
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# App Configuration
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-## Deploy on Vercel
+5. Run the development server:
+```bash
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏗️ Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── add-lawyer/        # Lawyer registration form
+│   ├── lawyers/           # Lawyer directory
+│   ├── services/          # Legal services pages
+│   ├── api/               # API routes
+│   └── globals.css        # Global styles
+├── components/            # Reusable components
+│   ├── ui/               # UI components
+│   └── tools/            # Specialized tools
+├── lib/                  # Utility functions
+│   ├── mongodb.ts        # Database connection
+│   ├── utils.ts          # Helper functions
+│   ├── validations.ts    # Form validation
+│   └── api.ts            # API utilities
+└── models/               # Database models
+    └── Lawyer.ts         # Lawyer schema
+```
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🌐 API Endpoints
+
+- `GET/POST /api/lawyers` - Lawyer CRUD operations
+- `POST /api/chat` - AI legal chat
+- `POST /api/summarize` - Document summarization
+- `POST /api/casesearch` - Case law search
+
+## 📱 Features Overview
+
+### Lawyer Management
+- Add new lawyers with profile pictures and license images
+- Browse lawyers by city and practice area
+- View detailed lawyer profiles
+
+### AI Tools
+- **Document Summarizer**: Upload PDFs for English/Urdu summaries and legal analysis
+- **Legal Chat**: Ask questions about Pakistani law
+- **Case Search**: Find relevant case laws and judgments
+
+### SEO & Performance
+- Optimized metadata for search engines
+- Structured data (JSON-LD) for rich snippets
+- Responsive images and lazy loading
+- Fast loading with Next.js optimizations
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Add environment variables in Vercel dashboard
+4. Deploy automatically
+
+### Other Platforms
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- Railway
+- DigitalOcean App Platform
+- AWS Amplify
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 📞 Support
+
+For support, email contact@pakistantoplawyers.com or create an issue in the repository.
+
+---
+
+**Pakistan's Top Lawyers** - Connecting overseas Pakistanis with trusted legal professionals.

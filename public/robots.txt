@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive or non-useful routes
+Disallow: /api/
+Disallow: /sign-in
+Disallow: /sign-up
+
+Sitemap: https://pakistantoplawyers.com/sitemap.xml
+
+
+
+
+
+
+
+
+
+
