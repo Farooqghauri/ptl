@@ -1,70 +1,86 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Sidebar, { ToolKey } from "@/components/Sidebar";
+import React, { useState } from "react";
+import PTLAIDraftingSearch from "@/components/tools/PTL-AI-Drafting-Search";
 
-// ✅ Tool imports
-import AILegalDrafting from "@/components/tools/AILegalDrafting";
-import AIResearchRAG from "@/components/tools/AIResearchRAG";
-import CaseSummary from "@/components/tools/CaseSummary";
-import UrduLegalTranslator from "@/components/tools/UrduLegalTranslator";
-import ClientChatbot from "@/components/tools/ClientChatbot";
-import ReminderTaskManager from "@/components/tools/ReminderTaskManager";
-import FeeEstimator from "@/components/tools/FeeEstimator";
-import LegalOpinionAnalyzer from "@/components/tools/LegalOpinionAnalyzer";
-import DocumentChecker from "@/components/tools/DocumentChecker";
+import { Layers } from "lucide-react";
+import { motion } from "framer-motion";
+import clsx from "clsx";
 
-const toolComponents: Record<ToolKey, React.ComponentType> = {
-  "ai-legal-drafting": AILegalDrafting,
-  "ai-research-rag": AIResearchRAG,
-  "case-summary": CaseSummary,
-  "urdu-legal-translator": UrduLegalTranslator,
-  "client-chatbot": ClientChatbot,
-  "reminder-task-manager": ReminderTaskManager,
-  "fee-estimator": FeeEstimator,
-  "legal-opinion-analyzer": LegalOpinionAnalyzer,
-  "document-checker": DocumentChecker,
-};
+type Tool = "combined";
 
-export default function AIToolsPage() {
-  const [sidebarExpanded, setSidebarExpanded] = useState(true);
-  const [selectedTool, setSelectedTool] = useState<ToolKey>("ai-legal-drafting");
-  const [isMobile, setIsMobile] = useState(false);
+export default function AIToolsPage(): React.ReactElement {
+  const [activeTool, setActiveTool] = useState<Tool>("combined");
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // Each time this key changes, PTLAIDraftingSearch remounts, clearing chat
+  const [toolKey, setToolKey] = useState<number>(Date.now());
 
-  const CurrentToolComponent = toolComponents[selectedTool];
+  const handleTabClick = (key: Tool) => {
+    setActiveTool(key);
+    setToolKey(Date.now()); // Reset chat whenever user switches tool or page reload
+  };
+
+  const renderTool = (): React.ReactElement | null => {
+    return <PTLAIDraftingSearch key={toolKey} />;
+  };
+
+  const tabs: { key: Tool; label: string; icon: React.ReactNode; desc: string }[] = [
+    {
+      key: "combined",
+      label: "AI Drafting + Search",
+      icon: <Layers className="h-5 w-5" />,
+      desc: "Unified AI for Legal Drafting & Research",
+    },
+  ];
 
   return (
-    <div className="flex h-screen bg-gray-50 relative overflow-hidden">
-      {/* Sidebar (always on left) */}
-      <Sidebar
-        expand={sidebarExpanded}
-        setExpand={setSidebarExpanded}
-        selected={selectedTool}
-        onSelect={setSelectedTool}
-      />
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+      {/* Header */}
+      <header className="py-6 shadow-sm bg-white/70 backdrop-blur-md sticky top-0 z-20">
+        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
+            ⚖️ PTL AI Legal Suite
+          </h1>
 
-      {/* Main Content Area */}
-      <main
-        className={`flex-1 transition-all duration-300 overflow-y-auto ${
-          isMobile ? "ml-20" : sidebarExpanded ? "ml-64" : "ml-20"
-        }`}
-      >
-        <div className="h-full p-4 md:p-8 bg-white shadow-inner rounded-tl-3xl">
-          {CurrentToolComponent ? (
-            <CurrentToolComponent />
-          ) : (
-            <p className="text-center text-gray-600 mt-20">
-              Select an AI tool from the sidebar to begin.
-            </p>
-          )}
+          {/* Tabs */}
+          <nav className="flex flex-wrap gap-3 justify-center">
+            {tabs.map((tab) => (
+              <motion.button
+                key={tab.key}
+                onClick={() => handleTabClick(tab.key)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={clsx(
+                  "flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 border border-transparent",
+                  activeTool === tab.key
+                    ? "border-b-2 border-blue-600 text-blue-600 bg-blue-50"
+                    : "text-gray-600 hover:text-blue-500 hover:bg-slate-100"
+                )}
+              >
+                {tab.icon}
+                <span>{tab.label}</span>
+              </motion.button>
+            ))}
+          </nav>
         </div>
+      </header>
+
+      {/* Tool Description */}
+      <div className="max-w-4xl mx-auto mt-4 px-6 text-center text-gray-600 text-sm">
+        {tabs.find((t) => t.key === activeTool)?.desc}
+      </div>
+
+      {/* Tool Content */}
+      <main className="max-w-6xl mx-auto p-6 md:p-10">
+        <motion.div
+          key={activeTool}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="rounded-xl shadow-sm bg-white/90 border border-slate-200 p-4 md:p-6"
+        >
+          {renderTool()}
+        </motion.div>
       </main>
     </div>
   );

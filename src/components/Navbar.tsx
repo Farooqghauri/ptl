@@ -29,9 +29,10 @@ export default function Navbar() {
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "AI Tools", path: "/ai-tools" },
-    // { name: "Lawyers", path: "/lawyers" },
-    // { name: "AI Legal Assistant", path: "/ai-lawyer" }, // ✅ Added link here
+    { name: "Top Lawyers", path: "/top-lawyers" },
+    { name: "Hire A Top Lawyer", path: "/hire-a-top-lawyer" },
     { name: "Contact", path: "/contact" },
+
   ];
 
   return (
