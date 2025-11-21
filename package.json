@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+     "dev:all": "concurrently \"npm run dev\" \"npm run backend\"", 
+    "backend": "uvicorn backend.main:app --reload --port 8000"
   },
   "dependencies": {
     "@ai-sdk/groq": "^2.0.24",
@@ -46,6 +48,7 @@
     "@types/node": "^20",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.4.5",
     "tailwindcss": "^4",

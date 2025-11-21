@@ -1,27 +1,39 @@
 "use client";
 
 import React, { useState } from "react";
+// Import the components for the two desired tools
 import PTLAIDraftingSearch from "@/components/tools/PTL-AI-Drafting-Search";
+import EnglishToUrdu from "@/components/tools/EnglishToUrdu"; 
 
-import { Layers } from "lucide-react";
+// Import icons
+import { Layers, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 
-type Tool = "combined";
+// Define the two desired tool keys
+type Tool = "combined" | "urdu-english";
 
 export default function AIToolsPage(): React.ReactElement {
   const [activeTool, setActiveTool] = useState<Tool>("combined");
 
-  // Each time this key changes, PTLAIDraftingSearch remounts, clearing chat
+  // Key to force remount/reset state when switching tools
   const [toolKey, setToolKey] = useState<number>(Date.now());
 
   const handleTabClick = (key: Tool) => {
     setActiveTool(key);
-    setToolKey(Date.now()); // Reset chat whenever user switches tool or page reload
+    setToolKey(Date.now()); // Reset chat/tool state
   };
 
   const renderTool = (): React.ReactElement | null => {
-    return <PTLAIDraftingSearch key={toolKey} />;
+    switch (activeTool) {
+      case "combined":
+        return <PTLAIDraftingSearch key={toolKey} />;
+      case "urdu-english":
+        // Ensure this component exists in your tools directory!
+        return <EnglishToUrdu key={toolKey} />;
+      default:
+        return null;
+    }
   };
 
   const tabs: { key: Tool; label: string; icon: React.ReactNode; desc: string }[] = [
@@ -29,7 +41,13 @@ export default function AIToolsPage(): React.ReactElement {
       key: "combined",
       label: "AI Drafting + Search",
       icon: <Layers className="h-5 w-5" />,
-      desc: "Unified AI for Legal Drafting & Research",
+      desc: "Unified AI for Legal Drafting & Research.",
+    },
+    {
+      key: "urdu-english",
+      label: "Urdu/English Translation",
+      icon: <Globe className="h-5 w-5" />,
+      desc: "Translate legal terms, documents, and concepts between English and Urdu.",
     },
   ];
 
