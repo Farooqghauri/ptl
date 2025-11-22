@@ -48,6 +48,7 @@ const systemPrompt = `
       system: systemPrompt,
       prompt: englishText,
       maxOutputTokens: 4096,
+      temperature: 0.1,
     });
 
     // 4. Return the translated text to the frontend
