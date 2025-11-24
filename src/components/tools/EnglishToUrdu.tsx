@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // --- Configuration ---
 // Base URL for your local Python server (Update this for deployment!)
-const PYTHON_API_URL = "http://127.0.0.1:8000"; 
+const PYTHON_API_URL = "/api/ptl-python-tools"; 
 // ---------------------
 
 /**
