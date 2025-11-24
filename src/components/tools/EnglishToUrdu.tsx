@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // --- Configuration ---
 // Base URL for your local Python server (Update this for deployment!)
-const PYTHON_API_URL = "https://Farooqghauri.pythonanywhere.com/"; 
+const PYTHON_API_URL = "http://127.0.0.1:8000"; 
 // ---------------------
 
 /**
