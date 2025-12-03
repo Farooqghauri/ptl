@@ -1,9 +1,7 @@
 {
   "functions": {
     "api/ptl-tools/route.py": {
-      "runtime": "python3.11",
-      "maxDuration": 25,
-      "memory": 1024
+      "runtime": "python3.11"
     }
   }
 }
