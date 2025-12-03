@@ -1,39 +1,51 @@
 import json
-from http.server import BaseHTTPRequestHandler
 
-# This is the Vercel/Next.js convention for a Python API Route handler.
-# The function name MUST match the HTTP method (e.g., POST, GET).
+# This file defines the Python Serverless Function for Vercel's App Router.
+# The URL endpoint is automatically mapped to: /api/ptl-python-tools
 
-def POST(request):
+# --- 1. GET Handler (Health Check / Connectivity Test) ---
+def GET(request):
     """
-    Handles POST requests to the /api/ptl-python-tools endpoint.
-    This replaces the slow PythonAnywhere call.
+    Handles GET requests for a health check.
     """
     try:
-        # 1. Parse the request body (assuming the frontend sends JSON)
-        # request.json() is the standard way to get the body in this environment
+        # Use the simpler, cleaner response from your latest version.
+        return json.dumps({"status": "healthy", "service": "PTL Python Tools Serverless"}), 200
+    except Exception as e:
+        # Keep the logging from the previous version for better debugging visibility in the terminal.
+        print(f"PTL Python Tools GET Error: {e}")
+        return json.dumps({
+            "error": "Failed to run GET handler."
+        }), 500
+
+
+# --- 2. POST Handler (Core Logic: Document Processing) ---
+def POST(request):
+    """
+    Handles POST requests for document processing, using your logic to confirm data receipt.
+    """
+    try:
+        # Use the robust data parsing from your latest version.
+        # Vercel's runtime injects a Request object with a .json() method.
         data = request.json()
-        
-        # 2. Get the input text/data from the request
         input_text = data.get('text', 'No input text found.')
-        
-        # 3. *** PLACEHOLDER FOR YOUR AI/DB LOGIC ***
-        # For now, we confirm the request was successful and received the data.
+
+        # Create a detailed response confirming the data received
         response_data = {
             "status": "success",
-            "message": "Python function is ALIVE on Vercel!",
-            "received_input": input_text,
-            "next_step": "Integrate your AI/Llama logic here."
+            # Show a snippet of the received data for confirmation
+            "text": f"Vercel function received your data: '{input_text[:50]}...' and is ALIVE!",
+            "message": "Routing confirmed. Next step: Integrate full file processing/AI logic here."
         }
-        
-        # 4. Return the response as a tuple (body, status_code)
-        # Note: We return the body as a JSON string and status code.
+
+        # Return the response as a JSON string and status code.
         return json.dumps(response_data), 200
 
     except Exception as e:
-        # If anything goes wrong during processing or parsing
-        return json.dumps({"error": f"Vercel Python Error: {str(e)}"}), 500
-
-# Optional: Add a GET handler for basic health checks
-def GET(request):
-    return json.dumps({"status": "healthy", "service": "PTL Python Tools Serverless"}), 200
+        # Log the detailed error in your development terminal
+        print(f"PTL Python Tools POST Error: {e}")
+        
+        # Return a server error response to the frontend
+        return json.dumps({
+            "error": f"Failed to process request. Vercel Python Error: {str(e)}"
+        }), 500

@@ -131,53 +131,79 @@ export default function EnglishToUrdu() {
   const [translatedText, setTranslatedText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentStep, setCurrentStep] = useState<string | null>(null);
 
-  const handleUploadAndTranslate = async () => {
-    if (!file) return;
-    setIsLoading(true);
-    setError(null);
-    setTranslatedText("");
+ const handleUploadAndTranslate = async () => {
+  if (!file) return;
 
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
+  setIsLoading(true);
+  setError(null);
+  setTranslatedText("");
 
-      // --- 1. Call Python to Extract Text/OCR ---
-      const extractRes = await fetch(`${PYTHON_API_URL}/extract-text`, {
-        method: "POST",
-        body: formData,
-      });
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
 
-      if (!extractRes.ok) {
-        const errorData = await extractRes.json();
-        throw new Error(`Extraction Failed: ${errorData.detail}`);
-      }
-      const extractData = await extractRes.json();
-      const extractedText = extractData.text;
+    // Step 1: Try Python text extraction
+    setCurrentStep("Extracting text from document...");
+    const extractRes = await fetch("/api/ptl-tools/extract-text", {
+      method: "POST",
+      body: formData,
+    });
 
-      // --- 2. Call Next.js API for Translation (AI Model) ---
-      const translateRes = await fetch("/api/translate-legal-urdu", {
-        method: "POST",
-        body: JSON.stringify({ text: extractedText }),
-        headers: { "Content-Type": "application/json" },
-      });
+    if (!extractRes.ok) {
+      throw new Error("Text extraction failed");
+    }
 
-      if (!translateRes.ok) {
-        const errorData = await translateRes.json();
-        throw new Error(`Translation Failed: ${errorData.error}`);
-      }
-      const translateData = await translateRes.json();
-      
-      // 🚨 APPLY THE CLEANING FUNCTION HERE 🚨
-      const cleanedTranslation = cleanUrduText(translateData.translatedText);
-      setTranslatedText(cleanedTranslation);
+    const extractData = await extractRes.json();
+    let extractedText = extractData.text;
 
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An unknown error occurred.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    // Step 2: If OCR needed, use Groq Vision
+    if (extractData.ocr_required) {
+      setCurrentStep("Running AI OCR on scanned document...");
+      
+      const ocrRes = await fetch("/api/ocr-groq", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!ocrRes.ok) {
+        throw new Error("OCR processing failed");
+      }
+
+      const ocrData = await ocrRes.json();
+      extractedText = ocrData.text;
+    }
+
+    if (!extractedText || extractedText.length < 10) {
+      throw new Error("No text could be extracted from the document");
+    }
+
+    // Step 3: Translate to Legal Urdu
+    setCurrentStep("Translating to Legal Urdu...");
+    const translateRes = await fetch("/api/translate-legal-urdu", {
+      method: "POST",
+      body: JSON.stringify({ text: extractedText }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (!translateRes.ok) {
+      throw new Error("Translation failed");
+    }
+
+    const translateData = await translateRes.json();
+    
+    // Step 4: Apply cleaning
+    const cleanedTranslation = cleanUrduText(translateData.translatedText);
+    setTranslatedText(cleanedTranslation);
+
+  } catch (err) {
+    setError(err instanceof Error ? err.message : "An error occurred");
+  } finally {
+    setIsLoading(false);
+    setCurrentStep(null);
+  }
+};
 
   // 🚨 Client-side TXT download function 🚨
   const handleDownloadTxt = () => {

@@ -6,12 +6,32 @@ import { useState } from "react";
 // Make sure this matches your Python backend host
 const PYTHON_API_URL = process.env.NEXT_PUBLIC_PYTHON_API_URL || "http://127.0.0.1:8000";
 
+// --- Helper Types ---
+interface QualityReport {
+    isValid: boolean;
+    issues: string[];
+}
+
+interface CompletenessReport {
+    isComplete: boolean;
+    missingSections: string[];
+    completenessScore: number;
+    wordCountComparison: { original: number; translated: number; ratio: number };
+}
+
+interface TranslationStats {
+    originalLength: number;
+    translatedLength: number;
+    cleaningApplied: boolean;
+    processingTime: number;
+}
+
 // --- Helper Functions (Corrected for Urdu Validation) ---
 
 /**
  * Enhanced Urdu translation validation
  */
-const validateUrduTranslation = (text: string): { isValid: boolean; issues: string[] } => {
+const validateUrduTranslation = (text: string): QualityReport => {
     const issues: string[] = [];
     
     if (!text || text.length < 10) {
@@ -52,7 +72,7 @@ const validateUrduTranslation = (text: string): { isValid: boolean; issues: stri
 };
 
 /**
- * Advanced Legal Urdu Text Cleaner (Kept as before)
+ * Advanced Legal Urdu Text Cleaner
  */
 const cleanLegalUrduText = (text: string): string => {
     if (!text || typeof text !== 'string') return '';
@@ -101,15 +121,9 @@ const cleanLegalUrduText = (text: string): string => {
 
 
 /**
- * ✅ FIX APPLIED HERE: Enhanced Translation Completeness Validator 
- * Checks for the Urdu equivalents, not the English originals.
+ * Enhanced Translation Completeness Validator 
  */
-const validateTranslationCompleteness = (original: string, translated: string): { 
-    isComplete: boolean; 
-    missingSections: string[]; 
-    completenessScore: number;
-    wordCountComparison: { original: number; translated: number; ratio: number };
-} => {
+const validateTranslationCompleteness = (original: string, translated: string): CompletenessReport => {
     const missingSections: string[] = [];
     const originalLower = original.toLowerCase();
     const translatedLower = translated.toLowerCase();
@@ -177,19 +191,10 @@ export default function EnglishToUrdu() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [extractedText, setExtractedText] = useState("");
-    const [qualityReport, setQualityReport] = useState<{ isValid: boolean; issues: string[] } | null>(null);
-    const [completenessReport, setCompletenessReport] = useState<{ 
-        isComplete: boolean; 
-        missingSections: string[]; 
-        completenessScore: number;
-        wordCountComparison: { original: number; translated: number; ratio: number };
-    } | null>(null);
-    const [translationStats, setTranslationStats] = useState<{ 
-        originalLength: number; 
-        translatedLength: number; 
-        cleaningApplied: boolean;
-        processingTime: number;
-    } | null>(null);
+    const [qualityReport, setQualityReport] = useState<QualityReport | null>(null);
+    const [completenessReport, setCompletenessReport] = useState<CompletenessReport | null>(null);
+    const [translationStats, setTranslationStats] = useState<TranslationStats | null>(null);
+    const [currentStep, setCurrentStep] = useState<string | null>(null); // State for progress updates
 
     const handleUploadAndTranslate = async () => {
         if (!file) return;
@@ -202,6 +207,7 @@ export default function EnglishToUrdu() {
         setQualityReport(null);
         setCompletenessReport(null);
         setTranslationStats(null);
+        setCurrentStep(null);
 
         try {
             // Validate file
@@ -213,6 +219,7 @@ export default function EnglishToUrdu() {
             formData.append("file", file);
 
             // Step 1: Extract text from document
+            setCurrentStep("1/3: Extracting text from document...");
             console.log("Step 1: Extracting text from document...");
             const extractRes = await fetch(`${PYTHON_API_URL}/extract-text`, {
                 method: "POST",
@@ -234,6 +241,7 @@ export default function EnglishToUrdu() {
             console.log("Text extraction successful. Length:", extractData.text.length);
 
             // Step 2: Translate to Legal Urdu with enhanced API
+            setCurrentStep("2/3: Translating to Legal Urdu with AI...");
             console.log("Step 2: Starting comprehensive translation...");
             const translateRes = await fetch("/api/translate-legal-urdu", {
                 method: "POST",
@@ -256,7 +264,8 @@ export default function EnglishToUrdu() {
             const translateData = await translateRes.json();
             console.log("Translation received. Length:", translateData.translatedText?.length);
 
-            // Step 3: Apply comprehensive cleaning
+            // Step 3: Apply comprehensive cleaning and validation
+            setCurrentStep("3/3: Validating and cleaning translation...");
             let finalTranslation = translateData.translatedText;
             let cleaningApplied = false;
             
@@ -307,6 +316,7 @@ export default function EnglishToUrdu() {
             }
         } finally {
             setIsLoading(false);
+            setCurrentStep(null);
         }
     };
 
@@ -327,12 +337,14 @@ export default function EnglishToUrdu() {
     const handleRetryTranslation = async () => {
         if (!extractedText) return;
         
+        const startTime = Date.now();
         setError(null);
         setTranslatedText("");
         setQualityReport(null);
         setCompletenessReport(null);
         
         try {
+            setCurrentStep("Retrying translation with enhanced settings...");
             console.log("Retrying translation with enhanced settings...");
             setIsLoading(true);
             const translateRes = await fetch("/api/translate-legal-urdu", {
@@ -363,11 +375,20 @@ export default function EnglishToUrdu() {
             const completenessCheck = validateTranslationCompleteness(extractedText, finalTranslation);
             setQualityReport(qualityCheck);
             setCompletenessReport(completenessCheck);
+
+            const processingTime = Date.now() - startTime;
+            setTranslationStats((prev) => ({
+                ...prev!,
+                translatedLength: finalTranslation.length,
+                processingTime: (prev?.processingTime || 0) + processingTime, // Accumulate time
+                cleaningApplied: true, // Assumed to be applied on retry
+            }));
             
         } catch (err) {
             setError(err instanceof Error ? err.message : "Retry failed");
         } finally {
             setIsLoading(false);
+            setCurrentStep(null);
         }
     };
 
@@ -422,7 +443,7 @@ export default function EnglishToUrdu() {
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
-                            Processing Legal Document...
+                            {currentStep || "Processing Legal Document..."}
                         </>
                     ) : (
                         "Translate to Complete Legal Urdu"

@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/ptl-tools/route.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "app/api/translate-legal-urdu/route.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "app/api/ocr-groq/route.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/ptl-tools/(.*)",
+      "dest": "api/ptl-tools/route.py"
+    },
+    {
+      "src": "/api/translate-legal-urdu/(.*)",
+      "dest": "app/api/translate-legal-urdu/route.ts"
+    },
+    {
+      "src": "/api/ocr-groq/(.*)",
+      "dest": "app/api/ocr-groq/route.ts"
+    }
+  ]
+}
