@@ -1,7 +1,8 @@
+
 {
   "functions": {
     "api/ptl-tools/route.py": {
-      "runtime": "python3.11"
+      "runtime": "python3.10"
     }
   }
 }
