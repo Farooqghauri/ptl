@@ -4,7 +4,8 @@ import { useState } from "react";
 
 // --- Configuration ---
 // Make sure this matches your Python backend host
-const PYTHON_API_URL = process.env.NEXT_PUBLIC_PYTHON_API_URL || "http://127.0.0.1:8000";
+
+const PYTHON_API_URL = "/api/ptl-tools";
 
 // --- Helper Types ---
 interface QualityReport {

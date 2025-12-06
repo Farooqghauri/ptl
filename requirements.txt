@@ -1,8 +1,0 @@
-fastapi
-mangum
-python-docx
-pdfplumber
-python-multipart
-lxml
-reportlab
-uvicorn
