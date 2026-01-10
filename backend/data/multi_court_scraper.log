@@ -1,0 +1,328 @@
+2026-01-03 16:21:39,401 - INFO - Database ready: C:\Users\UNC\Desktop\ptl\backend\scripts\..\data\legal_db.sqlite
+2026-01-03 16:21:39,401 - INFO - 
+Starting browser...
+2026-01-03 16:21:39,401 - INFO - ====== WebDriver manager ======
+2026-01-03 16:21:40,885 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 16:21:41,166 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 16:21:41,338 - INFO - Driver [C:\Users\UNC\.wdm\drivers\chromedriver\win64\143.0.7499.169\chromedriver-win32/chromedriver.exe] found in cache
+2026-01-03 16:21:44,415 - INFO - 
+============================================================
+2026-01-03 16:21:44,444 - INFO - Scraping: Supreme Court of Pakistan
+2026-01-03 16:21:44,445 - INFO - ============================================================
+2026-01-03 16:21:44,445 - INFO -   Trying: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 16:21:57,570 - INFO -   Found 25 PDFs at: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 16:21:57,570 - INFO -   Processing 25 unique PDFs...
+2026-01-03 16:21:57,570 - INFO -   [2/25] crl.p. 46 2025...
+2026-01-03 16:22:01,720 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:22:01,736 - ERROR -     Error: table judgments_fts has no column named summary
+2026-01-03 16:22:01,736 - INFO -   [9/25] j.p. 704 2017...
+2026-01-03 16:22:14,303 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:22:14,303 - ERROR -     Error: table judgments_fts has no column named summary
+2026-01-03 16:22:14,303 - INFO -   [10/25] j.p. 872 2017...
+2026-01-03 16:22:24,275 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:22:24,275 - ERROR -     Error: table judgments_fts has no column named summary
+2026-01-03 16:22:24,275 - INFO -   [12/25] crl.p. 106 2023...
+2026-01-03 16:22:30,260 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:22:30,260 - ERROR -     Error: table judgments_fts has no column named summary
+2026-01-03 16:22:30,260 - INFO -   SCP: +0 new, 21 skipped, 4 errors
+2026-01-03 16:22:30,260 - INFO - 
+============================================================
+2026-01-03 16:22:30,260 - INFO - Scraping: Lahore High Court
+2026-01-03 16:22:30,260 - INFO - ============================================================
+2026-01-03 16:22:30,275 - INFO -   Trying: https://sys.lhc.gov.pk/appjudgments/
+2026-01-03 16:22:34,579 - INFO -   No PDFs found at: https://sys.lhc.gov.pk/appjudgments/
+2026-01-03 16:22:34,579 - INFO -   Trying: https://data.lhc.gov.pk/judges_profile/judgments/
+2026-01-03 16:22:39,223 - INFO -   No PDFs found at: https://data.lhc.gov.pk/judges_profile/judgments/
+2026-01-03 16:22:39,223 - WARNING -   No PDFs found for Lahore High Court
+2026-01-03 16:22:39,223 - INFO -   LHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:22:39,223 - INFO - 
+============================================================
+2026-01-03 16:22:39,223 - INFO - Scraping: Sindh High Court
+2026-01-03 16:22:39,223 - INFO - ============================================================
+2026-01-03 16:22:39,223 - INFO -   Trying: https://sindhhighcourt.gov.pk/judgments/
+2026-01-03 16:22:44,820 - INFO -   No PDFs found at: https://sindhhighcourt.gov.pk/judgments/
+2026-01-03 16:22:44,820 - INFO -   Trying: https://shc.gov.pk/judgments/
+2026-01-03 16:22:49,703 - INFO -   No PDFs found at: https://shc.gov.pk/judgments/
+2026-01-03 16:22:49,704 - WARNING -   No PDFs found for Sindh High Court
+2026-01-03 16:22:49,704 - INFO -   SHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:22:49,704 - INFO - 
+============================================================
+2026-01-03 16:22:49,705 - INFO - Scraping: Islamabad High Court
+2026-01-03 16:22:49,705 - INFO - ============================================================
+2026-01-03 16:22:49,705 - INFO -   Trying: https://ihc.gov.pk/judgments
+2026-01-03 16:22:54,209 - INFO -   No PDFs found at: https://ihc.gov.pk/judgments
+2026-01-03 16:22:54,209 - INFO -   Trying: https://islamabadhighcourt.gov.pk/judgments/
+2026-01-03 16:22:54,698 - ERROR - Selenium fetch failed: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=143.0.7499.170)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4f12d3
+	0x4f1314
+	0x2de6dd
+	0x2dbc86
+	0x2cef92
+	0x2d094a
+	0x2cf435
+	0x2ced71
+	0x2cea85
+	0x2cc94f
+	0x2cd31a
+	0x2e2451
+	0x36e704
+	0x34b4ec
+	0x36db13
+	0x34b2e6
+	0x31d321
+	0x31e1d4
+	0x745314
+	0x7408cb
+	0x75d1aa
+	0x50b1d8
+	0x5131dd
+	0x4f95d8
+	0x4f9799
+	0x4e3b28
+	0x74eafcc9
+	0x76f882ae
+	0x76f8827e
+
+2026-01-03 16:22:58,755 - WARNING -   No content from: https://islamabadhighcourt.gov.pk/judgments/
+2026-01-03 16:22:58,755 - WARNING -   No PDFs found for Islamabad High Court
+2026-01-03 16:22:58,755 - INFO -   IHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:22:58,755 - INFO - 
+============================================================
+2026-01-03 16:22:58,755 - INFO - Scraping: Peshawar High Court
+2026-01-03 16:22:58,755 - INFO - ============================================================
+2026-01-03 16:22:58,755 - INFO -   Trying: https://peshawarhighcourt.gov.pk/judgments/
+2026-01-03 16:23:04,835 - ERROR - Selenium fetch failed: Message: timeout
+from aborted by navigation: loader has changed while resolving nodes
+  (Session info: chrome=143.0.7499.170)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4f12d3
+	0x4f1314
+	0x2de6dd
+	0x2e4452
+	0x2e7951
+	0x36e9fa
+	0x34b4ec
+	0x36db13
+	0x34b2e6
+	0x31d321
+	0x31e1d4
+	0x745314
+	0x7408cb
+	0x75d1aa
+	0x50b1d8
+	0x5131dd
+	0x4f95d8
+	0x4f9799
+	0x4e3b28
+	0x74eafcc9
+	0x76f882ae
+	0x76f8827e
+
+2026-01-03 16:23:05,335 - INFO -   No PDFs found at: https://peshawarhighcourt.gov.pk/judgments/
+2026-01-03 16:23:05,335 - INFO -   Trying: https://phc.gov.pk/judgments/
+2026-01-03 16:23:06,052 - ERROR - Selenium fetch failed: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=143.0.7499.170)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4f12d3
+	0x4f1314
+	0x2de6dd
+	0x2dbc86
+	0x2cef92
+	0x2d094a
+	0x2cf435
+	0x2ced71
+	0x2cea85
+	0x2cc94f
+	0x2cd31a
+	0x2e2451
+	0x36e704
+	0x34b4ec
+	0x36db13
+	0x34b2e6
+	0x31d321
+	0x31e1d4
+	0x745314
+	0x7408cb
+	0x75d1aa
+	0x50b1d8
+	0x5131dd
+	0x4f95d8
+	0x4f9799
+	0x4e3b28
+	0x74eafcc9
+	0x76f882ae
+	0x76f8827e
+
+2026-01-03 16:23:10,063 - WARNING -   No content from: https://phc.gov.pk/judgments/
+2026-01-03 16:23:10,063 - WARNING -   No PDFs found for Peshawar High Court
+2026-01-03 16:23:10,063 - INFO -   PHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:23:12,298 - INFO - Browser closed
+2026-01-03 16:27:22,866 - INFO - Database ready: C:\Users\UNC\Desktop\ptl\backend\scripts\..\data\legal_db.sqlite
+2026-01-03 16:27:22,866 - INFO - 
+Starting browser...
+2026-01-03 16:27:22,866 - INFO - ====== WebDriver manager ======
+2026-01-03 16:27:24,116 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 16:27:24,272 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 16:27:24,460 - INFO - Driver [C:\Users\UNC\.wdm\drivers\chromedriver\win64\143.0.7499.169\chromedriver-win32/chromedriver.exe] found in cache
+2026-01-03 16:27:25,769 - INFO - 
+============================================================
+2026-01-03 16:27:25,769 - INFO - Scraping: Supreme Court of Pakistan
+2026-01-03 16:27:25,769 - INFO - ============================================================
+2026-01-03 16:27:25,770 - INFO -   Trying: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 16:27:38,513 - INFO -   Found 25 PDFs at: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 16:27:38,513 - INFO -   Processing 25 unique PDFs...
+2026-01-03 16:27:38,513 - INFO -   [2/25] crl.p. 46 2025...
+2026-01-03 16:27:45,469 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:27:45,516 - INFO -     Added (no embedding)
+2026-01-03 16:27:46,521 - INFO -   [9/25] j.p. 704 2017...
+2026-01-03 16:27:53,983 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:27:53,999 - INFO -     Added (no embedding)
+2026-01-03 16:27:55,041 - INFO -   [10/25] j.p. 872 2017...
+2026-01-03 16:28:03,059 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:28:03,095 - INFO -     Added (no embedding)
+2026-01-03 16:28:04,099 - INFO -   [12/25] crl.p. 106 2023...
+2026-01-03 16:28:12,378 - WARNING -     Text too short (likely scanned PDF)
+2026-01-03 16:28:12,409 - INFO -     Added (no embedding)
+2026-01-03 16:28:13,417 - INFO -   SCP: +4 new, 21 skipped, 0 errors
+2026-01-03 16:28:13,418 - INFO - 
+============================================================
+2026-01-03 16:28:13,418 - INFO - Scraping: Lahore High Court
+2026-01-03 16:28:13,418 - INFO - ============================================================
+2026-01-03 16:28:13,419 - INFO -   Trying: https://sys.lhc.gov.pk/appjudgments/
+2026-01-03 16:28:17,564 - INFO -   No PDFs found at: https://sys.lhc.gov.pk/appjudgments/
+2026-01-03 16:28:17,565 - INFO -   Trying: https://data.lhc.gov.pk/judges_profile/judgments/
+2026-01-03 16:28:22,042 - INFO -   No PDFs found at: https://data.lhc.gov.pk/judges_profile/judgments/
+2026-01-03 16:28:22,042 - WARNING -   No PDFs found for Lahore High Court
+2026-01-03 16:28:22,042 - INFO -   LHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:28:22,042 - INFO - 
+============================================================
+2026-01-03 16:28:22,042 - INFO - Scraping: Sindh High Court
+2026-01-03 16:28:22,042 - INFO - ============================================================
+2026-01-03 16:28:22,042 - INFO -   Trying: https://sindhhighcourt.gov.pk/judgments/
+2026-01-03 16:28:26,783 - INFO -   No PDFs found at: https://sindhhighcourt.gov.pk/judgments/
+2026-01-03 16:28:26,783 - INFO -   Trying: https://shc.gov.pk/judgments/
+2026-01-03 16:28:31,508 - INFO -   No PDFs found at: https://shc.gov.pk/judgments/
+2026-01-03 16:28:31,509 - WARNING -   No PDFs found for Sindh High Court
+2026-01-03 16:28:31,509 - INFO -   SHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:28:31,510 - INFO - 
+============================================================
+2026-01-03 16:28:31,510 - INFO - Scraping: Islamabad High Court
+2026-01-03 16:28:31,510 - INFO - ============================================================
+2026-01-03 16:28:31,510 - INFO -   Trying: https://ihc.gov.pk/judgments
+2026-01-03 16:28:35,761 - INFO -   No PDFs found at: https://ihc.gov.pk/judgments
+2026-01-03 16:28:35,761 - INFO -   Trying: https://islamabadhighcourt.gov.pk/judgments/
+2026-01-03 16:28:36,105 - ERROR - Selenium fetch failed: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=143.0.7499.170)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4f12d3
+	0x4f1314
+	0x2de6dd
+	0x2dbc86
+	0x2cef92
+	0x2d094a
+	0x2cf435
+	0x2ced71
+	0x2cea85
+	0x2cc94f
+	0x2cd31a
+	0x2e2451
+	0x36e704
+	0x34b4ec
+	0x36db13
+	0x34b2e6
+	0x31d321
+	0x31e1d4
+	0x745314
+	0x7408cb
+	0x75d1aa
+	0x50b1d8
+	0x5131dd
+	0x4f95d8
+	0x4f9799
+	0x4e3b28
+	0x74eafcc9
+	0x76f882ae
+	0x76f8827e
+
+2026-01-03 16:28:40,162 - WARNING -   No content from: https://islamabadhighcourt.gov.pk/judgments/
+2026-01-03 16:28:40,162 - WARNING -   No PDFs found for Islamabad High Court
+2026-01-03 16:28:40,162 - INFO -   IHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:28:40,162 - INFO - 
+============================================================
+2026-01-03 16:28:40,162 - INFO - Scraping: Peshawar High Court
+2026-01-03 16:28:40,162 - INFO - ============================================================
+2026-01-03 16:28:40,162 - INFO -   Trying: https://peshawarhighcourt.gov.pk/judgments/
+2026-01-03 16:28:45,893 - ERROR - Selenium fetch failed: Message: timeout
+from aborted by navigation: loader has changed while resolving nodes
+  (Session info: chrome=143.0.7499.170)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4f12d3
+	0x4f1314
+	0x2de6dd
+	0x2e4452
+	0x2e7951
+	0x36e9fa
+	0x34b4ec
+	0x36db13
+	0x34b2e6
+	0x31d321
+	0x31e1d4
+	0x745314
+	0x7408cb
+	0x75d1aa
+	0x50b1d8
+	0x5131dd
+	0x4f95d8
+	0x4f9799
+	0x4e3b28
+	0x74eafcc9
+	0x76f882ae
+	0x76f8827e
+
+2026-01-03 16:28:46,383 - INFO -   No PDFs found at: https://peshawarhighcourt.gov.pk/judgments/
+2026-01-03 16:28:46,383 - INFO -   Trying: https://phc.gov.pk/judgments/
+2026-01-03 16:28:46,987 - ERROR - Selenium fetch failed: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: chrome=143.0.7499.170)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	0x4f12d3
+	0x4f1314
+	0x2de6dd
+	0x2dbc86
+	0x2cef92
+	0x2d094a
+	0x2cf435
+	0x2ced71
+	0x2cea85
+	0x2cc94f
+	0x2cd31a
+	0x2e2451
+	0x36e704
+	0x34b4ec
+	0x36db13
+	0x34b2e6
+	0x31d321
+	0x31e1d4
+	0x745314
+	0x7408cb
+	0x75d1aa
+	0x50b1d8
+	0x5131dd
+	0x4f95d8
+	0x4f9799
+	0x4e3b28
+	0x74eafcc9
+	0x76f882ae
+	0x76f8827e
+
+2026-01-03 16:28:50,997 - WARNING -   No content from: https://phc.gov.pk/judgments/
+2026-01-03 16:28:50,997 - WARNING -   No PDFs found for Peshawar High Court
+2026-01-03 16:28:50,997 - INFO -   PHC: +0 new, 0 skipped, 0 errors
+2026-01-03 16:28:53,217 - INFO - Browser closed

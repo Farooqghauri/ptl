@@ -13,6 +13,7 @@
   "dependencies": {
     "@ai-sdk/groq": "^2.0.24",
     "@clerk/nextjs": "^6.31.6",
+    "@heroicons/react": "^2.2.0",
     "@langchain/openai": "^1.0.0",
     "@lottiefiles/react-lottie-player": "^3.6.0",
     "ai": "^5.0.80",
@@ -23,7 +24,7 @@
     "file-saver": "^2.0.5",
     "framer-motion": "^12.23.24",
     "groq-sdk": "^0.35.0",
-    "jspdf": "^3.0.3",
+    "jspdf": "^3.0.4",
     "langchain": "^1.0.2",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.542.0",
@@ -43,7 +44,11 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.11",
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/file-saver": "^2.0.7",
     "@types/multer": "^2.0.0",
     "@types/node": "^20",
     "@types/react": "^19.2.2",

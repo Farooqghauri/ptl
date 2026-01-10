@@ -1,0 +1,58 @@
+2026-01-03 16:36:23,562 - INFO - Database ready: C:\Users\UNC\Desktop\ptl\backend\scripts\..\data\legal_db.sqlite
+2026-01-03 16:36:23,562 - INFO - 
+Starting browser...
+2026-01-03 16:36:23,562 - INFO - ====== WebDriver manager ======
+2026-01-03 16:36:25,819 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 16:36:25,991 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 16:36:26,148 - INFO - Driver [C:\Users\UNC\.wdm\drivers\chromedriver\win64\143.0.7499.169\chromedriver-win32/chromedriver.exe] found in cache
+2026-01-03 16:36:28,068 - INFO - 
+============================================================
+2026-01-03 16:36:28,069 - INFO - Scraping: Supreme Court of Pakistan
+2026-01-03 16:36:28,070 - INFO - ============================================================
+2026-01-03 16:36:28,073 - INFO -   Trying: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 16:36:43,050 - INFO -   Found 37 PDF links
+2026-01-03 16:36:43,050 - INFO -   Processing 37 unique PDFs...
+2026-01-03 16:36:43,050 - INFO -   [1/37] Downloads...
+2026-01-03 16:36:46,933 - WARNING -     Failed to download
+2026-01-03 16:36:46,933 - INFO -   [2/37] Judicature...
+2026-01-03 16:36:49,774 - WARNING -     Failed to download
+2026-01-03 16:36:49,774 - INFO -   [3/37] Judicial Commission of Pakistan...
+2026-01-03 16:36:52,183 - WARNING -     Failed to download
+2026-01-03 16:36:52,183 - INFO -   [4/37] Judicial System of Pakistan...
+2026-01-03 16:36:54,476 - WARNING -     Failed to download
+2026-01-03 16:36:54,476 - INFO -   [5/37] Supreme Court Rules...
+2026-01-03 16:36:56,726 - WARNING -     Failed to download
+2026-01-03 16:36:56,726 - INFO -   [6/37] Judgement Search...
+2026-01-03 16:36:59,445 - WARNING -     Failed to download
+2026-01-03 16:36:59,445 - INFO -   [7/37] Latest Judgements...
+2026-01-03 16:37:01,789 - WARNING -     Failed to download
+2026-01-03 16:37:01,789 - INFO -   [8/37] Fortnightly Disposal Report...
+2026-01-03 16:37:03,978 - WARNING -     Failed to download
+2026-01-03 16:37:03,978 - INFO -   [9/37] Annual Reports...
+2026-01-03 16:37:06,166 - WARNING -     Failed to download
+2026-01-03 16:37:06,166 - INFO -   [10/37] Publications...
+2026-01-03 16:37:08,479 - WARNING -     Failed to download
+2026-01-03 16:37:08,479 - INFO -   [36/37] Judicial Policy 2009...
+2026-01-03 16:37:10,527 - WARNING -     Failed to download
+2026-01-03 16:37:10,527 - INFO -   [37/37] General Adjournments...
+2026-01-03 16:37:12,577 - WARNING -     Failed to download
+2026-01-03 16:37:12,577 - INFO -   SCP: +0 new, 25 skipped, 12 errors
+2026-01-03 16:37:12,577 - INFO - 
+============================================================
+2026-01-03 16:37:12,577 - INFO - Scraping: Sindh High Court
+2026-01-03 16:37:12,577 - INFO - ============================================================
+2026-01-03 16:37:12,577 - INFO -   Trying: https://caselaw.shc.gov.pk/caselaw/public/home
+2026-01-03 16:39:12,607 - ERROR - Browser fetch failed: HTTPConnectionPool(host='localhost', port=52039): Read timed out. (read timeout=120)
+2026-01-03 16:39:12,607 - WARNING -   No content from: https://caselaw.shc.gov.pk/caselaw/public/home
+2026-01-03 16:39:12,607 - INFO -   Trying: https://caselaw.shc.gov.pk/caselaw/public/reported-judgements-detail-all/741/-1
+2026-01-03 16:41:12,621 - ERROR - Browser fetch failed: HTTPConnectionPool(host='localhost', port=52039): Read timed out. (read timeout=120)
+2026-01-03 16:41:12,621 - WARNING -   No content from: https://caselaw.shc.gov.pk/caselaw/public/reported-judgements-detail-all/741/-1
+2026-01-03 16:41:12,621 - WARNING -   No PDFs found for Sindh High Court
+2026-01-03 16:41:12,621 - INFO - 
+============================================================
+2026-01-03 16:41:12,621 - INFO - Scraping: Federal Shariat Court
+2026-01-03 16:41:12,621 - INFO - ============================================================
+2026-01-03 16:41:12,621 - INFO -   Trying: https://www.federalshariatcourt.gov.pk/en/leading-judgements/
+2026-01-03 16:43:12,635 - ERROR - Browser fetch failed: HTTPConnectionPool(host='localhost', port=52039): Read timed out. (read timeout=120)
+2026-01-03 16:43:12,635 - WARNING -   No content from: https://www.federalshariatcourt.gov.pk/en/leading-judgements/
+2026-01-03 16:43:12,635 - INFO -   Trying: https://federalshariatcourt.gov.pk/alljud.php

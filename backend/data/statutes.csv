@@ -1,0 +1,111 @@
+id,statute,section,text,keywords
+1,Pakistan Penal Code,302,"Punishment of qatl-e-amd (Murder). Punished with death as qisas, or death/life imprisonment as ta'zir depending on circumstances.",murder,killing,qatl,death penalty,302
+2,Pakistan Penal Code,324,"Attempt to commit qatl-e-amd (Attempted Murder). Punishable with imprisonment up to 10 years.",attempt murder,violent crime,firing,324
+3,Pakistan Penal Code,337,"Shajjah/Hurt cases. Punishments vary based on nature of injury (Itlaf-i-udw, etc.). Includes Arsh and Daman.",hurt,injury,bone fracture,shajjah,337
+4,Pakistan Penal Code,376,"Punishment for Rape (Zina-bil-Jabr). Death or imprisonment of not less than 10 years to life. Enhanced for gang rape.",rape,sexual assault,zina,376
+5,Pakistan Penal Code,379,"Punishment for theft (Chori). Imprisonment up to 3 years or fine or both.",theft,stealing,moveable property,379
+6,Pakistan Penal Code,380,"Theft in dwelling house. Imprisonment up to 7 years and fine.",burglary,house theft,stealing,380
+7,Pakistan Penal Code,381,"Theft by clerk or servant of master's property. Imprisonment up to 7 years.",servant theft,employee theft,381
+8,Pakistan Penal Code,392,"Punishment for Robbery. Rigorous imprisonment 3 to 10 years. Up to 14 years if on highway at night.",robbery,mugging,loot,392
+9,Pakistan Penal Code,395,"Punishment for Dacoity (Gang Robbery). Life imprisonment or rigorous imprisonment up to 10 years.",dacoity,gang robbery,armed robbery,395
+10,Pakistan Penal Code,406,"Punishment for Criminal Breach of Trust. Imprisonment up to 7 years.",breach of trust,amanat,embezzlement,406
+11,Pakistan Penal Code,420,"Cheating and dishonestly inducing delivery of property. Imprisonment up to 7 years.",fraud,cheating,420,scam
+12,Pakistan Penal Code,468,"Forgery for purpose of cheating. Imprisonment up to 7 years.",forgery,fake document,fraud,468
+13,Pakistan Penal Code,471,"Using a forged document as genuine. Same punishment as forgery.",fake document,using forgery,471
+14,Pakistan Penal Code,489-F,"Dishonestly issuing a cheque which is dishonoured on presentation. Imprisonment up to 3 years.",cheque bounce,financial fraud,dishonour,489f
+15,Pakistan Penal Code,496-A,"Enticing or taking away a woman. Often used in 'Love Marriage' kidnapping cases. Imprisonment up to 7 years.",abduction,marriage,elopement,496a
+16,Pakistan Penal Code,497,"Adultery (Zina). While Hudood Laws apply, PPC 497 deals with enticing married women. 5 years imprisonment.",adultery,zina,affair,497
+17,Pakistan Penal Code,498-A,"Depriving woman of inheritance or forced marriage. Imprisonment 5 to 10 years.",womens rights,inheritance,forced marriage,498a
+18,Pakistan Penal Code,500,"Punishment for Defamation. Simple imprisonment up to 2 years or fine.",defamation,libel,slander,reputation,500
+19,Pakistan Penal Code,506,"Criminal Intimidation (Threats). Up to 2 years (Simple) or 7 years (if threat to kill/grevious hurt).",threats,intimidation,dhamki,506
+20,Pakistan Penal Code,109,"Abetment. If you help someone commit a crime, you get the same punishment as the crime itself.",abetment,helper,partner in crime,109
+21,Pakistan Penal Code,34,"Common Intention. If a group commits a crime with a shared plan, EACH member is liable for the whole crime.",common intention,joint liability,group crime,34
+22,Pakistan Penal Code,188,"Disobedience to order duly promulgated by public servant (e.g. Section 144 violation). Up to 6 months.",section 144,disobedience,protest,188
+23,Pakistan Penal Code,295-C,"Use of derogatory remarks in respect of the Holy Prophet (PBUH). Punishment: Death.",blasphemy,295c,religious offence
+24,Pakistan Penal Code,411,"Dishonestly receiving stolen property. Imprisonment up to 5 years.",stolen goods,receiver,411
+25,Pakistan Penal Code,448,"Punishment for House-Trespass. Imprisonment up to 1 year.",trespass,illegal entry,qabza,448
+26,Pakistan Penal Code,452,"House-trespass after preparation for hurt/assault. Imprisonment up to 7 years.",armed trespass,home invasion,452
+27,Pakistan Penal Code,365,"Kidnapping or abducting with intent to wrongfully confine. Imprisonment up to 7 years.",kidnapping,abduction,missing person,365
+28,Pakistan Penal Code,365-B,"Kidnapping, abducting or inducing woman to compel for marriage. Life imprisonment.",forced marriage,kidnapping woman,365b
+29,Pakistan Penal Code,308,"Punishment for Qatl-i-Shibh-i-Amd (Unintentional Murder but with intent to harm). Diyat and imprisonment up to 25 years.",manslaughter,unintentional killing,308
+30,Pakistan Penal Code,319,"Qatl-i-Khata (Accidental Killing). Punishment is Diyat (Blood Money) and potentially 5 years jail.",accidental death,car accident,319
+31,Pakistan Penal Code,186,"Obstructing public servant in discharge of public functions. Up to 3 months jail.",police obstruction,resisting arrest,186
+32,Pakistan Penal Code,354,"Assault or criminal force to woman with intent to outrage her modesty. Up to 2 years.",harassment,modesty,women protection,354
+33,Pakistan Penal Code,354-A,"Stripping a woman of her clothes. Punishment: Death or Life Imprisonment.",stripping,public humiliation,women,354a
+34,Pakistan Penal Code,377,"Unnatural Offences (Sodomy). Imprisonment 2 years to Life.",unnatural offence,sodomy,377
+35,Pakistan Penal Code,427,"Mischief causing damage to amount of 50 rupees (Property Damage). Up to 2 years.",vandalism,property damage,mischief,427
+36,Pakistan Penal Code,440,"Mischief committed after preparation made for causing death or hurt. Up to 5 years.",sabotage,destruction,440
+37,Pakistan Penal Code,489-C,"Possession of forged or counterfeit currency-notes. Up to 7 years.",fake money,counterfeit,489c
+38,Pakistan Penal Code,148,"Rioting, armed with deadly weapon. Up to 3 years.",riot,mob violence,weapon,148
+39,Pakistan Penal Code,149,"Unlawful Assembly. Every member is guilty of offence committed in prosecution of common object.",mob justice,group liability,149
+40,Pakistan Penal Code,161,"Public servant taking gratification (Bribe) other than legal remuneration. Up to 3 years.",bribery,corruption,public servant,161
+41,Pakistan Penal Code,409,"Criminal Breach of Trust by Public Servant or Banker. Life Imprisonment or 10 years.",corruption,public servant,bank fraud,409
+42,Pakistan Penal Code,182,"Giving false information to public servant. Up to 6 months imprisonment or fine.",false fir,fake complaint,lying to police,182
+43,Pakistan Penal Code,295-B,"Defiling extracts of the Holy Quran. Life Imprisonment.",blasphemy,quran,religious offence,295b
+44,Pakistan Penal Code,489-D,"Making or possessing instruments for counterfeiting currency. Up to 7 years.",counterfeit equipment,fake money tools,489d
+45,Prevention of Electronic Crimes Act,11,"Hate Speech. Disseminating information to glorify an offence or hate speech. Up to 7 years.",cybercrime,hate speech,social media,peca
+46,Prevention of Electronic Crimes Act,20,"Offences against dignity of a natural person (Online Defamation/Harassment). Up to 3 years.",cyber harassment,defamation,facebook,peca 20
+47,Prevention of Electronic Crimes Act,21,"Cyber stalking (Harassment). Use of internet to stalk or harass. Up to 3 years.",stalking,harassment,cybercrime,peca 21
+48,Control of Narcotic Substances Act,9-B,"Possession of Narcotics (Quantity exceeds 100g but less than 1kg). Up to 7 years.",drugs,chars,heroin,cnsa 9b
+49,Control of Narcotic Substances Act,9-C,"Possession of Narcotics (Quantity exceeds 1kg). Death penalty or Life Imprisonment.",drugs,drug trafficking,cnsa 9c,narcotics
+50,Anti-Terrorism Act,7,"Punishment for acts of terrorism. Death or Life Imprisonment.",terrorism,ata,7ata,terror
+51,Pakistan Penal Code,337-A,"Shajjah (Hurt to head/face). Punishment: Arsh (compensation) + up to 2-10 years depending on fracture.",hurt,head injury,shajjah,337a
+52,Pakistan Penal Code,337-F,"Ghayr-Jaifah (Hurt penetrating into body cavity). Punishment: Daman + up to 10 years.",stab wound,injury,body hurt,337f
+53,Pakistan Penal Code,457,"Lurking house-trespass or house-breaking by night. Up to 5 years (14 years if theft intended).",burglary,night trespass,breaking and entering,457
+54,Pakistan Penal Code,436,"Mischief by fire or explosive substance (Arson) to destroy house. Life Imprisonment or 10 years.",arson,fire,burning house,436
+55,Pakistan Penal Code,447,"Punishment for Criminal Trespass. Up to 3 months.",trespass,land grabbing,illegal entry,447
+56,Pakistan Penal Code,279,"Rash driving or riding on a public way. Up to 2 years.",reckless driving,accident,road safety,279
+57,Pakistan Penal Code,509,"Insulting modesty of a woman/Sexual Harassment in public. Up to 3 years.",harassment,catcalling,women protection,509
+58,Pakistan Penal Code,494,"Marrying again during lifetime of husband or wife (Bigamy) without permission. Up to 7 years.",bigamy,second marriage,494
+59,Pakistan Penal Code,316,"Qatl-i-Shibh-i-Amd of unborn child (Causing miscarriage). Diyat + up to 10 years.",miscarriage,unborn child,316
+60,Pakistan Penal Code,325,"Voluntarily causing grievous hurt (breaking bone etc.). Up to 7 years.",grievous hurt,bone fracture,serious injury,325
+61,Code of Criminal Procedure,154,"First Information Report (FIR). Police must register FIR for cognizable offenses. Cannot refuse.",fir,police complaint,crime report,154
+62,Code of Criminal Procedure,156,"Police officer's power to investigate cognizable case without Magistrate's order.",investigation,police power,suo moto,156
+63,Code of Criminal Procedure,173,"Police Report. After investigation, police submit report (challan) to Magistrate.",challan,investigation report,173
+64,Code of Criminal Procedure,496,"Bail in bailable offenses. Person accused of bailable offense has RIGHT to bail as of right.",bailable,bail right,automatic bail,496
+65,Code of Criminal Procedure,497,"Bail in non-bailable offenses. Court MAY grant bail if reasonable grounds that accused not guilty or further inquiry needed.",non-bailable,discretionary bail,murder bail,497
+66,Code of Criminal Procedure,498,"Anticipatory Bail. Person apprehending arrest may apply for pre-arrest bail in High Court or Sessions Court.",anticipatory,pre-arrest bail,498
+67,Code of Criminal Procedure,54,"Arrest without warrant. Police can arrest without warrant for cognizable offenses or court warrants.",arrest,police powers,cognizable,54
+68,Code of Criminal Procedure,22-A,"Justice of Peace powers. Sessions Judge can order FIR registration if police refuse.",justice of peace,forced fir,22a
+69,Code of Criminal Procedure,22-B,"Judicial Magistrate can also act as Justice of Peace for FIR disputes.",magistrate,fir registration,22b
+70,Code of Criminal Procedure,265-K,"Plea Bargaining. Accused can plead guilty for reduced sentence (not allowed for terrorism/corruption cases).",plea bargain,reduced sentence,265k
+71,Code of Criminal Procedure,241-A,"Acquittal at any stage if no reasonable ground to believe accused committed offense.",acquittal,discharge,case dismissal,241a
+72,Code of Criminal Procedure,340,"Proceeding against persons for giving false evidence or fabricating false evidence.",perjury,false evidence,witness lying,340
+73,Code of Criminal Procedure,161,"Police power to examine witnesses during investigation (statement under 161).",witness statement,investigation,police questioning,161
+74,Code of Criminal Procedure,164,"Recording of confessions and statements before Magistrate (judicial confession).",confession,judicial statement,164
+75,Code of Criminal Procedure,342,"Power to examine accused (right to explanation in court).",accused statement,court examination,342
+76,Code of Criminal Procedure,145,"Procedure in disputes as to immovable property (Land Dispute Resolution).",land dispute,property conflict,145
+77,Code of Criminal Procedure,144,"Power to issue order in urgent cases of nuisance or apprehended danger (Section 144 Order).",section 144,emergency order,gathering ban,144
+78,Constitution of Pakistan,9,"Security of person. No person shall be deprived of life or liberty save in accordance with law.",right to life,fundamental right,article 9
+79,Constitution of Pakistan,10,"Safeguards as to arrest and detention. Right to be informed of grounds, consult lawyer, produce before magistrate within 24 hours.",arrest rights,detention,article 10
+80,Constitution of Pakistan,10-A,"Right to fair trial. For determination of civil rights or criminal charges, every person has right to fair trial and due process.",fair trial,due process,article 10a
+81,Constitution of Pakistan,14,"Inviolability of dignity of man. The dignity of man and subject to law privacy of home shall be inviolable.",dignity,privacy,torture ban,article 14
+82,Constitution of Pakistan,25,"Equality of citizens. All citizens are equal before law and entitled to equal protection of law.",equality,discrimination,article 25
+83,Constitution of Pakistan,199,"Jurisdiction of High Court. High Court can issue writs of habeas corpus, mandamus, prohibition, quo warranto, certiorari.",writ,high court,habeas corpus,article 199
+84,Constitution of Pakistan,184,"Original jurisdiction of Supreme Court (Suo Moto). Supreme Court can take suo moto action on public importance matters.",suo moto,supreme court,article 184
+85,Muslim Family Laws Ordinance,5,"Registration of Divorce (Talaq). Husband must give written notice to chairman of union council. Divorce effective after 90 days.",talaq,divorce notice,90 days,mflo 5
+86,Muslim Family Laws Ordinance,7,"Procedure for obtaining Khula. Wife files suit in Family Court. May be required to return haq mehr as consideration.",khula,wife divorce,family court,mflo 7
+87,Muslim Family Laws Ordinance,10,"Punishment for bigamy without permission. Man contracting second marriage without permission of Arbitration Council liable to imprisonment.",polygamy,second wife,permission,mflo 10
+88,West Pakistan Family Courts Act,5,"Matters falling within jurisdiction of Family Court include: khula, talaq, dissolution, maintenance, dower, custody.",family court,jurisdiction,divorce matters,family courts act
+89,Guardian and Wards Act,9,"Custody of minor. Court decides custody in best interest of child. Generally mother for young children (Hizanat).",child custody,hizanat,guardianship,gwa 9
+90,Guardian and Wards Act,17,"Powers of court regarding custody. Court can pass orders for custody, visitation rights, expenses.",custody order,visitation,child welfare,gwa 17
+91,Specific Relief Act,9,"Specific performance of contract. Court can order party to perform their part of contract (land sales etc).",contract enforcement,specific performance,property sale,sra 9
+92,Specific Relief Act,12,"Right to specific performance lies with party who has performed his part or is ready to perform.",performance requirement,contract readiness,sra 12
+93,Specific Relief Act,42,"Declaration of right or legal character. Person can file suit for declaration that he is owner of property or has legal right.",declaration,property rights,ownership dispute,sra 42
+94,Specific Relief Act,54,"Perpetual injunction to prevent breach of obligation. Court can order defendant to refrain from doing certain acts.",injunction,stop order,court order,sra 54
+95,Code of Civil Procedure,Order VII Rule 11,"Rejection of plaint. Court can reject plaint if it does not disclose cause of action or barred by law.",plaint rejection,no cause of action,cpc order 7
+96,Code of Civil Procedure,Order XXXIX Rule 1,"Temporary injunction (TRO). Court can grant temporary injunction to prevent defendant from doing act until suit decision.",temporary injunction,tro,stay order,cpc order 39
+97,Code of Civil Procedure,Order XXXIX Rule 2,"Injunction to restrain repetition or continuance of breach.",injunction continuation,stop breach,cpc 39-2
+98,Code of Civil Procedure,Order IX Rule 13,"Setting aside ex-parte decree. Defendant can apply to set aside decree passed in absence.",ex parte,decree set aside,absent defendant,cpc order 9
+99,Code of Civil Procedure,96,"Appeal from original decree. Every decree can be appealed unless law expressly bars it.",right to appeal,first appeal,appellate court,cpc 96
+100,Code of Civil Procedure,115,"Revision by High Court. High Court can call for record of case to satisfy itself about legality/propriety of decision.",revision,high court review,cpc 115
+101,Qanun-e-Shahadat Order,17,"Admission. Statement by party to proceeding admitting any fact in issue is called admission. Can be proved against him.",admission,confession,evidence,qso 17
+102,Qanun-e-Shahadat Order,25,"Confession caused by inducement, threat or promise is irrelevant in criminal proceeding.",forced confession,invalid evidence,qso 25
+103,Qanun-e-Shahadat Order,46,"Testimony of hostile or unfavourable witness. Can be cross-examined by party calling him.",hostile witness,cross examination,qso 46
+104,Qanun-e-Shahadat Order,79,"Presumption as to genuineness of certified copies. Court shall presume certified copy is genuine.",certified copy,document proof,qso 79
+105,Transfer of Property Act,54,"Sale requires registered instrument. Sale of immovable property requires registered sale deed.",property sale,registration,stamp duty,tpa 54
+106,Transfer of Property Act,5,"Transfer by ostensible owner. If person with consent of real owner appears as owner, transfer is valid.",benami,ostensible owner,property fraud,tpa 5
+107,Contract Act,10,"Consideration. Agreement without consideration is void unless it is written, registered and between near relatives.",consideration,valid contract,contract act 10
+108,Contract Act,23,"Unlawful consideration or object makes agreement void.",illegal contract,void agreement,contract act 23
+109,Negotiable Instruments Act,138,"Dishonour of cheque for insufficiency of funds. Imprisonment up to 2 years or fine up to twice the cheque amount.",cheque bounce,dishonoured cheque,ni act 138
+110,Limitation Act,5,"Extension of prescribed period in certain cases. Court can condone delay if sufficient cause shown.",limitation extension,condonation of delay,time barred,limitation act 5

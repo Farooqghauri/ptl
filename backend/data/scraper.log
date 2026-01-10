@@ -1,0 +1,212 @@
+2026-01-02 23:32:38,686 - INFO - ✅ FTS5 Full-Text Search activated
+2026-01-02 23:32:38,687 - INFO - ✅ Database ready at: C:\Users\UNC\Desktop\ptl\backend\scripts\../data\legal_db.sqlite
+2026-01-02 23:32:38,687 - INFO - 🚀 Scanning https://www.supremecourt.gov.pk/judgments/...
+2026-01-02 23:32:49,992 - ERROR - ❌ Site unreachable: RetryError[<Future at 0x1abb9452e90 state=finished raised HTTPError>]
+2026-01-02 23:34:36,912 - INFO - ✅ FTS5 Search Activated
+2026-01-02 23:34:36,912 - INFO - ✅ Database ready: C:\Users\UNC\Desktop\ptl\backend\scripts\../data\legal_db.sqlite
+2026-01-02 23:34:36,912 - INFO - 🚀 Scanning https://www.supremecourt.gov.pk/downloads_judgements/...
+2026-01-02 23:34:49,192 - ERROR - ❌ Site unreachable: RetryError[<Future at 0x15b72b9ff10 state=finished raised HTTPError>]
+2026-01-02 23:37:03,994 - INFO - ✅ FTS5 Search Activated
+2026-01-02 23:37:04,010 - INFO - 🔎 Checking source: https://www.supremecourt.gov.pk/judgments/...
+2026-01-02 23:37:08,622 - INFO - 🔎 Checking source: https://www.supremecourt.gov.pk/category/judgments/...
+2026-01-02 23:37:12,498 - INFO - 🔎 Checking source: https://www.supremecourt.gov.pk/...
+2026-01-02 23:37:18,798 - INFO - ✅ Found 1 judgments at https://www.supremecourt.gov.pk/
+2026-01-02 23:37:18,798 - INFO - 
+📥 Downloading: Proposed Cause List (January - 2026)...
+2026-01-02 23:38:19,088 - INFO - 💾 Saving 1...
+2026-01-02 23:38:26,157 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 429 Too Many Requests"
+2026-01-02 23:38:26,157 - INFO - Retrying request to /embeddings in 0.484805 seconds
+2026-01-02 23:38:28,100 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 429 Too Many Requests"
+2026-01-02 23:38:28,100 - INFO - Retrying request to /embeddings in 0.899620 seconds
+2026-01-02 23:38:30,636 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 429 Too Many Requests"
+2026-01-02 23:38:30,636 - ERROR - ❌ Embedding Error: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2026-01-03 10:56:32,248 - INFO - ✅ FTS5 Search Activated
+2026-01-03 10:56:32,280 - INFO - ✅ Database ready: C:\Users\UNC\Desktop\ptl\backend\scripts\../data\legal_db.sqlite
+2026-01-03 10:56:32,313 - INFO - 🔍 Scanning Supreme Court website sources...
+2026-01-03 10:56:32,313 - INFO -    Trying: https://www.supremecourt.gov.pk/judgments/recent-judgments/
+2026-01-03 10:56:34,533 - ERROR - ❌ Request failed: https://www.supremecourt.gov.pk/judgments/recent-judgments/ - 404 Client Error: Not Found for url: https://www.supremecourt.gov.pk/judgments/recent-judgments/
+2026-01-03 10:56:34,533 - INFO -    Trying: https://www.supremecourt.gov.pk/downloads_judgements/
+2026-01-03 10:56:35,596 - ERROR - ❌ Request failed: https://www.supremecourt.gov.pk/downloads_judgements/ - 403 Client Error: Forbidden for url: https://www.supremecourt.gov.pk/downloads_judgements/
+2026-01-03 10:56:35,612 - INFO -    Trying: https://www.supremecourt.gov.pk/judgments-orders/
+2026-01-03 10:56:38,394 - ERROR - ❌ Request failed: https://www.supremecourt.gov.pk/judgments-orders/ - 404 Client Error: Not Found for url: https://www.supremecourt.gov.pk/judgments-orders/
+2026-01-03 10:56:38,394 - INFO -    Trying: https://www.supremecourt.gov.pk/
+2026-01-03 10:56:40,565 - INFO - ✅ Found 1 PDF links at: https://www.supremecourt.gov.pk/
+2026-01-03 10:56:40,565 - INFO - 
+======================================================================
+2026-01-03 10:56:40,565 - INFO - 📋 Processing 1 potential judgments
+2026-01-03 10:56:40,565 - INFO - ======================================================================
+
+2026-01-03 10:56:40,565 - INFO - [1/1] Proposed Cause List (January - 2026)...
+2026-01-03 10:56:40,565 - INFO -    ⏭️  Already in database
+2026-01-03 10:56:40,565 - INFO - ✅ Database connection closed
+2026-01-03 10:57:05,699 - INFO - ✅ FTS5 Search Activated
+2026-01-03 10:57:05,715 - INFO - ✅ Database ready: C:\Users\UNC\Desktop\ptl\backend\scripts\../data\legal_db.sqlite
+2026-01-03 10:57:05,715 - INFO - 🔍 Scanning Supreme Court website sources...
+2026-01-03 10:57:05,715 - INFO -    Trying: https://www.supremecourt.gov.pk/judgments/recent-judgments/
+2026-01-03 10:57:08,029 - ERROR - ❌ Request failed: https://www.supremecourt.gov.pk/judgments/recent-judgments/ - 404 Client Error: Not Found for url: https://www.supremecourt.gov.pk/judgments/recent-judgments/
+2026-01-03 10:57:08,029 - INFO -    Trying: https://www.supremecourt.gov.pk/downloads_judgements/
+2026-01-03 10:57:09,279 - ERROR - ❌ Request failed: https://www.supremecourt.gov.pk/downloads_judgements/ - 403 Client Error: Forbidden for url: https://www.supremecourt.gov.pk/downloads_judgements/
+2026-01-03 10:57:09,294 - INFO -    Trying: https://www.supremecourt.gov.pk/judgments-orders/
+2026-01-03 10:57:11,122 - ERROR - ❌ Request failed: https://www.supremecourt.gov.pk/judgments-orders/ - 404 Client Error: Not Found for url: https://www.supremecourt.gov.pk/judgments-orders/
+2026-01-03 10:57:11,122 - INFO -    Trying: https://www.supremecourt.gov.pk/
+2026-01-03 10:57:13,282 - INFO - ✅ Found 1 PDF links at: https://www.supremecourt.gov.pk/
+2026-01-03 10:57:13,283 - INFO - 
+======================================================================
+2026-01-03 10:57:13,283 - INFO - 📋 Processing 1 potential judgments
+2026-01-03 10:57:13,284 - INFO - ======================================================================
+
+2026-01-03 10:57:13,284 - INFO - [1/1] Proposed Cause List (January - 2026)...
+2026-01-03 10:57:13,285 - INFO -    ⏭️  Already in database
+2026-01-03 10:57:13,287 - INFO - ✅ Database connection closed
+2026-01-03 11:06:41,215 - INFO - ✅ FTS5 Search Activated
+2026-01-03 11:06:41,215 - INFO - ✅ Database ready: C:\Users\UNC\Desktop\ptl\backend\scripts\../data\legal_db.sqlite
+2026-01-03 11:06:41,215 - INFO - 📋 Strategy 1: Scanning WordPress category pages...
+2026-01-03 11:06:41,231 - INFO -    Trying: https://www.supremecourt.gov.pk/category/judgements/
+2026-01-03 11:06:43,544 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/category/judgements/
+2026-01-03 11:06:43,544 - INFO -    Trying: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 11:06:44,513 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 11:06:44,513 - INFO -    Trying: https://www.supremecourt.gov.pk/download-category/general/
+2026-01-03 11:06:45,247 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/download-category/general/
+2026-01-03 11:06:45,247 - INFO - 📋 Strategy 2: Trying known PDF locations...
+2026-01-03 11:06:45,953 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/downloads_judgements/2025/
+2026-01-03 11:06:46,725 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/wp-content/uploads/2025/
+2026-01-03 11:06:47,537 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/judgements/2025/
+2026-01-03 11:06:48,413 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/downloads_judgements/2024/
+2026-01-03 11:06:49,132 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/wp-content/uploads/2024/
+2026-01-03 11:06:50,511 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/judgements/2024/
+2026-01-03 11:06:51,652 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/downloads_judgements/2023/
+2026-01-03 11:06:52,625 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/wp-content/uploads/2023/
+2026-01-03 11:06:53,362 - WARNING - ⚠️ 403 Forbidden (Bot Protection): https://www.supremecourt.gov.pk/judgements/2023/
+2026-01-03 11:06:53,362 - INFO - 📋 Strategy 3: Manual collection required
+2026-01-03 11:06:53,362 - INFO - 
+2026-01-03 11:06:53,362 - INFO - ======================================================================
+2026-01-03 11:06:53,362 - INFO - ⚠️  SUPREME COURT WEBSITE HAS BOT PROTECTION
+2026-01-03 11:06:53,362 - INFO - ======================================================================
+2026-01-03 11:06:53,362 - INFO - 
+2026-01-03 11:06:53,362 - INFO - The website is blocking automated access. Here's what to do:
+2026-01-03 11:06:53,362 - INFO - 
+2026-01-03 11:06:53,362 - INFO - OPTION A: Manual PDF Collection
+2026-01-03 11:06:53,362 - INFO - 1. Visit: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 11:06:53,362 - INFO - 2. Right-click any judgment PDF → Copy Link
+2026-01-03 11:06:53,362 - INFO - 3. Create a file: backend/data/manual_urls.txt
+2026-01-03 11:06:53,362 - INFO - 4. Paste one URL per line
+2026-01-03 11:06:53,362 - INFO - 5. Run: python scripts/scraper.py --manual
+2026-01-03 11:06:53,362 - INFO - 
+2026-01-03 11:06:53,362 - INFO - OPTION B: Use Alternative Data Source
+2026-01-03 11:06:53,362 - INFO - 1. PLD (Pakistan Legal Decisions): https://www.pld.com.pk
+2026-01-03 11:06:53,362 - INFO - 2. CLJ (Corporate Law Journal): More accessible
+2026-01-03 11:06:53,362 - INFO - 3. High Court websites: Often less restrictive
+2026-01-03 11:06:53,362 - INFO -    - Lahore HC: https://sys.lhc.gov.pk/
+2026-01-03 11:06:53,362 - INFO -    - Sindh HC: https://sindhhighcourt.gov.pk/
+2026-01-03 11:06:53,378 - INFO - 
+2026-01-03 11:06:53,378 - INFO - OPTION C: Browser Automation (Advanced)
+2026-01-03 11:06:53,378 - INFO - Install Selenium: pip install selenium
+2026-01-03 11:06:53,378 - INFO - Use the Selenium version of this scraper (coming next)
+2026-01-03 11:06:53,378 - INFO - 
+2026-01-03 11:06:53,378 - INFO - ======================================================================
+2026-01-03 11:19:04,327 - INFO - ✅ FTS5 Search Ready
+2026-01-03 11:19:04,343 - INFO - 🌐 Setting up Chrome browser...
+2026-01-03 11:19:04,343 - INFO - ====== WebDriver manager ======
+2026-01-03 11:19:06,379 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 11:19:06,631 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 11:19:06,828 - INFO - There is no [win64] chromedriver "143.0.7499.169" for browser google-chrome "143.0.7499" in cache
+2026-01-03 11:19:06,828 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 11:19:07,591 - INFO - WebDriver version 143.0.7499.169 selected
+2026-01-03 11:19:07,606 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/143.0.7499.169/win32/chromedriver-win32.zip
+2026-01-03 11:19:07,606 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/143.0.7499.169/win32/chromedriver-win32.zip
+2026-01-03 11:19:07,950 - INFO - Driver downloading response is 200
+2026-01-03 11:19:40,661 - INFO - Get LATEST chromedriver version for google-chrome
+2026-01-03 11:19:41,037 - INFO - Driver has been saved in cache [C:\Users\UNC\.wdm\drivers\chromedriver\win64\143.0.7499.169]
+2026-01-03 11:19:44,111 - INFO - ✅ Browser ready
+2026-01-03 11:19:44,111 - INFO - 
+======================================================================
+2026-01-03 11:19:44,111 - INFO - Trying: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 11:19:44,111 - INFO - ======================================================================
+2026-01-03 11:19:44,111 - INFO - 🔍 Loading: https://www.supremecourt.gov.pk/latest-judgements/
+2026-01-03 11:20:00,081 - INFO -    Found 275 total links
+2026-01-03 11:20:06,272 - INFO - ✅ Found 25 judgment PDFs
+2026-01-03 11:20:06,273 - INFO - ✅ Found 25 PDFs at this URL
+2026-01-03 11:20:06,273 - INFO - 
+📊 Total unique PDFs found: 25
+2026-01-03 11:20:06,274 - INFO - 
+[1/25] c.p._954_k_2024.pdf...
+2026-01-03 11:20:10,957 - INFO -    ✅ 2015 SCMR 456
+2026-01-03 11:20:11,958 - INFO - 
+[2/25] crl.p._46_2025.pdf...
+2026-01-03 11:20:16,523 - WARNING -    ⚠️  Text too short
+2026-01-03 11:20:16,524 - INFO - 
+[3/25] crl.a._503_2022.pdf...
+2026-01-03 11:20:22,922 - INFO -    ✅ 2014 SCMR 1178
+2026-01-03 11:20:23,930 - INFO - 
+[4/25] crl.p._346_2020.pdf...
+2026-01-03 11:20:30,487 - INFO -    ✅ PLD 1971 SC 541
+2026-01-03 11:20:31,488 - INFO - 
+[5/25] c.a._106_k_2024.pdf...
+2026-01-03 11:20:34,599 - INFO -    ✅ PLD 2024 SC 1276
+2026-01-03 11:20:35,601 - INFO - 
+[6/25] c.a._53_k_2024.pdf...
+2026-01-03 11:20:38,742 - INFO -    ✅ 2025 SCMR 92
+2026-01-03 11:20:39,746 - INFO - 
+[7/25] crl.p._90_l_2019_dn.pdf...
+2026-01-03 11:20:41,726 - INFO -    ✅ PLD 2020 SC 295
+2026-01-03 11:20:42,727 - INFO - 
+[8/25] crl.p._90_l_2019.pdf...
+2026-01-03 11:20:44,783 - INFO -    ✅ 2006 SCMR 1170
+2026-01-03 11:20:45,791 - INFO - 
+[9/25] j.p._704_2017.pdf...
+2026-01-03 11:20:56,235 - WARNING -    ⚠️  Text too short
+2026-01-03 11:20:56,235 - INFO - 
+[10/25] j.p._872_2017.pdf...
+2026-01-03 11:21:01,111 - WARNING -    ⚠️  Text too short
+2026-01-03 11:21:01,111 - INFO - 
+[11/25] j.p._390_2021.pdf...
+2026-01-03 11:21:03,400 - INFO -    ✅ Unreported
+2026-01-03 11:21:04,415 - INFO - 
+[12/25] crl.p._106_2023.pdf...
+2026-01-03 11:21:08,573 - WARNING -    ⚠️  Text too short
+2026-01-03 11:21:08,573 - INFO - 
+[13/25] c.p._1285_k_2022.pdf...
+2026-01-03 11:21:11,605 - INFO -    ✅ 2024 SCMR 1722
+2026-01-03 11:21:12,617 - INFO - 
+[14/25] c.p._4701_2024.pdf...
+2026-01-03 11:21:17,464 - INFO -    ✅ PLD 2021 SC 770
+2026-01-03 11:21:17,464 - INFO - 💾 Saving 10...
+2026-01-03 11:21:21,182 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-01-03 11:21:22,884 - INFO - 
+[15/25] crl.p._1431_2020.pdf...
+2026-01-03 11:21:27,541 - INFO -    ✅ Unreported
+2026-01-03 11:21:28,546 - INFO - 
+[16/25] c.p._197_2025.pdf...
+2026-01-03 11:21:30,156 - INFO -    ✅ Unreported
+2026-01-03 11:21:31,162 - INFO - 
+[17/25] c.p._4334_2025.pdf...
+2026-01-03 11:21:35,836 - INFO -    ✅ PLD 1968 SC 101
+2026-01-03 11:21:36,838 - INFO - 
+[18/25] c.p._2761_2023.pdf...
+2026-01-03 11:21:39,588 - INFO -    ✅ 2025 SCMR 92
+2026-01-03 11:21:40,595 - INFO - 
+[19/25] c.p._4146_2025.pdf...
+2026-01-03 11:21:46,481 - INFO -    ✅ PLD 2021 SC 362
+2026-01-03 11:21:47,484 - INFO - 
+[20/25] c.p._5364_2024.pdf...
+2026-01-03 11:21:50,556 - INFO -    ✅ PLD 2019 LAHORE 285
+2026-01-03 11:21:51,564 - INFO - 
+[21/25] c.a._751_2016.pdf...
+2026-01-03 11:21:54,720 - INFO -    ✅ Unreported
+2026-01-03 11:21:55,723 - INFO - 
+[22/25] crl.p._562_2022.pdf...
+2026-01-03 11:21:59,023 - INFO -    ✅ 2005 SCMR 570
+2026-01-03 11:22:00,032 - INFO - 
+[23/25] c.p._1041_2024.pdf...
+2026-01-03 11:22:02,315 - INFO -    ✅ Unreported
+2026-01-03 11:22:03,316 - INFO - 
+[24/25] crl.p._806_2025.pdf...
+2026-01-03 11:22:05,373 - INFO -    ✅ Unreported
+2026-01-03 11:22:05,373 - INFO - 💾 Saving 10...
+2026-01-03 11:22:07,687 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-01-03 11:22:09,115 - INFO - 
+[25/25] crl.p._467_2023.pdf...
+2026-01-03 11:22:17,308 - INFO -    ✅ PLD 2018 SC 813
+2026-01-03 11:22:18,311 - INFO - 💾 Saving 1...
+2026-01-03 11:22:20,546 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-01-03 11:22:23,171 - INFO - ✅ Browser closed
