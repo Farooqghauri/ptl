@@ -7,6 +7,13 @@ export interface ApiResponse<T = unknown> {
 }
 
 /**
+ * Base URL for backend API
+ * - Local dev: empty string -> same origin
+ * - Production (Vercel): https://ptl.onrender.com
+ */
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+
+/**
  * Generic API call function with error handling
  */
 export async function apiCall<T = unknown>(
@@ -14,7 +21,7 @@ export async function apiCall<T = unknown>(
   options: RequestInit = {}
 ): Promise<ApiResponse<T>> {
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
       headers: {
         "Content-Type": "application/json",
         ...options.headers,
@@ -27,7 +34,7 @@ export async function apiCall<T = unknown>(
     if (!response.ok) {
       return {
         success: false,
-        error: data.error || `HTTP ${response.status}: ${response.statusText}`,
+        error: data?.error || `HTTP ${response.status}: ${response.statusText}`,
       };
     }
 
