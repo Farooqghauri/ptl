@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 # Import your routers - ADD smart_search here
-from routers import summarizer, translator, drafter, assistant, search, judgment_search, law_search, smart_search
+from routers import summarizer, translator, drafter, assistant, search, judgment_search, smart_search, law_resolve
 
 load_dotenv()
 
@@ -33,5 +33,7 @@ app.include_router(drafter.router)
 app.include_router(assistant.router)
 app.include_router(search.router)
 app.include_router(judgment_search.router)
-app.include_router(law_search.router)
-app.include_router(smart_search.router)  # ← ADD THIS LINE
+# app.include_router(law_search.router)
+app.include_router(smart_search.router)
+
+app.include_router(law_resolve.router)

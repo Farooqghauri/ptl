@@ -1,0 +1,78 @@
+IN THE COURT OF THE [GUARDIAN JUDGE / FAMILY JUDGE], [DISTRICT]
+
+PETITION NO. _______ OF [YEAR]
+
+[PETITIONER_NAME]
+[RELATION_TO_MINOR]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... PETITIONER
+
+VERSUS
+
+[RESPONDENT_NAME]
+[RELATION_TO_MINOR]
+CNIC No. [RESPONDENT_CNIC]
+R/o [RESPONDENT_ADDRESS]
+                                                    ... RESPONDENT
+
+PETITION FOR CUSTODY OF MINOR (HIZANAT)
+UNDER SECTION 25 OF THE GUARDIANS AND WARDS ACT, 1890
+
+RESPECTFULLY SHEWETH:
+
+1. That the Petitioner is the [MOTHER/FATHER/RELATION] of the minor child(ren), namely:
+
+   | Sr. | Name | Date of Birth | Age | Gender |
+   |----|------|---------------|-----|--------|
+   | 1. | [CHILD_NAME] | [DOB] | [AGE] | [GENDER] |
+
+2. That the minor was born out of the wedlock of the Petitioner and the Respondent, who were married on [MARRIAGE_DATE].
+
+3. That [FACTS_OF_SEPARATION/CUSTODY_ISSUE].
+
+4. That the minor is presently in the custody of [CURRENT_CUSTODIAN] and [CURRENT_SITUATION].
+
+5. That it is in the best interest and welfare of the minor to be in the custody of the Petitioner as [REASONS_FOR_CUSTODY].
+
+6. That the Petitioner is financially capable and morally fit to provide for the upbringing, education, and welfare of the minor.
+
+GROUNDS:
+
+i. That the welfare of the minor is the paramount consideration in matters of custody, and the minor's welfare lies with the Petitioner.
+
+ii. That under Islamic law, the mother has preferential right of Hizanat (custody) of a male child until the age of 7 years and a female child until puberty.
+
+iii. That the Respondent [GROUNDS_AGAINST_RESPONDENT].
+
+iv. That the Petitioner is capable of providing better care, education, and moral upbringing to the minor.
+
+v. That the minor has expressed his/her wish to live with the Petitioner (if applicable).
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Grant permanent custody (Hizanat) of the minor [CHILD_NAME] to the Petitioner;
+
+(b) Allow visitation rights to the Respondent as this Honourable Court deems appropriate;
+
+(c) Direct the Respondent to pay maintenance for the minor;
+
+(d) Grant interim custody to the Petitioner during the pendency of this petition;
+
+(e) Pass any other order as this Honourable Court may deem fit in the best interest of the minor.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR PETITIONER
+
+VERIFICATION:
+
+Verified on oath at [PLACE] on this [DATE] that the contents of the above petition are true and correct to the best of my knowledge and belief.
+
+                                                    DEPONENT

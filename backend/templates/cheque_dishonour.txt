@@ -1,0 +1,78 @@
+IN THE COURT OF THE JUDICIAL MAGISTRATE (1ST CLASS), [DISTRICT]
+
+COMPLAINT NO. _______ OF [YEAR]
+
+[COMPLAINANT_NAME]
+S/o [FATHER_NAME]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... COMPLAINANT
+
+VERSUS
+
+[ACCUSED_NAME]
+S/o [ACCUSED_FATHER]
+CNIC No. [ACCUSED_CNIC]
+R/o [ACCUSED_ADDRESS]
+                                                    ... ACCUSED
+
+COMPLAINT UNDER SECTION 489-F
+OF THE PAKISTAN PENAL CODE, 1860
+
+RESPECTFULLY SHEWETH:
+
+1. That the Complainant is a respectable citizen and is engaged in [BUSINESS/PROFESSION].
+
+2. That the Accused is known to the Complainant and [RELATIONSHIP/BUSINESS_DEALING].
+
+3. That the Accused [FACTS_OF_TRANSACTION] and in consideration thereof issued the following cheque(s) to the Complainant:
+
+   | Sr. | Cheque No. | Date | Amount | Bank | Branch |
+   |----|------------|------|--------|------|--------|
+   | 1. | [CHEQUE_NO] | [DATE] | Rs. [AMOUNT] | [BANK] | [BRANCH] |
+
+4. That the Complainant presented the above-mentioned cheque at [BANK_BRANCH] on [PRESENTATION_DATE] for encashment, but the same was dishonoured/returned unpaid with the remarks "[DISHONOUR_REASON]" vide Bank Memo dated [MEMO_DATE].
+
+5. That thereafter, the Complainant served a Legal Notice dated [NOTICE_DATE] upon the Accused through [MODE_OF_SERVICE], calling upon him to make the payment within 15 days, but the Accused failed to comply.
+
+6. That the Accused has committed an offence punishable under Section 489-F PPC by dishonestly issuing a cheque which has been dishonoured.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Take cognizance of the offence under Section 489-F PPC;
+
+(b) Summon the Accused to face trial;
+
+(c) Convict and sentence the Accused under Section 489-F PPC;
+
+(d) Direct the Accused to pay Rs. [AMOUNT] as compensation to the Complainant under Section 544-A Cr.P.C.;
+
+(e) Pass any other order as this Honourable Court may deem fit and proper.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR COMPLAINANT
+
+VERIFICATION:
+
+I, [COMPLAINANT_NAME], do hereby verify on oath that the contents of the above complaint are true and correct to the best of my knowledge and belief.
+
+                                                    DEPONENT
+
+LIST OF WITNESSES:
+
+1. [WITNESS_1_NAME], [ADDRESS]
+2. [WITNESS_2_NAME], [ADDRESS]
+
+ANNEXURES:
+
+A. Original dishonoured cheque
+B. Bank Memo dated [DATE]
+C. Copy of Legal Notice dated [DATE]
+D. Postal Receipt/Courier Receipt

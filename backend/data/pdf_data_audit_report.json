@@ -1,0 +1,276 @@
+{
+  "file": "C:\\Users\\UNC\\Desktop\\ptl\\backend\\data\\pdf_data.json",
+  "summary": {
+    "entries": 969,
+    "total_chars": 44049367,
+    "empty_entries": 0,
+    "avg_chars_per_entry": 45458.58
+  },
+  "top_act_markers": [
+    [
+      "ACT",
+      873
+    ],
+    [
+      "ORDER",
+      733
+    ],
+    [
+      "ORDINANCE",
+      651
+    ],
+    [
+      "CONSTITUTION",
+      474
+    ],
+    [
+      "REGULATION",
+      463
+    ],
+    [
+      "PENAL CODE",
+      164
+    ],
+    [
+      "CRIMINAL PROCEDURE",
+      151
+    ],
+    [
+      "CIVIL PROCEDURE",
+      93
+    ],
+    [
+      "FAMILY COURTS",
+      4
+    ],
+    [
+      "QANUN-E-SHAHADAT",
+      3
+    ],
+    [
+      "GUARDIANS AND WARDS",
+      3
+    ],
+    [
+      "MUSLIM FAMILY LAWS",
+      3
+    ]
+  ],
+  "expected_laws_presence": {
+    "Pakistan Penal Code": true,
+    "Code of Criminal Procedure": true,
+    "Code of Civil Procedure": true,
+    "Constitution of Pakistan 1973": true,
+    "Qanun-e-Shahadat Order 1984": true,
+    "Muslim Family Laws Ordinance 1961": true,
+    "Family Courts Act 1964": true,
+    "Guardians and Wards Act 1890": true
+  },
+  "expected_sections_presence": {
+    "PPC 268 (Public Nuisance)": true,
+    "PPC 290 (Punishment for nuisance)": true,
+    "PPC 291 (Continuance after injunction)": true,
+    "CrPC 497 (Post-arrest bail)": true,
+    "CrPC 498 (Pre-arrest bail)": true,
+    "Constitution Art 199 (Writ)": true,
+    "PPC 489F (Cheque dishonour)": true
+  },
+  "missing_laws": [],
+  "missing_sections": [],
+  "worst_corruption_examples": [
+    {
+      "file_name": "administrator0506da23281ece11e55cd37fe1f0c072.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 9233,
+      "soft_hyphens": 346,
+      "unicode_escapes": 0,
+      "non_ascii": 101508,
+      "preview": "T H E M E R C H A N T S H I P P I N G O R D I N A N C E , 2 0 0 1 C O N T E N T S S E C T I O N S . P A R T I P R E L I M I N A R Y 1 S h o r t t i t l e , e x t e n t , a p p l i c a t i o n a n d c o m m e n c e m e n …"
+    },
+    {
+      "file_name": "administrator09e29cb08a9a7e554129b256e81b89fb.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 1426,
+      "soft_hyphens": 304,
+      "unicode_escapes": 0,
+      "non_ascii": 14313,
+      "preview": "THE DEKKHAN AGRICULTURISTS RELIEF ACT, 1879 CONTENTS S E C T I O N S : CHAPTER I PRELIMINARY 1 . S h o r t t i t l e . C o m m e n c e m e n t . L o c a l e x t e n t . 2 . C o n s t r u c t i o n . 2 A . [ R e p e a l e…"
+    },
+    {
+      "file_name": "administrator0a8911d25a8f2990d791513113b28c9d.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 682,
+      "soft_hyphens": 216,
+      "unicode_escapes": 0,
+      "non_ascii": 9393,
+      "preview": "THE PAKISTAN MEDICAL AND DENTAL COUNCIL ORDINANCE, 1962 Last Amended on 2012­08­13 CONTENTS S E C T I O N S : 1 . S h o r t t i t l e , e x t e n t a n d c o m m e n c e m e n t . 2 . D e f i n i t i o n s . 3 . C o n s …"
+    },
+    {
+      "file_name": "administrator309817cb2e46d8b593c66ad748a27bc7.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 1373,
+      "soft_hyphens": 534,
+      "unicode_escapes": 0,
+      "non_ascii": 11702,
+      "preview": "T H E C A N A L A N D D R A I N A G E A C T , 1 8 7 3 C O N T E N T S S E C T I O N S : P A R T I P R E L I M I N A R Y 1 . S h o r t t i t l e . L o c a l e x t e n t . 2 . [ R e p e a l e d . ] 3 . I n t e r p r e t a …"
+    },
+    {
+      "file_name": "administrator5533a440e4ce6839220c9d1092c1349e.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 2027,
+      "soft_hyphens": 356,
+      "unicode_escapes": 0,
+      "non_ascii": 23805,
+      "preview": "THE INSOLVANCY (KARACHI DIVISION) ACT,1909 CONTENTS S E C T I O N S : PRELIMINARY 1 S h o r t t i t l e a n d c o m m e n c e m e n t . 2 D e f i n i t i o n s . PART I CONSTITUTION AND POWERS OF COURT J u r i s d i c t …"
+    },
+    {
+      "file_name": "administrator6598dabbad120033d4d42d717dcf9755.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 14758,
+      "soft_hyphens": 2582,
+      "unicode_escapes": 0,
+      "non_ascii": 161945,
+      "preview": "T H E C O D E O F C I V I L P R O C E D U R E , 1 9 0 8 L a s t A m e n d e d o n 2 0 1 6 ­ 1 2 ­ 0 1 C O N T E N T S S E C T I O N S : P R E L I M I N A R Y 1 . S h o r t t i t l e , c o m m e n c e m e n t a n d e x t …"
+    },
+    {
+      "file_name": "administrator77923ce792b475e339e1f46ba0442da3.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 2818,
+      "soft_hyphens": 432,
+      "unicode_escapes": 0,
+      "non_ascii": 28004,
+      "preview": "THE TRANSFER OF PROPERTY ACT, 1882 CONTENTS S E C T I O N S : CHAPTER I PRELIMINARY 1 . S h o r t t i t l e . C o m m e n c e m e n t . E x t e n t . 2 . R e p e a l o f A c t s . S a v i n g o f c e r t a i n e n a c t …"
+    },
+    {
+      "file_name": "administrator7db1e56f0f1d39a6e67573ec6b0944e2 (1).pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 4474,
+      "soft_hyphens": 3392,
+      "unicode_escapes": 0,
+      "non_ascii": 142263,
+      "preview": "T H E C O D E O F C R I M I N A L P R O C E D U R E , 1 8 9 8 L a s t A m e n d e d o n 2 0 1 7 ­ 0 2 ­ 1 6 C O N T E N T S SECT IONS: P AR T I PRE LIMINAR Y CHAPT E R I 1. Short ti tl e. Commencement. Ex tent. 2. [Repea…"
+    },
+    {
+      "file_name": "administrator7db1e56f0f1d39a6e67573ec6b0944e2.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 4474,
+      "soft_hyphens": 3392,
+      "unicode_escapes": 0,
+      "non_ascii": 142263,
+      "preview": "T H E C O D E O F C R I M I N A L P R O C E D U R E , 1 8 9 8 L a s t A m e n d e d o n 2 0 1 7 ­ 0 2 ­ 1 6 C O N T E N T S SECT IONS: P AR T I PRE LIMINAR Y CHAPT E R I 1. Short ti tl e. Commencement. Ex tent. 2. [Repea…"
+    },
+    {
+      "file_name": "administrator8332a6df32386960ac7d81a5cf7aade2.pdf.txt",
+      "corruption_score": 0.85,
+      "spaced_letter_runs": 3629,
+      "soft_hyphens": 244,
+      "unicode_escapes": 0,
+      "non_ascii": 28884,
+      "preview": "T H E C O N T R A C T A C T , 1 8 7 2 C O N T E N T S S E C T I O N S : P R E L I M I N A R Y 1 . S h o r t t i t l e . E x t e n t . C o m m e n c e m e n t . E n a c t m e n t s r e p e a l e d . 2 . I n t e r p r e t …"
+    }
+  ],
+  "largest_documents": [
+    {
+      "file_name": "administratora6091991da53c91eaba251f56d52508d.pdf.txt",
+      "chars": 2578313,
+      "corruption_score": 0.2493
+    },
+    {
+      "file_name": "administrator6598dabbad120033d4d42d717dcf9755.pdf.txt",
+      "chars": 1694561,
+      "corruption_score": 0.85
+    },
+    {
+      "file_name": "administrator7db1e56f0f1d39a6e67573ec6b0944e2 (1).pdf.txt",
+      "chars": 1284720,
+      "corruption_score": 0.85
+    },
+    {
+      "file_name": "administrator7db1e56f0f1d39a6e67573ec6b0944e2.pdf.txt",
+      "chars": 1284720,
+      "corruption_score": 0.85
+    },
+    {
+      "file_name": "administrator0506da23281ece11e55cd37fe1f0c072.pdf.txt",
+      "chars": 1238622,
+      "corruption_score": 0.85
+    },
+    {
+      "file_name": "administratordcf11eff82268b4a6ba50d93a2d2273b.pdf.txt",
+      "chars": 1034329,
+      "corruption_score": 0.377
+    },
+    {
+      "file_name": "administrator89de324eeaa53c96ff701820d2e007e4.pdf.txt",
+      "chars": 979771,
+      "corruption_score": 0.27
+    },
+    {
+      "file_name": "administratorc09ecd376211abe32a7e44510f3fd719.pdf.txt",
+      "chars": 869476,
+      "corruption_score": 0.3544
+    },
+    {
+      "file_name": "administrator6d344e569c576550c200d66afb7b28f6.pdf.txt",
+      "chars": 622709,
+      "corruption_score": 0.2043
+    },
+    {
+      "file_name": "administratord5622ea3f15bfa00b17d2cf7770a8434.pdf.txt",
+      "chars": 511562,
+      "corruption_score": 0.3784
+    }
+  ],
+  "smallest_nonempty_documents": [
+    {
+      "file_name": "administrator0865aeb5284f26976bc788e876674f93.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator137a520fca0dd3b355382bd8c0710254.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator1461ef6143769ed612a03e90039dd38e.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator16be7fed91d113733c7b200badb1f642.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator17d7f2e3be7ca28199c4aa82dd68b88f.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator1d44a99f7cadde7bca698a746ede1bd7.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator20ac521c92e95fbe8acb3ee04ea59ab0.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator20d34967c9d6312e81a593a47ff81200.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator243fa4636a45a5e3d5ae462a5918a28d.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    },
+    {
+      "file_name": "administrator27b8d6582bca8e7c48d77dab21219765.pdf.txt",
+      "chars": 28,
+      "corruption_score": 0.0
+    }
+  ]
+}

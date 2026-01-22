@@ -1,0 +1,73 @@
+IN THE [COURT_NAME]
+
+[CASE_NUMBER]
+
+MUHAMMAD [PETITIONER_NAME]
+S/o [FATHER_NAME]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... PETITIONER
+
+VERSUS
+
+THE STATE
+Through SHO Police Station [POLICE_STATION], District [DISTRICT]
+AND
+[COMPLAINANT_NAME]
+S/o [COMPLAINANT_FATHER]
+R/o [COMPLAINANT_ADDRESS]
+                                                    ... RESPONDENTS
+
+PETITION FOR GRANT OF POST-ARREST BAIL
+UNDER SECTION 497 Cr.P.C.
+
+MOST RESPECTFULLY SHEWETH:-
+
+1. That the Petitioner is a respectable citizen and has been falsely implicated in case FIR No. [FIR_NO] dated [FIR_DATE] registered at Police Station [POLICE_STATION], District [DISTRICT] under Sections [SECTIONS_PPC] of the Pakistan Penal Code, 1860.
+
+2. That the Petitioner was arrested on [ARREST_DATE] and is presently confined in [JAIL_NAME].
+
+3. [BRIEF_FACTS_OF_CASE]
+
+4. That the case of the Petitioner squarely falls within the ambit of FURTHER INQUIRY as envisaged under the second proviso to Section 497(2) of the Code of Criminal Procedure, 1898, as no prima facie case of a conclusive nature is made out against him.
+
+GROUNDS:
+
+i. That there are no reasonable grounds for believing that the Petitioner has been guilty of an offence punishable with death or imprisonment for life, as contemplated under Section 497(1) Cr.P.C.
+
+ii. That the case of the Petitioner falls within the ambit of further inquiry under Section 497(2) Cr.P.C. as:
+   - [GROUND_A]
+   - [GROUND_B]
+   - [GROUND_C]
+
+iii. That the rule of consistency is attracted as co-accused [CO_ACCUSED_NAME] has already been granted bail by [COURT_GRANTED_BAIL] vide order dated [BAIL_ORDER_DATE] on similar allegations.
+
+iv. That the Petitioner has clean criminal antecedents and has never been involved in any case of similar nature.
+
+v. That the Petitioner is not a flight risk and has deep roots in the community, being a [PROFESSION] by profession and sole breadwinner of his family.
+
+vi. That the Petitioner undertakes to appear before the Trial Court on each and every date of hearing and shall not misuse the concession of bail.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Accept this Petition;
+
+(b) Grant post-arrest bail to the Petitioner in case FIR No. [FIR_NO] dated [FIR_DATE] registered at Police Station [POLICE_STATION], District [DISTRICT] under Sections [SECTIONS_PPC] PPC;
+
+(c) Pass any other order as this Honourable Court may deem fit and proper in the circumstances of the case.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR PETITIONER
+
+VERIFICATION:
+
+Verified on oath at [PLACE] on this [DATE] day of [MONTH], [YEAR], that the contents of Paras 1 to [LAST_PARA] are true and correct to the best of my knowledge and belief. What is stated on information is believed to be true.
+
+                                                    DEPONENT

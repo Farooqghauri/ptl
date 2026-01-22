@@ -1,0 +1,64 @@
+IN THE [COURT_NAME]
+
+[CASE_TYPE] NO. _______ OF [YEAR]
+
+[APPLICANT_NAME]
+                                                    ... APPLICANT/PLAINTIFF
+
+VERSUS
+
+[RESPONDENT_NAME]
+                                                    ... RESPONDENT/DEFENDANT
+
+APPLICATION FOR TEMPORARY INJUNCTION / STAY
+UNDER ORDER XXXIX RULES 1 & 2 READ WITH SECTION 151 C.P.C.
+
+RESPECTFULLY SHEWETH:
+
+1. That the Applicant has filed the above-titled [MAIN_CASE_TYPE] which is pending adjudication before this Honourable Court.
+
+2. That the brief facts of the case are [BRIEF_FACTS].
+
+3. That [FACTS_NECESSITATING_STAY].
+
+4. That the Applicant apprehends that during the pendency of the main case, the Respondent may [APPREHENDED_ACTION], which would render the main case infructuous and cause irreparable loss to the Applicant.
+
+5. That this application is bona fide and made in the interest of justice.
+
+GROUNDS:
+
+i. That there exists a PRIMA FACIE CASE in favor of the Applicant as [EXPLAIN_PRIMA_FACIE].
+
+ii. That the BALANCE OF CONVENIENCE lies in favor of the Applicant as [EXPLAIN_BALANCE].
+
+iii. That the Applicant will suffer IRREPARABLE LOSS AND INJURY if the injunction/stay is not granted as [EXPLAIN_IRREPARABLE_LOSS].
+
+iv. That the Applicant has no other efficacious remedy except to seek the indulgence of this Honourable Court.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Accept this Application;
+
+(b) Grant temporary injunction restraining the Respondent from [SPECIFIC_RESTRAINT] during the pendency of the main case;
+
+(c) In the alternative, maintain status quo as on [DATE];
+
+(d) Grant ad-interim relief till the next date of hearing;
+
+(e) Pass any other order as this Honourable Court may deem fit and proper.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR APPLICANT
+
+VERIFICATION:
+
+Verified on oath at [PLACE] on this [DATE] that the contents of the above application are true and correct to the best of my knowledge and belief.
+
+                                                    DEPONENT

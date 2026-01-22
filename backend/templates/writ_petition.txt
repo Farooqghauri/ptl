@@ -1,0 +1,73 @@
+IN THE [COURT_NAME]
+
+WRIT PETITION NO. _______ OF [YEAR]
+
+[PETITIONER_NAME]
+S/o [FATHER_NAME]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... PETITIONER
+
+VERSUS
+
+[RESPONDENT_1_DESIGNATION]
+[RESPONDENT_1_ADDRESS]
+
+[RESPONDENT_2_DESIGNATION]
+[RESPONDENT_2_ADDRESS]
+                                                    ... RESPONDENTS
+
+CONSTITUTIONAL PETITION UNDER ARTICLE 199
+OF THE CONSTITUTION OF THE ISLAMIC REPUBLIC OF PAKISTAN, 1973
+
+MOST RESPECTFULLY SHEWETH:-
+
+1. That the Petitioner is a citizen of Pakistan and is entitled to the protection of Fundamental Rights guaranteed under the Constitution of Pakistan, 1973.
+
+2. That the Respondents are persons performing functions in connection with the affairs of the Federation/Province and are amenable to the constitutional jurisdiction of this Honourable Court.
+
+3. [BRIEF_FACTS_OF_CASE]
+
+4. That the impugned action/order dated [DATE_OF_IMPUGNED_ORDER] is without lawful authority, coram non judice, and violative of the Fundamental Rights of the Petitioner guaranteed under Articles [RELEVANT_ARTICLES] of the Constitution.
+
+5. That the Petitioner has no other adequate, efficacious, or speedy remedy available under the law except to invoke the constitutional jurisdiction of this Honourable Court.
+
+GROUNDS:
+
+i. That the impugned action/order is violative of Article [ARTICLE_NUMBER] of the Constitution which guarantees [RIGHT_VIOLATED].
+
+ii. That the impugned action/order has been passed without affording the Petitioner an opportunity of hearing, in violation of the principles of natural justice and Article 10-A of the Constitution.
+
+iii. That the Respondents have acted with legal malice and mala fides.
+
+iv. That the impugned action/order is arbitrary, unreasonable, and discriminatory.
+
+v. That no alternate remedy is available to the Petitioner.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Accept this Constitutional Petition;
+
+(b) Declare the impugned action/order dated [DATE] as illegal, without lawful authority, and of no legal effect;
+
+(c) Issue a writ of [CERTIORARI/MANDAMUS/PROHIBITION] directing the Respondents to [SPECIFIC_RELIEF];
+
+(d) Grant costs of the proceedings;
+
+(e) Pass any other order as this Honourable Court may deem fit and proper in the interest of justice.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR PETITIONER
+
+VERIFICATION:
+
+Verified on oath at [PLACE] on this [DATE] day of [MONTH], [YEAR], that the contents of Paras 1 to [LAST_PARA] are true and correct to the best of my knowledge and belief. What is stated on information is believed to be true.
+
+                                                    DEPONENT

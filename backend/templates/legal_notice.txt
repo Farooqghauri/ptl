@@ -1,0 +1,53 @@
+LEGAL NOTICE UNDER SECTION 80 C.P.C.
+
+From:
+[SENDER_NAME]
+[SENDER_DESIGNATION/RELATION]
+[SENDER_ADDRESS]
+[SENDER_CONTACT]
+
+To:
+[RECIPIENT_NAME]
+[RECIPIENT_DESIGNATION]
+[RECIPIENT_ADDRESS]
+
+Date: [DATE]
+
+Subject: LEGAL NOTICE FOR [SUBJECT_MATTER]
+
+Sir/Madam,
+
+Under the instructions and on behalf of my client, [CLIENT_NAME] S/o [CLIENT_FATHER] R/o [CLIENT_ADDRESS], I do hereby serve upon you this Legal Notice as under:
+
+1. That my client [BRIEF_INTRODUCTION_OF_CLIENT].
+
+2. That [FACTS_OF_THE_MATTER].
+
+3. That [ADDITIONAL_FACTS].
+
+4. That despite [PREVIOUS_ATTEMPTS], you have [FAILED_TO_COMPLY/WRONGFUL_ACT].
+
+5. That by your above-mentioned act/omission, you have caused loss and damage to my client to the tune of Rs. [AMOUNT] (Rupees [AMOUNT_IN_WORDS] only).
+
+DEMAND:
+
+In view of the above facts and circumstances, you are hereby called upon to:
+
+(a) [DEMAND_1];
+
+(b) [DEMAND_2];
+
+(c) Pay a sum of Rs. [AMOUNT] to my client as damages/compensation;
+
+within [NUMBER] days from the receipt of this notice, failing which my client shall be constrained to initiate appropriate legal proceedings against you, civil and/or criminal, at your sole risk, cost, and consequences, without any further notice.
+
+Please note that this notice is without prejudice to any other rights and remedies available to my client under the law.
+
+[SENDER_NAME]
+ADVOCATE HIGH COURT
+[BAR_COUNCIL_NUMBER]
+[CONTACT_DETAILS]
+
+CC:
+1. [COPY_TO_AUTHORITY_1]
+2. [COPY_TO_AUTHORITY_2]

@@ -1,0 +1,74 @@
+IN THE COURT OF THE FAMILY JUDGE, [DISTRICT]
+
+SUIT NO. _______ OF [YEAR]
+
+[WIFE_NAME]
+D/o [FATHER_NAME]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... PETITIONER/PLAINTIFF
+
+VERSUS
+
+[HUSBAND_NAME]
+S/o [HUSBAND_FATHER]
+CNIC No. [HUSBAND_CNIC]
+R/o [HUSBAND_ADDRESS]
+                                                    ... RESPONDENT/DEFENDANT
+
+SUIT FOR DISSOLUTION OF MARRIAGE (KHULA)
+UNDER THE DISSOLUTION OF MUSLIM MARRIAGES ACT, 1939
+
+RESPECTFULLY SHEWETH:
+
+1. That the Petitioner is a Muslim adult female and is legally wedded wife of the Respondent, having been married on [MARRIAGE_DATE] at [MARRIAGE_PLACE] as per Muslim Rites and Ceremonies. The Nikah was solemnized by [NIKAH_REGISTRAR] and was registered at [REGISTRATION_PLACE].
+
+2. That the Haq Mehr (dower) was fixed at Rs. [MEHR_AMOUNT] (Rupees [AMOUNT_IN_WORDS] only), out of which Rs. [PAID_AMOUNT] was paid at the time of Nikah and Rs. [REMAINING_AMOUNT] remains deferred.
+
+3. That [NUMBER] children were born out of this wedlock, namely:
+   (i) [CHILD_1_NAME], aged [AGE], [GENDER]
+   (ii) [CHILD_2_NAME], aged [AGE], [GENDER]
+
+4. That [FACTS_OF_MARITAL_DISCORD].
+
+5. That the Respondent has [SPECIFIC_GROUNDS_FOR_KHULA].
+
+6. That the Petitioner, in exercise of her right of Khula, finds it impossible to live with the Respondent within the limits prescribed by Allah (Hudood Allah).
+
+7. That the Petitioner is willing to forego/return the Haq Mehr (dower) amounting to Rs. [AMOUNT] to the Respondent.
+
+GROUNDS:
+
+i. That the Respondent has treated the Petitioner with cruelty, both physical and mental, which includes [SPECIFIC_INSTANCES].
+
+ii. That the Respondent has failed to maintain the Petitioner and the minor children.
+
+iii. That there exist irreconcilable differences between the parties and the marriage has irretrievably broken down.
+
+iv. That the Petitioner has developed extreme hatred (Hatrat) towards the Respondent and cannot continue the matrimonial relationship.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Decree dissolution of marriage (Khula) between the Petitioner and the Respondent;
+
+(b) Grant permanent custody (Hizanat) of the minor children to the Petitioner;
+
+(c) Direct the Respondent to pay maintenance for the minor children;
+
+(d) Pass any other order as this Honourable Court may deem fit and proper.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR PETITIONER
+
+VERIFICATION:
+
+I, [WIFE_NAME], the Petitioner above-named, do hereby verify on oath that the contents of the above petition are true and correct to the best of my knowledge and belief.
+
+                                                    DEPONENT

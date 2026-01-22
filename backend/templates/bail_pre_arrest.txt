@@ -1,0 +1,70 @@
+IN THE [COURT_NAME]
+
+[CASE_NUMBER]
+
+[PETITIONER_NAME]
+S/o [FATHER_NAME]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... PETITIONER
+
+VERSUS
+
+THE STATE
+Through SHO Police Station [POLICE_STATION], District [DISTRICT]
+AND
+[COMPLAINANT_NAME] (if any)
+                                                    ... RESPONDENTS
+
+PETITION FOR GRANT OF PRE-ARREST BAIL
+UNDER SECTION 498 Cr.P.C.
+
+MOST RESPECTFULLY SHEWETH:-
+
+1. That the Petitioner is a law-abiding citizen and apprehends his arrest in case FIR No. [FIR_NO] dated [FIR_DATE] registered at Police Station [POLICE_STATION], District [DISTRICT] under Sections [SECTIONS_PPC] of the Pakistan Penal Code, 1860.
+
+2. That the apprehension of arrest is genuine and well-founded as [REASON_FOR_APPREHENSION].
+
+3. [BRIEF_FACTS_OF_CASE]
+
+4. That the FIR has been lodged with mala fide intentions and ulterior motives to humiliate and harass the Petitioner.
+
+GROUNDS:
+
+i. That the Petitioner has a well-founded and genuine apprehension of arrest in a false and frivolous case lodged at the behest of the Complainant with ulterior motives.
+
+ii. That the FIR is result of mala fide on the part of the Complainant who has [MALA_FIDE_REASON].
+
+iii. That there is no direct accusation against the Petitioner connecting him with the alleged offence.
+
+iv. That the Petitioner is ready and willing to join investigation and face trial.
+
+v. That the Petitioner has no intention to abscond or tamper with prosecution evidence.
+
+vi. That the Petitioner has clean criminal antecedents and is a respectable member of society.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Accept this Petition;
+
+(b) Grant the privilege of pre-arrest bail to the Petitioner under Section 498 Cr.P.C. in case FIR No. [FIR_NO];
+
+(c) In the alternative, grant ad-interim pre-arrest bail to the Petitioner till the disposal of the instant petition;
+
+(d) Pass any other order as this Honourable Court may deem fit and proper.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR PETITIONER
+
+VERIFICATION:
+
+Verified on oath at [PLACE] on this [DATE] day of [MONTH], [YEAR], that the contents of the above petition are true and correct to the best of my knowledge and belief.
+
+                                                    DEPONENT

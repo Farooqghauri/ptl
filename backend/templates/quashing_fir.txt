@@ -1,0 +1,74 @@
+IN THE [HIGH_COURT_NAME]
+
+CRIMINAL MISCELLANEOUS NO. _______ OF [YEAR]
+
+[PETITIONER_NAME]
+S/o [FATHER_NAME]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... PETITIONER
+
+VERSUS
+
+THE STATE
+Through Prosecutor General, [PROVINCE]
+AND
+[COMPLAINANT_NAME]
+S/o [COMPLAINANT_FATHER]
+R/o [COMPLAINANT_ADDRESS]
+                                                    ... RESPONDENTS
+
+PETITION FOR QUASHING OF FIR
+UNDER SECTION 561-A OF THE CODE OF CRIMINAL PROCEDURE, 1898
+
+MOST RESPECTFULLY SHEWETH:-
+
+1. That the Petitioner is a respectable citizen and has been falsely implicated in case FIR No. [FIR_NO] dated [FIR_DATE] registered at Police Station [POLICE_STATION], District [DISTRICT] under Sections [SECTIONS_PPC] of the Pakistan Penal Code, 1860.
+
+2. That [BRIEF_FACTS_OF_FIR].
+
+3. That the FIR on its face does not disclose any cognizable offence against the Petitioner.
+
+4. That the continuation of criminal proceedings against the Petitioner amounts to abuse of the process of the Court.
+
+5. That the Petitioner invokes the inherent jurisdiction of this Honourable Court under Section 561-A Cr.P.C. for quashing of the impugned FIR.
+
+GROUNDS:
+
+i. That a bare reading of the FIR does not disclose the commission of any cognizable offence by the Petitioner.
+
+ii. That the FIR is result of a civil/commercial dispute which has been given the color of criminality.
+
+iii. That the impugned FIR has been lodged with mala fide intentions and ulterior motives to harass and pressurize the Petitioner.
+
+iv. That the allegations in the FIR, even if taken at face value, do not constitute the offence alleged.
+
+v. That the continuation of proceedings would cause manifest injustice to the Petitioner and would amount to abuse of process of law.
+
+vi. That this Honourable Court has inherent powers under Section 561-A Cr.P.C. to quash proceedings to prevent abuse of process or to secure the ends of justice.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Accept this Petition;
+
+(b) Quash the impugned FIR No. [FIR_NO] dated [FIR_DATE] registered at Police Station [POLICE_STATION], District [DISTRICT];
+
+(c) In the alternative, stay the investigation/proceedings in the impugned FIR during the pendency of this petition;
+
+(d) Pass any other order as this Honourable Court may deem fit and proper in the interest of justice.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR PETITIONER
+
+VERIFICATION:
+
+Verified on oath at [PLACE] on this [DATE] day of [MONTH], [YEAR], that the contents of Paras 1 to [LAST_PARA] are true and correct to the best of my knowledge and belief.
+
+                                                    DEPONENT

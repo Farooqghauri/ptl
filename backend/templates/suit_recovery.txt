@@ -1,0 +1,68 @@
+IN THE COURT OF THE [CIVIL_JUDGE/SENIOR_CIVIL_JUDGE], [DISTRICT]
+
+SUIT NO. _______ OF [YEAR]
+
+[PLAINTIFF_NAME]
+S/o [FATHER_NAME]
+CNIC No. [CNIC]
+R/o [ADDRESS]
+                                                    ... PLAINTIFF
+
+VERSUS
+
+[DEFENDANT_NAME]
+S/o [DEFENDANT_FATHER]
+CNIC No. [DEFENDANT_CNIC]
+R/o [DEFENDANT_ADDRESS]
+                                                    ... DEFENDANT
+
+SUIT FOR RECOVERY OF RS. [AMOUNT]
+UNDER ORDER XXXVII C.P.C. (SUMMARY PROCEDURE)
+
+RESPECTFULLY SHEWETH:
+
+1. That the Plaintiff is a resident of [ADDRESS] and is entitled to sue and be sued.
+
+2. That the Defendant is a resident of [ADDRESS] and is liable to be sued within the jurisdiction of this Honourable Court.
+
+3. That the Defendant [FACTS_OF_TRANSACTION] on [DATE] and thereby became liable to pay Rs. [AMOUNT] (Rupees [AMOUNT_IN_WORDS] only) to the Plaintiff.
+
+4. That [ADDITIONAL_FACTS].
+
+5. That despite repeated requests and demands, the Defendant has failed and neglected to pay the aforesaid amount to the Plaintiff.
+
+6. That a Legal Notice dated [NOTICE_DATE] was served upon the Defendant through [MODE_OF_SERVICE], but the Defendant failed to comply with the same.
+
+7. That the cause of action arose on [DATE] when the Defendant [CAUSE_OF_ACTION] and continues to accrue.
+
+8. That this Honourable Court has territorial jurisdiction as the Defendant resides within its jurisdiction / the cause of action arose within its jurisdiction.
+
+9. That the suit is valued at Rs. [AMOUNT] for the purposes of court fee and jurisdiction.
+
+RELEVANT LAW:
+
+[LAW_SECTIONS_FROM_DATABASE]
+
+PRAYER:
+
+It is, therefore, most respectfully prayed that this Honourable Court may graciously be pleased to:
+
+(a) Decree the suit in favor of the Plaintiff and against the Defendant;
+
+(b) Direct the Defendant to pay Rs. [PRINCIPAL_AMOUNT] as principal amount;
+
+(c) Direct the Defendant to pay markup/interest at the rate of [RATE]% per annum from [DATE] till realization;
+
+(d) Award costs of the suit to the Plaintiff;
+
+(e) Pass any other order as this Honourable Court may deem fit and proper.
+
+[PLACE]
+Dated: [DATE]
+                                                    ADVOCATE FOR PLAINTIFF
+
+VERIFICATION:
+
+Verified on oath at [PLACE] on this [DATE] day of [MONTH], [YEAR], that the contents of Paras 1 to [LAST_PARA] are true and correct to the best of my knowledge. What is stated on record is true and what is stated on information is believed to be true.
+
+                                                    DEPONENT
