@@ -12,11 +12,18 @@ app = FastAPI()
 # CORS Setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:3001",
+        "https://ptl.onrender.com",
+        "https://ptl.vercel.app",   # default Vercel domain
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/")
 def read_root():
