@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Send, User, Bot, Trash2 } from "lucide-react";
-import "../../styles/dark-theme.css";
+import "../../../styles/dark-theme.css";
+
 
 
 interface Message {
