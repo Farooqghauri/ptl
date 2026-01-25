@@ -27,8 +27,13 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://localhost:3001",
-        "https://ptl.onrender.com",
+
+        # Vercel
         "https://ptl.vercel.app",
+
+        # Custom domain (VERY IMPORTANT)
+        "https://www.pakistantoplawyers.com",
+        "https://pakistantoplawyers.com",
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
