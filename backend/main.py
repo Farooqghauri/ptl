@@ -1,9 +1,21 @@
+# backend/main.py
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-# Import your routers - ADD smart_search here
-from routers import summarizer, translator, drafter, assistant, search, judgment_search, smart_search, law_resolve
+# Import routers
+from routers import (
+    summarizer,
+    summarizer_v2,
+    translator,
+    drafter,
+    assistant,
+    search,
+    judgment_search,
+    smart_search,
+    law_resolve,
+)
 
 load_dotenv()
 
@@ -16,14 +28,13 @@ app.add_middleware(
         "http://localhost:3000",
         "http://localhost:3001",
         "https://ptl.onrender.com",
-        "https://ptl.vercel.app",   # default Vercel domain
+        "https://ptl.vercel.app",
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 @app.get("/")
 def read_root():
@@ -33,14 +44,13 @@ def read_root():
 def health_check():
     return {"status": "success", "service": "PTL AI Engine"}
 
-# Connect the tools
+# Connect routers
 app.include_router(summarizer.router)
+app.include_router(summarizer_v2.router)
 app.include_router(translator.router)
 app.include_router(drafter.router)
 app.include_router(assistant.router)
 app.include_router(search.router)
 app.include_router(judgment_search.router)
-# app.include_router(law_search.router)
 app.include_router(smart_search.router)
-
 app.include_router(law_resolve.router)

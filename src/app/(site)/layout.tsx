@@ -48,16 +48,12 @@ export const metadata: Metadata = {
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>
-        <Providers>
-          <ThemeProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </Providers>
-      </body>
-    </html>
+    <Providers>
+      <ThemeProvider>
+        <Navbar />
+        {children}
+        <Footer />
+      </ThemeProvider>
+    </Providers>
   );
 }

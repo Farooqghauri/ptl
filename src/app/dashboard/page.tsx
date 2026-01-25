@@ -1,323 +1,264 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   FileText,
   Scale,
   Languages,
   Search,
-  Sparkles,
-  TrendingUp,
   ArrowRight,
   Zap,
-  Shield,
-  Users,
-  Home,
+  CheckCircle,
+  Sparkles,
+  Star,
+  Clock,
 } from "lucide-react";
 import Link from "next/link";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
-import "../../styles/dark-theme.css";
-
-
 
 interface AITool {
   id: string;
   title: string;
+  tagline: string;
   description: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   path: string;
-  color: string;
-  bgGradient: string;
+  gradient: string;
   iconBg: string;
-  darkIconBg: string;
-  status: "active" | "coming-soon";
-  features: string[];
+  highlights: string[];
 }
 
 export default function Dashboard() {
-  const [searchQuery, setSearchQuery] = useState("");
-
   const aiTools: AITool[] = [
     {
       id: "case-summarizer",
-      title: "Case Summarizer",
+      title: "AI Case Summarizer",
+      tagline: "Summarize Pakistani Court Judgments in Seconds",
       description:
-        "Upload court judgments and get instant AI-powered summaries with key findings and precedents.",
+        "Upload Supreme Court, High Court, or District Court judgments in PDF format and get instant AI-powered summaries. Extract key findings, ratio decidendi, obiter dicta, and cited precedents automatically. Perfect for busy advocates preparing for hearings.",
       icon: FileText,
       path: "/ai-tools/case-summarizer",
-      color: "text-blue-600 dark:text-blue-400",
-      bgGradient: "from-blue-500 to-indigo-600",
-      iconBg: "bg-blue-100",
-      darkIconBg: "dark:bg-blue-900/50",
-      status: "active",
-      features: ["PDF Upload", "Key Findings", "Citation Extraction"],
+      gradient: "from-blue-500 to-cyan-400",
+      iconBg: "bg-gradient-to-br from-blue-500/20 to-cyan-400/20 border border-blue-500/30",
+      highlights: [
+        "Supreme Court & High Court PDFs",
+        "Extract Ratio Decidendi",
+        "Identify Cited Precedents",
+        "Save Hours of Reading",
+      ],
     },
     {
       id: "legal-drafter",
-      title: "Legal Drafter",
+      title: "AI Legal Document Drafter",
+      tagline: "Draft Bail Applications, Writ Petitions & Legal Notices",
       description:
-        "Generate professional legal drafts with automated citations from Supreme Court and High Court judgments.",
+        "Generate court-ready legal documents with proper Pakistani legal formatting. Create bail applications (pre-arrest & post-arrest), writ petitions under Article 199, Khula suits, stay applications, and legal notices. Auto-cite relevant PPC, CrPC, and CPC sections.",
       icon: Scale,
       path: "/ai-tools/legal-drafter",
-      color: "text-purple-600 dark:text-purple-400",
-      bgGradient: "from-purple-500 to-pink-600",
-      iconBg: "bg-purple-100",
-      darkIconBg: "dark:bg-purple-900/50",
-      status: "active",
-      features: ["Auto Citations", "Multiple Templates", "Smart Drafting"],
+      gradient: "from-purple-500 to-pink-500",
+      iconBg: "bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30",
+      highlights: [
+        "Bail Applications (Pre & Post Arrest)",
+        "Writ Petitions Article 199",
+        "Auto-Cite PPC, CrPC, CPC Sections",
+        "Court-Ready Formatting",
+      ],
     },
     {
       id: "legal-translator",
-      title: "Legal Translator",
+      title: "Legal Document Translator",
+      tagline: "English to Urdu Legal Translation with Proper Terminology",
       description:
-        "Translate legal documents between English and Urdu with specialized legal terminology accuracy.",
+        "Translate legal documents between English and Urdu while preserving specialized Pakistani legal terminology. Supports Jameel Noori Nastaleeq font, RTL formatting, and court-specific language used in Pakistani judiciary system.",
       icon: Languages,
       path: "/ai-tools/legal-translator",
-      color: "text-green-600 dark:text-green-400",
-      bgGradient: "from-green-500 to-emerald-600",
-      iconBg: "bg-green-100",
-      darkIconBg: "dark:bg-green-900/50",
-      status: "active",
-      features: ["English ↔ Urdu", "Legal Terms", "Document Upload"],
+      gradient: "from-emerald-500 to-teal-400",
+      iconBg: "bg-gradient-to-br from-emerald-500/20 to-teal-400/20 border border-emerald-500/30",
+      highlights: [
+        "English ↔ Urdu Translation",
+        "Pakistani Legal Terminology",
+        "Urdu RTL Formatting",
+        "Court Document Ready",
+      ],
     },
     {
       id: "legal-research",
-      title: "Legal Research Hub",
+      title: "AI Legal Research Assistant",
+      tagline: "Search PPC, CrPC, CPC, Constitution & Case Law",
       description:
-        "Search judgments, analyze cases, find precedents, and ask legal questions - all in one powerful tool.",
+        "Search across 3,340+ law sections from Pakistan Penal Code (PPC), Code of Criminal Procedure (CrPC), Civil Procedure Code (CPC), Constitution of Pakistan, Qanun-e-Shahadat, and Muslim Family Laws. Find relevant judgments and ask AI legal questions.",
       icon: Search,
       path: "/ai-tools/research",
-      color: "text-orange-600 dark:text-orange-400",
-      bgGradient: "from-orange-500 to-red-600",
-      iconBg: "bg-orange-100",
-      darkIconBg: "dark:bg-orange-900/50",
-      status: "active",
-      features: ["78+ Judgments", "AI Search", "Legal Q&A", "Precedents"],
+      gradient: "from-orange-500 to-amber-400",
+      iconBg: "bg-gradient-to-br from-orange-500/20 to-amber-400/20 border border-orange-500/30",
+      highlights: [
+        "3,340+ Law Sections Database",
+        "PPC, CrPC, CPC, Constitution",
+        "78 Supreme Court Judgments",
+        "AI-Powered Legal Q&A",
+      ],
     },
   ];
-
-  const stats = [
-    {
-      label: "AI Tools",
-      value: "4",
-      icon: Zap,
-      color: "text-blue-600 dark:text-blue-400",
-      bg: "bg-blue-50 dark:bg-blue-900/30",
-    },
-    {
-      label: "Judgments",
-      value: "78+",
-      icon: TrendingUp,
-      color: "text-green-600 dark:text-green-400",
-      bg: "bg-green-50 dark:bg-green-900/30",
-    },
-    {
-      label: "Active Users",
-      value: "150+",
-      icon: Users,
-      color: "text-purple-600 dark:text-purple-400",
-      bg: "bg-purple-50 dark:bg-purple-900/30",
-    },
-    {
-      label: "Uptime",
-      value: "99.9%",
-      icon: Shield,
-      color: "text-orange-600 dark:text-orange-400",
-      bg: "bg-orange-50 dark:bg-orange-900/30",
-    },
-  ];
-
-  const filteredTools = aiTools.filter(
-    (tool) =>
-      tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tool.description.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <>
       <SignedIn>
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 transition-colors duration-300">
-          {/* Header */}
-          {/* <div className="bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40 backdrop-blur-lg">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <Scale className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                      PTL AI Suite
-                    </h1>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      Pakistan Top Lawyers
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <Link
-                    href="/"
-                    className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    <Home className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-                  </Link>
-                  <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-sm font-semibold shadow-md">
-                    <Sparkles className="w-4 h-4" />
-                    <span>Pro Plan</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
+        <div className="min-h-screen bg-gray-900/50">
+          {/* Subtle gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10 pointer-events-none" />
 
-          {/* Content */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {/* Welcome Section */}
-            <div className="mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                Welcome back, Counselor 👋
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400 text-lg">
-                Access powerful AI tools designed specifically for Pakistani legal professionals.
+            <div className="mb-10">
+              <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
+                <Clock className="w-4 h-4" />
+                <span>
+                  {new Date().toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+                Welcome to{" "}
+                <span className="bg-gradient-to-r from-[#E85D2A] to-amber-400 bg-clip-text text-transparent">
+                  PTL AI Legal Suite
+                </span>
+              </h1>
+              <p className="text-gray-400 text-lg max-w-3xl">
+                Pakistan&apos;s first AI-powered legal platform for advocates and law firms. 
+                Draft petitions, research case law, translate documents, and summarize judgments — all in one place.
               </p>
             </div>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              {stats.map((stat, index) => (
+            {/* Tools Header */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1 h-8 bg-gradient-to-b from-[#E85D2A] to-amber-400 rounded-full" />
+              <h2 className="text-2xl font-bold text-white">AI-Powered Legal Tools</h2>
+              <span className="ml-auto text-sm text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full border border-gray-700/50">
+                4 Tools Available
+              </span>
+            </div>
+
+            {/* AI Tools - Vertical Cards */}
+            <div className="space-y-6">
+              {aiTools.map((tool, index) => (
                 <div
-                  key={index}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all"
+                  key={tool.id}
+                  className="group relative bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 hover:border-gray-600 transition-all duration-300 overflow-hidden"
                 >
+                  {/* Gradient left border */}
+                  <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${tool.gradient}`} />
+
+                  {/* Hover glow effect */}
                   <div
-                    className={`w-10 h-10 ${stat.bg} rounded-lg flex items-center justify-center mb-3`}
-                  >
-                    <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                    className={`absolute inset-0 bg-gradient-to-r ${tool.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
+                  />
+
+                  <div className="relative p-6 md:p-8">
+                    <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                      {/* Left: Icon & Number */}
+                      <div className="flex items-center gap-4 lg:flex-col lg:items-start">
+                        <div
+                          className={`w-16 h-16 ${tool.iconBg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
+                        >
+                          <tool.icon className="w-8 h-8 text-white" />
+                        </div>
+                        <span className="text-6xl font-bold text-gray-700/50 lg:hidden">
+                          0{index + 1}
+                        </span>
+                      </div>
+
+                      {/* Middle: Content */}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="hidden lg:block text-5xl font-bold text-gray-700/30">
+                            0{index + 1}
+                          </span>
+                          <div>
+                            <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#E85D2A] transition-colors">
+                              {tool.title}
+                            </h3>
+                            <p className={`text-sm font-medium bg-gradient-to-r ${tool.gradient} bg-clip-text text-transparent`}>
+                              {tool.tagline}
+                            </p>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-400 mb-5 leading-relaxed max-w-3xl">
+                          {tool.description}
+                        </p>
+
+                        {/* Highlights */}
+                        <div className="flex flex-wrap gap-3 mb-5">
+                          {tool.highlights.map((highlight, i) => (
+                            <span
+                              key={i}
+                              className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-700/30 text-gray-300 text-sm rounded-lg border border-gray-600/30"
+                            >
+                              <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
+                              {highlight}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right: CTA Button */}
+                      <div className="lg:self-center">
+                        <Link href={tool.path}>
+                          <button
+                            className={`w-full lg:w-auto px-6 py-3.5 bg-gradient-to-r ${tool.gradient} hover:opacity-90 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-black/20 whitespace-nowrap`}
+                          >
+                            <Sparkles className="w-4 h-4" />
+                            Open Tool
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
-                    {stat.value}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
                 </div>
               ))}
             </div>
 
-            {/* Search Bar */}
-            <div className="mb-8">
-              <div className="relative max-w-xl">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search AI tools..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-gray-900 dark:text-white placeholder-gray-400"
-                />
-              </div>
-            </div>
-
-            {/* AI Tools Grid */}
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">AI Tools</h3>
-                <span className="text-sm text-gray-600 dark:text-gray-400">
-                  {filteredTools.length} {filteredTools.length === 1 ? "tool" : "tools"} available
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {filteredTools.map((tool) => (
-                  <div
-                    key={tool.id}
-                    className="group bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden"
-                  >
-                    {/* Card Header with Gradient */}
-                    <div className={`h-2 bg-gradient-to-r ${tool.bgGradient}`} />
-
-                    <div className="p-6">
-                      {/* Icon and Status */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div
-                          className={`w-14 h-14 ${tool.iconBg} ${tool.darkIconBg} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                        >
-                          <tool.icon className={`w-7 h-7 ${tool.color}`} />
-                        </div>
-
-                        <span className="px-3 py-1 bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full flex items-center gap-1">
-                          <Zap className="w-3 h-3" />
-                          Live
-                        </span>
-                      </div>
-
-                      {/* Title and Description */}
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {tool.title}
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                        {tool.description}
-                      </p>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {tool.features.map((feature, index) => (
-                          <span
-                            key={index}
-                            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-md"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Action Button */}
-                      <Link href={tool.path}>
-                        <button className="w-full py-3 px-4 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-700 dark:to-gray-600 hover:from-blue-600 hover:to-indigo-600 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 group-hover:shadow-lg">
-                          Open Tool
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Empty State */}
-            {filteredTools.length === 0 && (
-              <div className="text-center py-16">
-                <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Search className="w-8 h-8 text-gray-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  No tools found
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">Try adjusting your search query</p>
-              </div>
-            )}
-
-            {/* Footer Info */}
-            <div className="mt-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Help Banner */}
+            <div className="mt-12 relative overflow-hidden rounded-2xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#E85D2A] to-amber-500" />
+              <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.05%22%3E%3Cpath d=%22M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50" />
+              <div className="relative p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2">Need help getting started?</h3>
-                  <p className="text-blue-100">
-                    Our AI tools are designed to save you hours of research and drafting time.
-                    Start with the Case Summarizer to see the power of AI in action.
+                  <div className="flex items-center gap-2 mb-3">
+                    <Star className="w-5 h-5 text-white/80" />
+                    <span className="text-white/80 text-sm font-medium">
+                      Built for Pakistani Legal Professionals
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    Save Hours on Legal Research & Drafting
+                  </h3>
+                  <p className="text-white/80">
+                    PTL AI Suite helps advocates, law firms, and legal researchers work faster. 
+                    Access PPC, CrPC, CPC, Constitution sections and Supreme Court judgments instantly.
                   </p>
                 </div>
-                <button className="px-6 py-3 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-lg transition-all whitespace-nowrap">
-                  View Documentation
-                </button>
+                <Link href="/ai-tools/research">
+                  <button className="px-6 py-3.5 bg-white text-[#E85D2A] rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all whitespace-nowrap">
+                    Start Researching
+                  </button>
+                </Link>
               </div>
             </div>
 
             {/* Disclaimer */}
-            <div className="mt-8 text-center">
-              <p className="text-xs text-gray-500 dark:text-gray-500 max-w-3xl mx-auto">
-                <strong>Legal Disclaimer:</strong> All AI-generated content is for informational
-                purposes only and does not constitute legal advice. Users must verify all citations
-                and recommendations with official sources before court submission. PTL AI Suite is
-                a research and drafting assistance tool.
+            <div className="mt-10 text-center">
+              <p className="text-xs text-gray-500 max-w-3xl mx-auto leading-relaxed">
+                <strong className="text-gray-400">Legal Disclaimer:</strong> All AI-generated
+                content is for informational purposes only and does not constitute legal advice.
+                Users must verify all citations and recommendations with official sources before
+                court submission. PTL AI Suite is a research and drafting assistance tool for
+                Pakistani lawyers and advocates.
               </p>
             </div>
           </div>

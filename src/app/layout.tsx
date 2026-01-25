@@ -54,7 +54,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#E85D2A",
+  themeColor: "#1a1a1a",
 };
 
 export default function RootLayout({
@@ -64,7 +64,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en" className="dark" suppressHydrationWarning>
         <head>
           <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -74,8 +74,7 @@ export default function RootLayout({
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-title" content="PTL" />
         </head>
-        <body className="antialiased">
-          {/* <PWARegister /> */}
+        <body className="antialiased bg-gray-950 text-white">
           {children}
         </body>
       </html>
