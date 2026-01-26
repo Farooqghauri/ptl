@@ -46,7 +46,7 @@ export default function LegalDrafter() {
         body: JSON.stringify({ category, facts }),
       });
       const data = await response.json();
-      if (data.draft) setDraft(data.draft);
+      if (data.draft_en) setDraft(data.draft_en);
     } catch (error) {
       console.error("Drafting failed:", error);
       setDraft("Error: Could not connect to the drafting server.");

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import time
+import logging
 from typing import Dict
 
 from fastapi import APIRouter, UploadFile, File
@@ -11,8 +12,8 @@ from fastapi.responses import JSONResponse
 from services.text_extractor import extract_text
 from services.summarizer_ai import summarize_judgment_to_json
 
-
 router = APIRouter(tags=["summarizer_v2"])
+logger = logging.getLogger(__name__)
 
 ALLOWED_CONTENT_TYPES = {
     "application/pdf",
@@ -21,16 +22,50 @@ ALLOWED_CONTENT_TYPES = {
     "text/plain",
 }
 
-ALLOWED_EXTENSIONS = (".pdf",".docx",".doc",".txt")
+ALLOWED_EXTENSIONS = (".pdf", ".docx", ".doc", ".txt")
 
 MAX_FILE_SIZE_BYTES = 15 * 1024 * 1024  # 15MB
 
+# -----------------------------
+# TEXT TRUNCATION LIMITS
+# -----------------------------
+MAX_TEXT_CHARS = 50000  # Maximum characters to send to AI (~12,500 tokens)
+HEAD_RATIO = 0.4  # 40% from start (case metadata, parties, background)
+TAIL_RATIO = 0.6  # 60% from end (final order, holding, outcome)
+
+
+def _truncate_text_for_ai(text: str) -> tuple[str, bool]:
+    """
+    Truncate large text while preserving head (metadata) and tail (outcome).
+
+    Returns:
+        tuple: (truncated_text, was_truncated)
+    """
+    if not text or len(text) <= MAX_TEXT_CHARS:
+        return text, False
+
+    head_chars = int(MAX_TEXT_CHARS * HEAD_RATIO)
+    tail_chars = int(MAX_TEXT_CHARS * TAIL_RATIO)
+
+    head = text[:head_chars]
+    tail = text[-tail_chars:]
+
+    truncated = (
+            head +
+            "\n\n[... DOCUMENT TRUNCATED FOR PROCESSING - MIDDLE SECTION OMITTED ...]\n\n" +
+            tail
+    )
+
+    logger.info(f"Truncated text from {len(text)} to {len(truncated)} chars")
+
+    return truncated, True
+
 
 def error_response(
-    status_code: int,
-    error_code: str,
-    message: str,
-    details: Dict[str, object] | None = None,
+        status_code: int,
+        error_code: str,
+        message: str,
+        details: Dict[str, object] | None = None,
 ) -> JSONResponse:
     return JSONResponse(
         status_code=status_code,
@@ -56,7 +91,7 @@ async def summarize_v2(file: UploadFile = File(...)):
             status_code=400,
             error_code="UNSUPPORTED_FORMAT",
             message="Unsupported file extension",
-            details={"allowed_extensions": list(ALLOWED_EXTENSIONS),"file_name": filename},
+            details={"allowed_extensions": list(ALLOWED_EXTENSIONS), "file_name": filename},
         )
 
     if content_type not in ALLOWED_CONTENT_TYPES:
@@ -64,7 +99,7 @@ async def summarize_v2(file: UploadFile = File(...)):
             status_code=400,
             error_code="UNSUPPORTED_FORMAT",
             message="Unsupported content type",
-            details={"allowed_content_types": sorted(list(ALLOWED_CONTENT_TYPES)),"content_type": content_type},
+            details={"allowed_content_types": sorted(list(ALLOWED_CONTENT_TYPES)), "content_type": content_type},
         )
 
     # 2) Read bytes (and size limit)
@@ -76,7 +111,7 @@ async def summarize_v2(file: UploadFile = File(...)):
             status_code=413,
             error_code="FILE_TOO_LARGE",
             message="File too large (max 15MB)",
-            details={"size_bytes": file_size,"limit_bytes": MAX_FILE_SIZE_BYTES},
+            details={"size_bytes": file_size, "limit_bytes": MAX_FILE_SIZE_BYTES},
         )
 
     # 3) Extract text
@@ -87,6 +122,7 @@ async def summarize_v2(file: UploadFile = File(...)):
             filename=filename,
         )
     except Exception as exc:
+        logger.exception(f"Text extraction failed: {exc}")
         return error_response(
             status_code=500,
             error_code="EXTRACTION_FAILED",
@@ -99,13 +135,21 @@ async def summarize_v2(file: UploadFile = File(...)):
             status_code=400,
             error_code="NO_TEXT_EXTRACTED",
             message="No readable text extracted",
-            details={"file_name": filename,"content_type": content_type},
+            details={"file_name": filename, "content_type": content_type},
         )
 
-    # 4) AI summarize to schema-validated JSON
+    # 4) Truncate large text to prevent timeout/token overflow
+    original_chars = len(text)
+    text_for_ai, was_truncated = _truncate_text_for_ai(text)
+
+    if was_truncated:
+        logger.info(f"Large file detected: {filename} ({original_chars} chars -> {len(text_for_ai)} chars)")
+
+    # 5) AI summarize to schema-validated JSON
     try:
-        summary = summarize_judgment_to_json(judgment_text=text, retries=2)
+        summary = summarize_judgment_to_json(judgment_text=text_for_ai, retries=2)
     except Exception as exc:
+        logger.exception(f"AI summarization failed: {exc}")
         return error_response(
             status_code=500,
             error_code="AI_FAILED",
@@ -115,7 +159,7 @@ async def summarize_v2(file: UploadFile = File(...)):
 
     processing_ms = int((time.perf_counter() - start) * 1000)
 
-    # 5) Response
+    # 6) Response
     return {
         "success": True,
         "summary": summary,
@@ -123,7 +167,9 @@ async def summarize_v2(file: UploadFile = File(...)):
             "file_name": filename,
             "content_type": content_type,
             "file_size_bytes": file_size,
-            "extracted_chars": len(text),
+            "extracted_chars": original_chars,
+            "processed_chars": len(text_for_ai),
+            "was_truncated": was_truncated,
             "processing_time_ms": processing_ms,
         },
     }

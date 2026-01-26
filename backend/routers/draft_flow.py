@@ -70,7 +70,8 @@ def clarification_response() -> Dict:
 # Core Endpoint (FORGIVING)
 # -----------------------------
 
-@router.post("/api/draft")
+@router.post("/api/draft/flow")
+
 async def draft_flow(request: Request):
     try:
         body = await request.json()

@@ -1,0 +1,56 @@
+RENT / LEASE AGREEMENT
+
+This Agreement is made on [DATE] at [CITY].
+
+BETWEEN:
+
+1) [LANDLORD_NAME], S/o [LANDLORD_FATHER], CNIC: [LANDLORD_CNIC], R/o [LANDLORD_ADDRESS]
+   (hereinafter called the “LANDLORD”);
+
+AND
+
+2) [TENANT_NAME], S/o [TENANT_FATHER], CNIC: [TENANT_CNIC], R/o [TENANT_ADDRESS]
+   (hereinafter called the “TENANT”).
+
+WHEREAS:
+A. The Landlord is the owner / lawful possessor of the premises situated at [PROPERTY_ADDRESS] (“Premises”).
+B. The Tenant has requested to take the Premises on rent and the Landlord has agreed.
+
+NOW, THEREFORE, it is agreed as follows:
+
+1. TERM:
+   The tenancy shall be for [DURATION] commencing from [START_DATE] and ending on [END_DATE].
+
+2. RENT:
+   Monthly rent shall be PKR [RENT_AMOUNT] payable on or before [DUE_DATE] of each month.
+
+3. SECURITY:
+   The Tenant shall pay security deposit of PKR [SECURITY_AMOUNT], refundable subject to deductions for dues/damages.
+
+4. UTILITIES:
+   [ELECTRICITY/WATER/GAS/MAINTENANCE] shall be paid by [TENANT/LANDLORD] as per actual bills.
+
+5. USE:
+   The Premises shall be used for [RESIDENTIAL/COMMERCIAL] purpose only. No illegal activity.
+
+6. MAINTENANCE:
+   Routine maintenance by Tenant. Structural repairs by Landlord, unless damage is caused by Tenant.
+
+7. SUBLETTING:
+   The Tenant shall not sublet, assign, or part with possession without written consent of Landlord.
+
+8. DEFAULT:
+   In case of default of rent for [NUMBER] months or breach of terms, Landlord may terminate the tenancy.
+
+9. TERMINATION:
+   Either party may terminate by giving [NOTICE_PERIOD] written notice.
+
+10. GOVERNING LAW / JURISDICTION:
+   This Agreement shall be governed by laws applicable in Pakistan and disputes shall be subject to courts at [CITY].
+
+IN WITNESS WHEREOF the parties have signed on the date first above written.
+
+LANDLORD: ____________________      TENANT: ____________________
+
+Witness #1: ___________________      CNIC: ______________________
+Witness #2: ___________________      CNIC: ______________________
