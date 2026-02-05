@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Moon, Sun, Scale } from "lucide-react";
+import { Menu, X, Scale } from "lucide-react";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
-import { useTheme } from "@/context/ThemeContext";
 
 interface MenuItem {
   name: string;
@@ -17,7 +16,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 8);
@@ -28,11 +26,10 @@ export default function Navbar() {
 
   const menuItems: MenuItem[] = [
     { name: "Home", path: "/" },
+    { name: "Dashboard", path: "/dashboard" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
-    { name: "AI Tools", path: "/ai-tools" },
-    { name: "Top Lawyers", path: "/top-lawyers" },
-    { name: "Hire A Top Lawyer", path: "/hire-a-top-lawyer" },
+    { name: "Pricing", path: "/pricing" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -40,8 +37,8 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-700"
-          : "bg-white dark:bg-gray-900 border-b border-transparent"
+          ? "bg-slate-950/95 backdrop-blur-md shadow-lg border-b border-slate-800"
+          : "bg-slate-950 border-b border-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
@@ -55,10 +52,10 @@ export default function Navbar() {
               </div>
             </div>
             <div className="hidden sm:block">
-              <span className="block text-lg font-bold bg-gradient-to-r from-blue-800 to-indigo-700 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              <span className="block text-lg font-bold bg-gradient-to-r from-blue-300 to-cyan-200 bg-clip-text text-transparent">
                 Pakistan&apos;s Top Lawyers
               </span>
-              <span className="block text-xs text-gray-500 dark:text-gray-400 font-medium -mt-0.5">
+              <span className="block text-xs text-slate-400 font-medium -mt-0.5">
                 AI-Powered Legal Platform
               </span>
             </div>
@@ -77,7 +74,7 @@ export default function Navbar() {
                   className={`px-4 py-2 rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
                     isActive
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400"
+                      : "text-slate-200 hover:bg-slate-800 hover:text-white"
                   }`}
                 >
                   {item.name}
@@ -89,23 +86,10 @@ export default function Navbar() {
 
         {/* Desktop Right Section */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-            aria-label="Toggle theme"
-          >
-            {theme === "light" ? (
-              <Moon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-            ) : (
-              <Sun className="w-5 h-5 text-yellow-500" />
-            )}
-          </button>
-
           <SignedOut>
             <Link
               href="/sign-in"
-              className="px-5 py-2.5 text-gray-700 dark:text-gray-300 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              className="px-5 py-2.5 text-slate-200 font-medium hover:text-white transition-colors"
             >
               Sign In
             </Link>
@@ -136,22 +120,9 @@ export default function Navbar() {
 
         {/* Mobile Right Section */}
         <div className="flex lg:hidden items-center gap-2">
-          {/* Theme Toggle Mobile */}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "light" ? (
-              <Moon className="w-5 h-5 text-gray-600" />
-            ) : (
-              <Sun className="w-5 h-5 text-yellow-500" />
-            )}
-          </button>
-
           {/* Hamburger */}
           <button
-            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="p-2 rounded-lg bg-slate-800 text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             onClick={() => setIsOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
@@ -165,7 +136,7 @@ export default function Navbar() {
       {/* Mobile Dropdown */}
       <div
         id="mobile-menu"
-        className={`lg:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden transition-all duration-300 ${
+        className={`lg:hidden border-t border-slate-800 bg-slate-950 overflow-hidden transition-all duration-300 ${
           isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -179,7 +150,7 @@ export default function Navbar() {
                   className={`block px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
                     isActive
                       ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      : "text-slate-200 hover:bg-slate-800"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -193,7 +164,7 @@ export default function Navbar() {
           <SignedOut>
             <Link
               href="/sign-in"
-              className="px-4 py-3 text-center text-gray-700 dark:text-gray-300 font-medium border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              className="px-4 py-3 text-center text-slate-200 font-medium border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Sign In

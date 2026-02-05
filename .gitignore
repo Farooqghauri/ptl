@@ -47,3 +47,10 @@ next-env.d.ts
 backend/venv/
 backend/__pycache__/
 *.pyc
+
+# Local temp/test artifacts (not for production)
+.tmp_*
+replay_pid*.log
+LEGAL_*_TEST_REPORT.md
+PROJECT_CONTEXT.md
+PTL_MERGED_HANDOFF.md

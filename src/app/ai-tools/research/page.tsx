@@ -20,7 +20,6 @@ import {
   HelpCircle,
   X
 } from "lucide-react";
-import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 // import "../../styles/dark-theme.css";
 
 
@@ -115,16 +114,14 @@ export default function ResearchPage() {
   ];
 
   return (
-     <> 
-       <SignedIn>
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+        <div className="min-h-screen bg-gradient-to-br from-slate-950 to-slate-900 text-slate-100">
       {/* Header */}
-      <div className="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+      <div className="bg-slate-950 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-4 py-6">
           {/* Back Link */}
           <Link 
             href="/dashboard" 
-            className="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 mb-4 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-emerald-300 mb-4 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
@@ -133,14 +130,14 @@ export default function ResearchPage() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-emerald-100 dark:bg-emerald-900 rounded-lg">
-                  <Scale className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                <div className="p-2 bg-emerald-900/40 rounded-lg">
+                  <Scale className="w-6 h-6 text-emerald-300" />
                 </div>
-                <h1 className="text-2xl font-bold text-slate-800 dark:text-white">
+                <h1 className="text-2xl font-bold text-slate-100">
                   Legal Research
                 </h1>
               </div>
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-slate-400">
                 Search law sections, case law, or ask any legal question
               </p>
             </div>
@@ -148,8 +145,8 @@ export default function ResearchPage() {
             {/* How to Use Button */}
             <button
               onClick={() => setShowHowToUse(true)}
-              className="flex items-center gap-2 px-4 py-2 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
-            >
+            className="flex items-center gap-2 px-4 py-2 text-sm bg-slate-900 text-slate-200 rounded-lg hover:bg-slate-800 transition-colors border border-slate-800"
+          >
               <HelpCircle className="w-4 h-4" />
               How to Use
             </button>
@@ -159,44 +156,44 @@ export default function ResearchPage() {
 
       {/* How to Use Modal */}
       {showHowToUse && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl max-w-lg w-full max-h-[80vh] overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b border-slate-200 dark:border-slate-700">
-              <h2 className="text-lg font-semibold text-slate-800 dark:text-white">
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+          <div className="bg-slate-950 rounded-2xl shadow-xl max-w-lg w-full max-h-[80vh] overflow-y-auto border border-slate-800">
+            <div className="flex items-center justify-between p-4 border-b border-slate-800">
+              <h2 className="text-lg font-semibold text-slate-100">
                 How to Use Legal Research
               </h2>
               <button
                 onClick={() => setShowHowToUse(false)}
-                className="p-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                className="p-1 hover:bg-slate-800 rounded-lg transition-colors"
               >
-                <X className="w-5 h-5 text-slate-500" />
+                <X className="w-5 h-5 text-slate-300" />
               </button>
             </div>
             
             <div className="p-6 space-y-6">
               {/* Search Types */}
               <div>
-                <h3 className="font-semibold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
+                <h3 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
                   <Search className="w-4 h-4 text-emerald-500" />
                   What You Can Search
                 </h3>
                 <div className="space-y-3">
-                  <div className="p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
-                    <p className="font-medium text-blue-800 dark:text-blue-300 text-sm">📖 Law Sections</p>
-                    <p className="text-sm text-blue-600 dark:text-blue-400 mt-1">
-                      Type section numbers like <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">489F</code>, <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">PPC 302</code>, or <code className="bg-blue-100 dark:bg-blue-800 px-1 rounded">CrPC 154</code>
+                  <div className="p-3 bg-blue-950/40 border border-blue-900/50 rounded-lg">
+                    <p className="font-medium text-blue-200 text-sm">📖 Law Sections</p>
+                    <p className="text-sm text-blue-300 mt-1">
+                      Type section numbers like <code className="bg-blue-900/60 px-1 rounded">489F</code>, <code className="bg-blue-900/60 px-1 rounded">PPC 302</code>, or <code className="bg-blue-900/60 px-1 rounded">CrPC 154</code>
                     </p>
                   </div>
-                  <div className="p-3 bg-amber-50 dark:bg-amber-900/30 rounded-lg">
-                    <p className="font-medium text-amber-800 dark:text-amber-300 text-sm">⚖️ Case Law</p>
-                    <p className="text-sm text-amber-600 dark:text-amber-400 mt-1">
-                      Search cases like <code className="bg-amber-100 dark:bg-amber-800 px-1 rounded">bail murder</code> or <code className="bg-amber-100 dark:bg-amber-800 px-1 rounded">2023 SCMR</code>
+                  <div className="p-3 bg-amber-950/30 border border-amber-900/50 rounded-lg">
+                    <p className="font-medium text-amber-200 text-sm">⚖️ Case Law</p>
+                    <p className="text-sm text-amber-300 mt-1">
+                      Search cases like <code className="bg-amber-900/60 px-1 rounded">bail murder</code> or <code className="bg-amber-900/60 px-1 rounded">2023 SCMR</code>
                     </p>
                   </div>
-                  <div className="p-3 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg">
-                    <p className="font-medium text-emerald-800 dark:text-emerald-300 text-sm">💡 Legal Questions</p>
-                    <p className="text-sm text-emerald-600 dark:text-emerald-400 mt-1">
-                      Ask anything like <code className="bg-emerald-100 dark:bg-emerald-800 px-1 rounded">how to file FIR</code> or <code className="bg-emerald-100 dark:bg-emerald-800 px-1 rounded">divorce procedure</code>
+                  <div className="p-3 bg-emerald-950/30 border border-emerald-900/50 rounded-lg">
+                    <p className="font-medium text-emerald-200 text-sm">💡 Legal Questions</p>
+                    <p className="text-sm text-emerald-300 mt-1">
+                      Ask anything like <code className="bg-emerald-900/60 px-1 rounded">how to file FIR</code> or <code className="bg-emerald-900/60 px-1 rounded">divorce procedure</code>
                     </p>
                   </div>
                 </div>
@@ -204,37 +201,37 @@ export default function ResearchPage() {
 
               {/* Examples */}
               <div>
-                <h3 className="font-semibold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
+                <h3 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
                   <Lightbulb className="w-4 h-4 text-amber-500" />
                   Example Searches
                 </h3>
-                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-3 h-3" />
-                    <code className="bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded">489F</code> - Cheque bounce law
+                    <code className="bg-slate-800 px-2 py-0.5 rounded">489F</code> - Cheque bounce law
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-3 h-3" />
-                    <code className="bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded">PPC 302</code> - Murder section
+                    <code className="bg-slate-800 px-2 py-0.5 rounded">PPC 302</code> - Murder section
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-3 h-3" />
-                    <code className="bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded">bail Supreme Court</code> - Bail cases
+                    <code className="bg-slate-800 px-2 py-0.5 rounded">bail Supreme Court</code> - Bail cases
                   </li>
                   <li className="flex items-center gap-2">
                     <ChevronRight className="w-3 h-3" />
-                    <code className="bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded">punishment for theft</code> - Legal question
+                    <code className="bg-slate-800 px-2 py-0.5 rounded">punishment for theft</code> - Legal question
                   </li>
                 </ul>
               </div>
 
               {/* Tips */}
               <div>
-                <h3 className="font-semibold text-slate-800 dark:text-white mb-3 flex items-center gap-2">
+                <h3 className="font-semibold text-slate-100 mb-3 flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-purple-500" />
                   Pro Tips
                 </h3>
-                <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                <ul className="space-y-2 text-sm text-slate-300">
                   <li>• Use quick search buttons for common queries</li>
                   <li>• Add law name for precise results (PPC, CrPC, CPC)</li>
                   <li>• Click on sections to expand full text</li>
@@ -243,11 +240,11 @@ export default function ResearchPage() {
               </div>
 
               {/* Database Info */}
-              <div className="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
-                <h3 className="font-semibold text-slate-800 dark:text-white mb-2 text-sm">
+              <div className="p-4 bg-slate-900 border border-slate-800 rounded-lg">
+                <h3 className="font-semibold text-slate-100 mb-2 text-sm">
                   📚 Database Coverage
                 </h3>
-                <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-1">
+                <ul className="text-sm text-slate-300 space-y-1">
                   <li>• Pakistan Penal Code 1860</li>
                   <li>• Code of Criminal Procedure 1898</li>
                   <li>• Code of Civil Procedure 1908</li>
@@ -259,10 +256,10 @@ export default function ResearchPage() {
               </div>
             </div>
             
-            <div className="p-4 border-t border-slate-200 dark:border-slate-700">
+            <div className="p-4 border-t border-slate-800">
               <button
                 onClick={() => setShowHowToUse(false)}
-                className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors"
+                className="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium rounded-lg transition-colors"
               >
                 Got it, lets search!
               </button>
@@ -273,7 +270,7 @@ export default function ResearchPage() {
 
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* Search Box */}
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 mb-6">
+        <div className="bg-slate-900 rounded-2xl shadow-lg border border-slate-800 p-6 mb-6">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
@@ -282,12 +279,12 @@ export default function ResearchPage() {
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Type section number (489F), case topic (bail murder), or ask a question..."
-              className="w-full pl-12 pr-32 py-4 text-lg border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700 text-slate-800 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+              className="w-full pl-12 pr-32 py-4 text-lg border border-slate-700 rounded-xl bg-slate-950 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
             />
             <button
               onClick={handleSearch}
               disabled={loading || !query.trim()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-300 dark:disabled:bg-slate-600 text-white font-medium rounded-lg transition-colors flex items-center gap-2"
+              className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-medium rounded-lg transition-colors flex items-center gap-2"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -302,14 +299,14 @@ export default function ResearchPage() {
 
           {/* Quick Searches */}
           <div className="mt-4 flex flex-wrap gap-2">
-            <span className="text-sm text-slate-500 dark:text-slate-400">Try:</span>
+            <span className="text-sm text-slate-300 dark:text-slate-400">Try:</span>
             {quickSearches.map((q) => (
               <button
                 key={q}
                 onClick={() => {
                   setQuery(q);
                 }}
-                className="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-full hover:bg-emerald-100 hover:text-emerald-700 dark:hover:bg-emerald-900 dark:hover:text-emerald-300 transition-colors"
+                className="px-3 py-1 text-sm bg-slate-800 text-slate-300 rounded-full hover:bg-emerald-900/40 hover:text-emerald-300 transition-colors"
               >
                 {q}
               </button>
@@ -317,51 +314,12 @@ export default function ResearchPage() {
           </div>
         </div>
 
-        {/* Stats Bar */}
-        {stats && !result && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-3">
-                <BookOpen className="w-8 h-8 text-blue-500" />
-                <div>
-                  <p className="text-2xl font-bold text-slate-800 dark:text-white">
-                    {stats.total_sections.toLocaleString()}
-                  </p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">Law Sections</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-3">
-                <Gavel className="w-8 h-8 text-amber-500" />
-                <div>
-                  <p className="text-2xl font-bold text-slate-800 dark:text-white">
-                    {stats.total_judgments}
-                  </p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">Judgments</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-3">
-                <FileText className="w-8 h-8 text-emerald-500" />
-                <div>
-                  <p className="text-2xl font-bold text-slate-800 dark:text-white">
-                    {stats.laws_covered.length}
-                  </p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">Laws Covered</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Loading State */}
         {loading && (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-12">
+          <div className="bg-slate-950 rounded-2xl shadow-lg border border-slate-800 p-12">
             <div className="flex flex-col items-center justify-center">
               <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mb-4" />
-              <p className="text-slate-600 dark:text-slate-400">
+              <p className="text-slate-300">
                 Searching legal database...
               </p>
             </div>
@@ -373,18 +331,18 @@ export default function ResearchPage() {
           <div className="space-y-6">
             {/* Query Type Badge */}
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300 text-sm font-medium rounded-full">
+              <span className="px-3 py-1 bg-emerald-900/50 text-emerald-200 text-sm font-medium rounded-full">
                 {result.query_type === "section_lookup" && "📖 Section Lookup"}
                 {result.query_type === "case_search" && "⚖️ Case Search"}
                 {result.query_type === "legal_question" && "💡 Legal Question"}
               </span>
-              <span className="text-sm text-slate-500 dark:text-slate-400">
+              <span className="text-sm text-slate-300 dark:text-slate-400">
                 Found {result.sections.length} sections, {result.judgments.length} cases
               </span>
             </div>
 
             {/* AI Explanation - Main Card */}
-            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div className="bg-slate-950 rounded-2xl shadow-lg border border-slate-800 overflow-hidden">
               <div className="bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-white">
@@ -394,7 +352,7 @@ export default function ResearchPage() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => copyToClipboard(result.ai_explanation)}
-                      className="p-2 hover:bg-white/20 rounded-lg transition-colors text-white"
+                      className="p-2 hover:bg-slate-900/20 rounded-lg transition-colors text-white"
                       title="Copy"
                     >
                       {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
@@ -408,7 +366,7 @@ export default function ResearchPage() {
                         a.download = `legal-research-${query}.txt`;
                         a.click();
                       }}
-                      className="p-2 hover:bg-white/20 rounded-lg transition-colors text-white"
+                      className="p-2 hover:bg-slate-900/20 rounded-lg transition-colors text-white"
                       title="Download"
                     >
                       <Download className="w-4 h-4" />
@@ -418,7 +376,7 @@ export default function ResearchPage() {
               </div>
               <div className="p-6">
                 <div className="prose prose-slate dark:prose-invert max-w-none">
-                  <div className="whitespace-pre-wrap text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <div className="whitespace-pre-wrap text-slate-200 leading-relaxed">
                     {result.ai_explanation}
                   </div>
                 </div>
@@ -427,18 +385,18 @@ export default function ResearchPage() {
 
             {/* Law Sections */}
             {result.sections.length > 0 && (
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
-                <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-950 rounded-2xl shadow-lg border border-slate-800 overflow-hidden">
+                <div className="px-6 py-4 border-b border-slate-800">
                   <div className="flex items-center gap-2">
                     <BookOpen className="w-5 h-5 text-blue-500" />
-                    <span className="font-semibold text-slate-800 dark:text-white">
+                    <span className="font-semibold text-slate-100">
                       Law Sections ({result.sections.length})
                     </span>
                   </div>
                 </div>
                 <div className="divide-y divide-slate-200 dark:divide-slate-700">
                   {result.sections.map((section, idx) => (
-                    <div key={idx} className="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50">
+                    <div key={idx} className="p-4 hover:bg-slate-800/60">
                       <button
                         onClick={() => setExpandedSection(expandedSection === idx ? null : idx)}
                         className="w-full text-left"
@@ -449,11 +407,11 @@ export default function ResearchPage() {
                               <span className="px-2 py-0.5 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs font-medium rounded">
                                 Section {section.section_number}
                               </span>
-                              <span className="text-xs text-slate-500 dark:text-slate-400">
+                              <span className="text-xs text-slate-300 dark:text-slate-400">
                                 {section.law_name}
                               </span>
                             </div>
-                            <h3 className="font-medium text-slate-800 dark:text-white">
+                            <h3 className="font-medium text-slate-100">
                               {section.title}
                             </h3>
                           </div>
@@ -466,7 +424,7 @@ export default function ResearchPage() {
                       </button>
                       {expandedSection === idx && (
                         <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-600">
-                          <p className="text-sm text-slate-600 dark:text-slate-400 whitespace-pre-wrap">
+                          <p className="text-sm text-slate-300 whitespace-pre-wrap">
                             {section.content}
                           </p>
                           <button
@@ -485,22 +443,22 @@ export default function ResearchPage() {
 
             {/* Judgments */}
             {result.judgments.length > 0 && (
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
-                <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-950 rounded-2xl shadow-lg border border-slate-800 overflow-hidden">
+                <div className="px-6 py-4 border-b border-slate-800">
                   <div className="flex items-center gap-2">
                     <Gavel className="w-5 h-5 text-amber-500" />
-                    <span className="font-semibold text-slate-800 dark:text-white">
+                    <span className="font-semibold text-slate-100">
                       Related Cases ({result.judgments.length})
                     </span>
                   </div>
                 </div>
                 <div className="divide-y divide-slate-200 dark:divide-slate-700">
                   {result.judgments.map((judgment, idx) => (
-                    <div key={idx} className="p-4 hover:bg-slate-50 dark:hover:bg-slate-700/50">
-                      <h3 className="font-medium text-slate-800 dark:text-white mb-2">
+                    <div key={idx} className="p-4 hover:bg-slate-800/60">
+                      <h3 className="font-medium text-slate-100 mb-2">
                         {judgment.case_title}
                       </h3>
-                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-2">
+                      <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300 dark:text-slate-400 mb-2">
                         <span className="flex items-center gap-1">
                           <Building className="w-3 h-3" />
                           {judgment.court}
@@ -510,13 +468,13 @@ export default function ResearchPage() {
                           {judgment.date}
                         </span>
                         {judgment.citation && (
-                          <span className="px-2 py-0.5 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded">
+                          <span className="px-2 py-0.5 bg-amber-900/40 text-amber-200 rounded">
                             {judgment.citation}
                           </span>
                         )}
                       </div>
                       {judgment.summary && (
-                        <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3">
+                        <p className="text-sm text-slate-300 line-clamp-3">
                           {judgment.summary}
                         </p>
                       )}
@@ -528,10 +486,10 @@ export default function ResearchPage() {
 
             {/* Suggestions */}
             {result.suggestions.length > 0 && (
-              <div className="bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+              <div className="bg-slate-900/60 rounded-xl p-4 border border-slate-800">
                 <div className="flex items-center gap-2 mb-3">
                   <Lightbulb className="w-4 h-4 text-amber-500" />
-                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                  <span className="text-sm font-medium text-slate-200">
                     Search Tips
                   </span>
                 </div>
@@ -539,7 +497,7 @@ export default function ResearchPage() {
                   {result.suggestions.map((suggestion, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 text-xs bg-white dark:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-full border border-slate-200 dark:border-slate-600"
+                      className="px-3 py-1 text-xs bg-slate-900 dark:bg-slate-700 text-slate-300 rounded-full border border-slate-200 dark:border-slate-600"
                     >
                       {suggestion}
                     </span>
@@ -553,13 +511,13 @@ export default function ResearchPage() {
         {/* Empty State */}
         {!result && !loading && (
           <div className="text-center py-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-slate-900 rounded-full mb-4">
               <Search className="w-8 h-8 text-slate-400" />
             </div>
-            <h3 className="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2">
+            <h3 className="text-lg font-medium text-slate-200 mb-2">
               Start Your Legal Research
             </h3>
-            <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-4">
+            <p className="text-slate-300 dark:text-slate-400 max-w-md mx-auto mb-4">
               Enter a section number like <strong>489F</strong>, search for cases like{" "}
               <strong>bail murder</strong>, or ask any legal question.
             </p>
@@ -574,11 +532,6 @@ export default function ResearchPage() {
         )}
       </div>
     </div>
-      </SignedIn>
-   
-         <SignedOut>
-           <RedirectToSignIn />
-         </SignedOut>
-       </>
   );
 }
+

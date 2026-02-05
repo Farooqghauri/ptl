@@ -3,11 +3,11 @@ import io
 import pdfplumber
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 from pydantic import BaseModel
-from groq import Groq
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 router = APIRouter()
 
@@ -25,6 +25,34 @@ def extract_text_from_pdf(file_bytes):
     return text
 
 
+def split_text_into_chunks(text: str, max_chars: int = 800):
+    """
+    Split text into roughly max_chars chunks, preserving paragraph boundaries.
+    """
+    if not text:
+        return []
+    paragraphs = [p.strip() for p in text.split("\n\n") if p.strip()]
+    chunks = []
+    current = ""
+    for p in paragraphs:
+        candidate = (current + "\n\n" + p).strip() if current else p
+        if len(candidate) <= max_chars:
+            current = candidate
+        else:
+            if current:
+                chunks.append(current)
+            if len(p) <= max_chars:
+                current = p
+            else:
+                # Hard-split long paragraph
+                for i in range(0, len(p), max_chars):
+                    chunks.append(p[i:i + max_chars])
+                current = ""
+    if current:
+        chunks.append(current)
+    return chunks
+
+
 # --- 1. Text Translation ---
 class TranslationRequest(BaseModel):
     text: str
@@ -38,6 +66,8 @@ async def translate_text(request: TranslationRequest):
 
     CRITICAL RULES:
     1. Output ONLY Urdu script - NO English, NO Vietnamese, NO other languages
+    1.5. Translate ALL content fully. Do NOT summarize, shorten, or omit any text.
+    1.6. Preserve line breaks and paragraph structure.
     2. Use Pakistani legal terminology:
        - Jurisdiction = دائرہ اختیار
        - Petitioner = درخواست گزار
@@ -76,20 +106,32 @@ async def translate_text(request: TranslationRequest):
 
     RULES:
     1. Use proper English legal terminology
+    1.5. Translate ALL content fully. Do NOT summarize, shorten, or omit any text.
+    1.6. Preserve line breaks and paragraph structure.
     2. Maintain formal legal tone
     3. Keep formatting intact
     4. Translate all Urdu text accurately"""
 
     try:
-        completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": request.text}
-            ],
-            temperature=0.3,
-        )
-        return {"translation": completion.choices[0].message.content}
+        chunks = split_text_into_chunks(request.text, max_chars=800)
+        translated_chunks = []
+        for chunk in chunks:
+            translated = ""
+            for attempt in range(2):
+                completion = client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": f"Translate fully without omitting any content. Do NOT summarize. Preserve all details and formatting:\n\n{chunk}"}
+                    ],
+                    temperature=0.3,
+                )
+                translated = completion.choices[0].message.content or ""
+                # Retry if translation is suspiciously short
+                if len(translated.strip()) >= max(200, int(len(chunk) * 0.7)):
+                    break
+            translated_chunks.append(translated)
+        return {"translation": "\n\n".join(translated_chunks).strip()}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
@@ -118,6 +160,8 @@ async def translate_document(
 
     CRITICAL RULES:
     1. Output ONLY Urdu script - NO English, NO Vietnamese, NO other languages
+    1.5. Translate ALL content fully. Do NOT summarize, shorten, or omit any text.
+    1.6. Preserve line breaks and paragraph structure.
     2. Use Pakistani legal terminology:
        - Jurisdiction = دائرہ اختیار
        - Petitioner = درخواست گزار
@@ -156,23 +200,33 @@ async def translate_document(
 
     RULES:
     1. Use proper English legal terminology
+    1.5. Translate ALL content fully. Do NOT summarize, shorten, or omit any text.
+    1.6. Preserve line breaks and paragraph structure.
     2. Maintain formal legal tone
     3. Keep formatting intact
     4. Translate all Urdu text accurately"""
 
     try:
-        text_to_translate = doc_text[:30000]
-        completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": f"Translate this:\n\n{text_to_translate}"}
-            ],
-            temperature=0.3,
-        )
+        chunks = split_text_into_chunks(doc_text, max_chars=800)
+        translated_chunks = []
+        for chunk in chunks:
+            translated = ""
+            for attempt in range(2):
+                completion = client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": f"Translate fully without omitting any content. Do NOT summarize. Preserve all details and formatting:\n\n{chunk}"}
+                    ],
+                    temperature=0.3,
+                )
+                translated = completion.choices[0].message.content or ""
+                if len(translated.strip()) >= max(200, int(len(chunk) * 0.7)):
+                    break
+            translated_chunks.append(translated)
         return {
             "original_text": doc_text,
-            "translation": completion.choices[0].message.content
+            "translation": "\n\n".join(translated_chunks).strip()
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

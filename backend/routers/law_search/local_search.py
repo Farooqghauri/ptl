@@ -385,3 +385,8 @@ if __name__ == "__main__":
             for s in result["sections"][:2]:
                 print(f"  - {s.get('law_name')}: {s.get('section_title', '')[:50]}")
         print("")
+
+        if __name__ == "__main__":
+            print("BASE_DIR:", BASE_DIR)
+            print("DB_PATH:", DB_PATH)
+            print("DB EXISTS:", os.path.exists(DB_PATH))

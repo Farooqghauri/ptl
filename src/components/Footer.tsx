@@ -16,7 +16,7 @@ export default function Footer() {
               <span className="text-lg font-extrabold tracking-tight">Pakistan&apos;s Top Lawyers</span>
             </Link>
             <p className="mt-3 text-sm text-blue-200 leading-relaxed max-w-xs">
-              Connecting overseas Pakistanis with verified, trusted legal experts across Pakistan.
+              Powerful AI tools for legal drafting, research, translation, and case summarization in Pakistan.
             </p>
             <div className="mt-4 flex items-center gap-3">
               <Link aria-label="Follow on Twitter" href="https://twitter.com" className="hover:text-white transition">𝕏</Link>
@@ -28,7 +28,7 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="text-sm font-semibold tracking-wider text-blue-200 uppercase">Quick Links</h3>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 text-sm grid grid-cols-2 gap-x-4 gap-y-2 sm:block sm:space-y-2">
               <li><Link className="hover:text-white transition" href="/">Home</Link></li>
               <li><Link className="hover:text-white transition" href="/about">About</Link></li>
               <li><Link className="hover:text-white transition" href="/services">Services</Link></li>
@@ -40,7 +40,7 @@ export default function Footer() {
           {/* Legal */}
           <div>
             <h3 className="text-sm font-semibold tracking-wider text-blue-200 uppercase">Legal</h3>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 text-sm grid grid-cols-2 gap-x-4 gap-y-2 sm:block sm:space-y-2">
               <li><Link className="hover:text-white transition" href="/privacy">Privacy Policy</Link></li>
               <li><Link className="hover:text-white transition" href="/terms">Terms of Service</Link></li>
               <li><Link className="hover:text-white transition" href="/cookies">Cookie Policy</Link></li>
@@ -73,8 +73,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-blue-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blue-300">
-          <p>© {new Date().getFullYear()} Pakistan&apos;s Top Lawyers. All rights reserved.</p>
-          <p className="text-[11px]">Made with care for overseas Pakistanis.</p>
+          <p>(c) {new Date().getFullYear()} Pakistan&apos;s Top Lawyers. All rights reserved.</p>
+          <p className="text-[11px]">Powered by PTL AI Legal Suite.</p>
         </div>
       </div>
     </footer>

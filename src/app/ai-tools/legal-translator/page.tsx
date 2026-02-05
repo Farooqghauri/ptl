@@ -17,7 +17,6 @@ import {
   File,
 } from "lucide-react";
 import ToolHeader from "@/components/ToolHeader";
-import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 // import "../../styles/dark-theme.css";
 
 
@@ -207,13 +206,12 @@ ${translatedText}
     if (extension === "pdf") {
       return <FileText className="w-5 h-5 text-red-600" />;
     }
-    return <File className="w-5 h-5 text-blue-600" />;
+    return <File className="w-5 h-5 text-blue-300" />;
   };
 
   return (
    <> 
-   <SignedIn>
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-4 sm:p-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 p-4 sm:p-8">
       <div className="max-w-6xl mx-auto">
         <ToolHeader
           title="Legal Translator"
@@ -237,39 +235,39 @@ ${translatedText}
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl mb-4 shadow-lg">
             <Languages className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent mb-3">
+          <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-200 via-cyan-200 to-emerald-200 bg-clip-text text-transparent mb-3">
             Legal Document Translator
           </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
             Upload legal documents and get accurate translations with
             specialized Pakistani legal terminology
           </p>
         </div>
 
         {/* Main Card */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+        <div className="bg-slate-900 rounded-2xl shadow-xl overflow-hidden border border-slate-800">
           {/* Controls Bar */}
-          <div className="bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200 p-6">
+          <div className="bg-gradient-to-r from-slate-900 to-slate-800 border-b border-slate-800 p-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               {/* Direction Toggle */}
-              <div className="flex items-center gap-4 bg-white rounded-xl px-6 py-3 shadow-sm border border-gray-200">
+              <div className="flex items-center gap-4 bg-slate-900 rounded-xl px-6 py-3 shadow-sm border border-slate-700">
                 <span
                   className={`font-semibold transition-colors ${
-                    direction === "en_to_ur" ? "text-blue-700" : "text-gray-400"
+                    direction === "en_to_ur" ? "text-blue-300" : "text-slate-500"
                   }`}
                 >
                   English
                 </span>
                 <button
                   onClick={toggleDirection}
-                  className="p-2 rounded-full hover:bg-blue-100 transition-all bg-blue-50 border border-blue-200"
+                  className="p-2 rounded-full hover:bg-blue-900/40 transition-all bg-blue-900/20 border border-blue-800"
                   title="Switch translation direction"
                 >
-                  <ArrowRightLeft className="w-5 h-5 text-blue-700" />
+                  <ArrowRightLeft className="w-5 h-5 text-blue-300" />
                 </button>
                 <span
                   className={`font-semibold transition-colors ${
-                    direction === "ur_to_en" ? "text-blue-700" : "text-gray-400"
+                    direction === "ur_to_en" ? "text-blue-300" : "text-slate-500"
                   }`}
                 >
                   اردو
@@ -278,16 +276,16 @@ ${translatedText}
 
               {/* File Upload Status */}
               {file && (
-                <div className="flex items-center gap-3 bg-green-50 px-4 py-2 rounded-lg border border-green-200">
+                <div className="flex items-center gap-3 bg-emerald-900/30 px-4 py-2 rounded-lg border border-emerald-700/50">
                   {getFileIcon()}
-                  <span className="text-sm font-medium text-green-800 max-w-[200px] truncate">
+                  <span className="text-sm font-medium text-emerald-200 max-w-[200px] truncate">
                     {file.name}
                   </span>
                   <button
                     onClick={removeFile}
                     className="p-1 hover:bg-green-200 rounded-full transition-colors"
                   >
-                    <X className="w-4 h-4 text-green-700" />
+                    <X className="w-4 h-4 text-emerald-200" />
                   </button>
                 </div>
               )}
@@ -299,8 +297,8 @@ ${translatedText}
             <div
               className={`border-2 border-dashed rounded-xl p-10 transition-all cursor-pointer ${
                 file
-                  ? "border-green-300 bg-green-50"
-                  : "border-gray-300 bg-gray-50 hover:border-blue-400 hover:bg-blue-50"
+                  ? "border-green-300 bg-emerald-900/30"
+                  : "border-slate-700 bg-slate-900/60 hover:border-blue-400 hover:bg-blue-900/20"
               }`}
             >
               <input
@@ -314,21 +312,21 @@ ${translatedText}
                 <div className="flex flex-col items-center text-center">
                   {file ? (
                     <>
-                      <CheckCircle className="w-12 h-12 text-green-600 mb-3" />
-                      <p className="text-green-700 font-semibold mb-1">
+                      <CheckCircle className="w-12 h-12 text-emerald-300 mb-3" />
+                      <p className="text-emerald-200 font-semibold mb-1">
                         {file.name}
                       </p>
-                      <p className="text-sm text-green-600">
+                      <p className="text-sm text-emerald-300">
                         {(file.size / 1024).toFixed(2)} KB • Ready to translate
                       </p>
                     </>
                   ) : (
                     <>
-                      <Upload className="w-12 h-12 text-gray-400 mb-3" />
-                      <p className="text-gray-700 font-semibold mb-1">
+                      <Upload className="w-12 h-12 text-slate-500 mb-3" />
+                      <p className="text-slate-200 font-semibold mb-1">
                         Click to upload or drag and drop
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-slate-400">
                         PDF, DOC, DOCX files (Max 5MB)
                       </p>
                     </>
@@ -344,7 +342,7 @@ ${translatedText}
               className={`w-full mt-6 py-4 px-6 rounded-xl font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg
                 ${
                   loading || !file
-                    ? "bg-gray-300 cursor-not-allowed"
+                    ? "bg-slate-700 cursor-not-allowed"
                     : "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                 }`}
             >
@@ -363,11 +361,11 @@ ${translatedText}
 
             {/* Error Message */}
             {error && (
-              <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3 animate-fade-in">
+              <div className="mt-6 p-4 bg-red-900/20 border border-red-800/60 rounded-xl flex items-start gap-3 animate-fade-in">
                 <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-red-800 mb-1">Error</p>
-                  <p className="text-sm text-red-700">{error}</p>
+                  <p className="font-semibold text-red-200 mb-1">Error</p>
+                  <p className="text-sm text-red-300">{error}</p>
                 </div>
               </div>
             )}
@@ -375,7 +373,7 @@ ${translatedText}
 
           {/* Translation Result */}
           {translatedText && (
-            <div className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-slate-50 p-8 animate-fade-in">
+            <div className="border-t border-slate-700 bg-gradient-to-br from-slate-950 to-slate-900 p-8 animate-fade-in">
               {/* Action Bar */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
                 <div className="flex items-center gap-3">
@@ -383,10 +381,10 @@ ${translatedText}
                     <CheckCircle className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl font-bold text-slate-100">
                       Translation Complete
                     </h2>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-slate-300">
                       {direction === "en_to_ur"
                         ? "English → Urdu"
                         : "Urdu → English"}
@@ -397,18 +395,18 @@ ${translatedText}
                 <div className="flex gap-2">
                   <button
                     onClick={handleCopy}
-                    className="px-4 py-2.5 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 transition-all hover:shadow-md flex items-center gap-2 font-medium"
+                    className="px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 hover:bg-gray-50 transition-all hover:shadow-md flex items-center gap-2 font-medium"
                     title="Copy to clipboard"
                   >
                     {copied ? (
                       <>
-                        <CheckCircle className="w-4 h-4 text-green-600" />
-                        <span className="text-green-600 text-sm">Copied!</span>
+                        <CheckCircle className="w-4 h-4 text-emerald-300" />
+                        <span className="text-emerald-300 text-sm">Copied!</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="w-4 h-4 text-gray-600" />
-                        <span className="text-gray-700 text-sm">Copy</span>
+                        <Copy className="w-4 h-4 text-slate-300" />
+                        <span className="text-slate-200 text-sm">Copy</span>
                       </>
                     )}
                   </button>
@@ -435,13 +433,13 @@ ${translatedText}
 
               {/* Original Text */}
               <div className="mb-6">
-                <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-slate-200 mb-2 flex items-center gap-2">
                   <FileText className="w-4 h-4" />
                   Original Text
                 </h3>
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 max-h-[300px] overflow-y-auto">
+                <div className="bg-slate-900 rounded-xl p-6 shadow-sm border border-slate-700 max-h-[300px] overflow-y-auto">
                   <p
-                    className="text-gray-700 whitespace-pre-wrap leading-relaxed"
+                    className="text-slate-200 whitespace-pre-wrap leading-relaxed"
                     dir={direction === "en_to_ur" ? "ltr" : "rtl"}
                   >
                     {originalText}
@@ -451,13 +449,13 @@ ${translatedText}
 
               {/* Translated Text */}
               <div>
-                <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                <h3 className="text-sm font-semibold text-slate-200 mb-2 flex items-center gap-2">
                   <Languages className="w-4 h-4" />
                   Translation
                 </h3>
-                <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 shadow-sm border border-green-200 max-h-[300px] overflow-y-auto">
+                <div className="bg-gradient-to-br from-emerald-900/20 to-slate-900 rounded-xl p-6 shadow-sm border border-emerald-700/50 max-h-[300px] overflow-y-auto">
                   <p
-                    className="text-gray-800 whitespace-pre-wrap leading-relaxed font-medium"
+                    className="text-slate-100 whitespace-pre-wrap leading-relaxed font-medium"
                     dir={direction === "en_to_ur" ? "rtl" : "ltr"}
                   >
                     {translatedText}
@@ -468,7 +466,7 @@ ${translatedText}
               {/* Reset Button */}
               <button
                 onClick={removeFile}
-                className="w-full mt-6 py-3 px-4 rounded-lg bg-white border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition-all"
+                className="w-full mt-6 py-3 px-4 rounded-lg bg-slate-900 border border-slate-700 text-slate-200 font-semibold hover:bg-gray-50 transition-all"
               >
                 Translate Another Document
               </button>
@@ -478,32 +476,32 @@ ${translatedText}
 
         {/* Info Section */}
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="bg-white/80 backdrop-blur rounded-xl p-5 border border-gray-100 shadow-sm">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
-              <Languages className="w-5 h-5 text-blue-600" />
+          <div className="bg-slate-900/80 backdrop-blur rounded-xl p-5 border border-slate-800 shadow-sm">
+            <div className="w-10 h-10 bg-blue-900/40 rounded-lg flex items-center justify-center mb-3">
+              <Languages className="w-5 h-5 text-blue-300" />
             </div>
-            <h3 className="font-semibold text-gray-900 mb-1">Legal Accuracy</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-semibold text-slate-100 mb-1">Legal Accuracy</h3>
+            <p className="text-sm text-slate-300">
               Trained on Pakistani legal terminology
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur rounded-xl p-5 border border-gray-100 shadow-sm">
-            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
-              <FileText className="w-5 h-5 text-green-600" />
+          <div className="bg-slate-900/80 backdrop-blur rounded-xl p-5 border border-slate-800 shadow-sm">
+            <div className="w-10 h-10 bg-emerald-900/40 rounded-lg flex items-center justify-center mb-3">
+              <FileText className="w-5 h-5 text-emerald-300" />
             </div>
-            <h3 className="font-semibold text-gray-900 mb-1">
+            <h3 className="font-semibold text-slate-100 mb-1">
               Document Support
             </h3>
-            <p className="text-sm text-gray-600">PDF, DOC, and DOCX formats</p>
+            <p className="text-sm text-slate-300">PDF, DOC, and DOCX formats</p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur rounded-xl p-5 border border-gray-100 shadow-sm">
-            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
-              <Download className="w-5 h-5 text-purple-600" />
+          <div className="bg-slate-900/80 backdrop-blur rounded-xl p-5 border border-slate-800 shadow-sm">
+            <div className="w-10 h-10 bg-purple-900/40 rounded-lg flex items-center justify-center mb-3">
+              <Download className="w-5 h-5 text-purple-300" />
             </div>
-            <h3 className="font-semibold text-gray-900 mb-1">Export Options</h3>
-            <p className="text-sm text-gray-600">
+            <h3 className="font-semibold text-slate-100 mb-1">Export Options</h3>
+            <p className="text-sm text-slate-300">
               Download as PDF or Word document
             </p>
           </div>
@@ -511,7 +509,7 @@ ${translatedText}
 
         {/* Disclaimer */}
         <div className="mt-8 text-center">
-          <p className="text-xs text-gray-500 max-w-3xl mx-auto">
+          <p className="text-xs text-slate-400 max-w-3xl mx-auto">
             <strong>Translation Disclaimer:</strong> This AI-powered translation
             is designed for legal documents but should be reviewed by a
             professional translator before official use. PTL Legal Translator
@@ -537,11 +535,7 @@ ${translatedText}
         }
       `}</style>
     </div>
-     </SignedIn>
-
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
     </>
   );
 }
+

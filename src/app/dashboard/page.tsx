@@ -14,7 +14,6 @@ import {
   Clock,
 } from "lucide-react";
 import Link from "next/link";
-import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
 interface AITool {
   id: string;
@@ -101,9 +100,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <>
-      <SignedIn>
-        <div className="min-h-screen bg-gray-900/50">
+    <div className="min-h-screen bg-gray-900/50">
           {/* Subtle gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-transparent to-purple-900/10 pointer-events-none" />
 
@@ -262,12 +259,6 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
-        </div>
-      </SignedIn>
-
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
-    </>
+    </div>
   );
 }
