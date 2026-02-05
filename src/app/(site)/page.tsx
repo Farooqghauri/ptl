@@ -1,8 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import Script from "next/script";
+import Lottie from "lottie-react";
+import lawScaleAnimation from "@/animations/law-scale.json";
 import {
   ArrowRight,
   BookOpen,
@@ -14,11 +15,6 @@ import {
   Shield,
   Users,
 } from "lucide-react";
-
-const Player = dynamic(
-  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
-  { ssr: false }
-);
 
 export default function HomePage() {
   return (
@@ -101,10 +97,10 @@ export default function HomePage() {
           <div className="flex justify-center lg:justify-end">
             <div className="relative h-80 w-80 sm:h-96 sm:w-96">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-2xl" />
-              <Player
-                autoplay
+              <Lottie
+                animationData={lawScaleAnimation}
                 loop
-                src="/law-scale.json"
+                autoplay
                 style={{ height: "100%", width: "100%" }}
               />
             </div>
