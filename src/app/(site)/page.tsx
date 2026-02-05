@@ -78,18 +78,45 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-6">
-              <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-                <p className="text-2xl font-bold text-white">3,340+</p>
-                <p className="text-sm text-slate-400">Law Sections</p>
+            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-300">
+                    <FileText className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-base font-semibold text-white">Draft Faster</p>
+                    <p className="text-sm text-slate-400">
+                      Court-ready formats tailored for Pakistani practice.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-                <p className="text-2xl font-bold text-white">78+</p>
-                <p className="text-sm text-slate-400">Court Judgments</p>
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-300">
+                    <Search className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-base font-semibold text-white">Research Smarter</p>
+                    <p className="text-sm text-slate-400">
+                      Find statutes and case law with AI-guided context.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-                <p className="text-2xl font-bold text-white">6</p>
-                <p className="text-sm text-slate-400">Major Laws</p>
+              <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/15 text-amber-300">
+                    <Gavel className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-base font-semibold text-white">Court-Ready Output</p>
+                    <p className="text-sm text-slate-400">
+                      Structured drafts that align with courtroom expectations.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
