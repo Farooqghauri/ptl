@@ -18,7 +18,6 @@ import Head from "next/head";
 import {
   Scale,
   PenTool,
-  Download,
   Copy,
   CheckCircle,
   FileText,
@@ -51,9 +50,24 @@ import {
   PageNumber,
   NumberFormat,
 } from "docx";
-import { saveAs } from "file-saver";
 import ToolHeader from "@/components/ToolHeader";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
+import { downloadBlob } from "@/lib/download";
+import { jsPDF } from "jspdf";
+
+let urduFontLoaded = false;
+const URDU_FONT_FILE = "NotoNastaliqUrdu-Regular.ttf";
+const URDU_FONT_NAME = "NotoNastaliqUrdu";
+
+const arrayBufferToBase64 = (buffer: ArrayBuffer): string => {
+  let binary = "";
+  const bytes = new Uint8Array(buffer);
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+};
 
 // ═══════════════════════════════════════════════════════════════
 // SEO CONSTANTS (used in Head component below)
@@ -143,34 +157,43 @@ const createPTLDocument = async (
   });
 
   // Convert logo base64 to Uint8Array
-  const logoData = base64ToUint8Array(PTL_BRAND.logoBase64);
+  let logoData: Uint8Array | null = null;
+  try {
+    logoData = base64ToUint8Array(PTL_BRAND.logoBase64);
+  } catch (error) {
+    console.error("PTL logo decode failed, continuing without logo:", error);
+  }
 
   // Cover Page Paragraphs
   const coverPage = [
     new Paragraph({ spacing: { after: 800 } }),
     new Paragraph({ spacing: { after: 800 } }),
 
-    // PTL Logo - ACTUAL IMAGE
-    new Paragraph({
-      children: [
-        new ImageRun({
-          // ✅ FIX: Your base64 starts with "/9j/" which is JPEG, not PNG
-          type: "jpg",
-          data: logoData,
-          transformation: {
-            width: 120,
-            height: 120,
-          },
-          altText: {
-            title: "PTL Logo",
-            description: "Pakistan Top Lawyers Logo",
-            name: "PTL Logo",
-          },
-        }),
-      ],
-      alignment: AlignmentType.CENTER,
-      spacing: { after: 400 },
-    }),
+    // PTL Logo - ACTUAL IMAGE (optional if decode fails)
+    ...(logoData
+      ? [
+          new Paragraph({
+            children: [
+              new ImageRun({
+                // ✅ FIX: Your base64 starts with "/9j/" which is JPEG, not PNG
+                type: "jpg",
+                data: logoData,
+                transformation: {
+                  width: 120,
+                  height: 120,
+                },
+                altText: {
+                  title: "PTL Logo",
+                  description: "Pakistan Top Lawyers Logo",
+                  name: "PTL Logo",
+                },
+              }),
+            ],
+            alignment: AlignmentType.CENTER,
+            spacing: { after: 400 },
+          }),
+        ]
+      : []),
 
     // PTL Name
     new Paragraph({
@@ -305,6 +328,7 @@ const createPTLDocument = async (
   ];
 
   // Main Document Content
+  const bodyFont = language === "ur" ? "Jameel Noori Nastaleeq" : "Times New Roman";
   const contentParagraphs = draftContent.split("\n").map((line) => {
     const trimmedLine = line.trim();
     const isHeading =
@@ -323,7 +347,7 @@ const createPTLDocument = async (
         new TextRun({
           text: line,
           size: 24,
-          font: "Times New Roman",
+          font: bodyFont,
           bold: isHeading,
         }),
       ],
@@ -572,6 +596,7 @@ export default function LegalDrafter() {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<"en" | "ur">("en");
   const [showHelp, setShowHelp] = useState(false);
+  const [downloadError, setDownloadError] = useState("");
   const [sectionsUsed, setSectionsUsed] = useState<string[]>([]);
   const [sectionsCount, setSectionsCount] = useState(0);
 
@@ -625,14 +650,227 @@ export default function LegalDrafter() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const loadUrduFont = async (doc: jsPDF): Promise<boolean> => {
+    if (urduFontLoaded) {
+      doc.setFont(URDU_FONT_NAME, "normal");
+      doc.setR2L(true);
+      return true;
+    }
+    try {
+      const res = await fetch(`/fonts/${URDU_FONT_FILE}`);
+      if (!res.ok) throw new Error("Urdu font not found");
+      const buffer = await res.arrayBuffer();
+      const base64 = arrayBufferToBase64(buffer);
+      doc.addFileToVFS(URDU_FONT_FILE, base64);
+      doc.addFont(URDU_FONT_FILE, URDU_FONT_NAME, "normal");
+      urduFontLoaded = true;
+      doc.setFont(URDU_FONT_NAME, "normal");
+      doc.setR2L(true);
+      return true;
+    } catch (err) {
+      console.error("Urdu font load failed:", err);
+      return false;
+    }
+  };
+
   const handleDownloadWord = async (language: "en" | "ur") => {
     const content = language === "en" ? draftEn : draftUr;
     if (!content) return;
 
-    const doc = await createPTLDocument(content, category, language);
-    const blob = await Packer.toBlob(doc);
-    const filename = `PTL_${category.replace(/\s+/g, "_")}_${language.toUpperCase()}.docx`;
-    saveAs(blob, filename);
+    setDownloadError("");
+    try {
+      const doc = await createPTLDocument(content, category, language);
+      const blob = await Packer.toBlob(doc);
+      const filename = `PTL_${category.replace(/\s+/g, "_")}_${language.toUpperCase()}.docx`;
+      downloadBlob(blob, filename);
+    } catch (error) {
+      console.error("Download failed:", error);
+      try {
+        const safeContent = content
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+        const html = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${category}</title>
+</head>
+<body style="font-family:${
+          language === "ur"
+            ? "'Jameel Noori Nastaleeq','Noto Naskh Urdu','Times New Roman',serif"
+            : "'Times New Roman',serif"
+        }; padding:40px; line-height:1.6; direction:${language === "ur" ? "rtl" : "ltr"};">
+  <h1 style="text-align:center;">${category}</h1>
+  <p><strong>Generated by:</strong> Pakistan Top Lawyers</p>
+  <p><strong>Date:</strong> ${new Date().toLocaleDateString("en-PK")}</p>
+  <hr style="margin:20px 0;" />
+  <pre style="white-space:pre-wrap; font-family:${
+            language === "ur"
+              ? "'Jameel Noori Nastaleeq','Noto Naskh Urdu','Times New Roman',serif"
+              : "'Times New Roman',serif"
+          };">${safeContent}</pre>
+</body>
+</html>
+        `.trim();
+        const fallbackBlob = new Blob([html], {
+          type: "application/msword",
+        });
+        const fallbackName = `PTL_${category.replace(/\s+/g, "_")}_${language.toUpperCase()}.doc`;
+        downloadBlob(fallbackBlob, fallbackName);
+      } catch (fallbackError) {
+        console.error("Word fallback failed:", fallbackError);
+        setDownloadError(
+          "Download failed. Please try again or refresh the page."
+        );
+      }
+    }
+  };
+
+  const handleDownloadPdf = async (language: "en" | "ur") => {
+    const content = language === "en" ? draftEn : draftUr;
+    if (!content) return;
+
+    setDownloadError("");
+    try {
+      const doc = new jsPDF({ unit: "pt", format: "a4" });
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+      const margin = 48;
+      const contentWidth = pageWidth - margin * 2;
+      const scale = 2;
+
+      const isUrdu = language === "ur";
+      const fontFamily = isUrdu
+        ? "'Noto Nastaliq Urdu','Jameel Noori Nastaleeq','Times New Roman',serif"
+        : "'Times New Roman',serif";
+
+      if (isUrdu) {
+        try {
+          await document.fonts.load(`16px 'Noto Nastaliq Urdu'`);
+          await document.fonts.ready;
+        } catch (err) {
+          console.error("Urdu font load failed:", err);
+          setDownloadError(
+            "Urdu PDF requires a font. Ensure NotoNastaliqUrdu-Regular.ttf is in public/fonts."
+          );
+        }
+      }
+
+      const wrapText = (
+        ctx: CanvasRenderingContext2D,
+        text: string,
+        maxWidthPx: number
+      ): string[] => {
+        const lines: string[] = [];
+        const paragraphs = text.split("\n");
+        for (const para of paragraphs) {
+          if (!para.trim()) {
+            lines.push("");
+            continue;
+          }
+          const words = para.split(" ");
+          let line = "";
+          for (const word of words) {
+            const test = line ? `${line} ${word}` : word;
+            if (ctx.measureText(test).width <= maxWidthPx) {
+              line = test;
+            } else {
+              if (line) lines.push(line);
+              line = word;
+            }
+          }
+          if (line) lines.push(line);
+        }
+        return lines;
+      };
+
+      const renderPage = (
+        lines: string[],
+        startIndex: number,
+        header: string
+      ): { canvas: HTMLCanvasElement; nextIndex: number } => {
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.floor(pageWidth * scale);
+        canvas.height = Math.floor(pageHeight * scale);
+        const ctx = canvas.getContext("2d");
+        if (!ctx) throw new Error("Canvas context not available");
+
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const px = (pt: number) => pt * scale;
+        const startX = px(margin);
+        let y = px(60);
+
+        ctx.fillStyle = "#000000";
+        ctx.font = `${px(18)}px ${fontFamily}`;
+        ctx.direction = "ltr";
+        ctx.textAlign = "left";
+        ctx.fillText(header, startX, y);
+        y += px(24);
+
+        ctx.font = `${px(11)}px ${fontFamily}`;
+        ctx.fillText("Generated by: Pakistan Top Lawyers", startX, y);
+        y += px(16);
+        ctx.fillText(
+          `Date: ${new Date().toLocaleDateString("en-PK")}`,
+          startX,
+          y
+        );
+        y += px(24);
+
+        const bodyFontSize = isUrdu ? 16 : 12;
+        const bodyLineHeight = isUrdu ? 28 : 16;
+        ctx.font = `${px(bodyFontSize)}px ${fontFamily}`;
+        ctx.direction = isUrdu ? "rtl" : "ltr";
+        ctx.textAlign = isUrdu ? "right" : "left";
+        const textX = isUrdu ? px(pageWidth - margin) : startX;
+        const lineHeight = px(bodyLineHeight);
+        const maxTextY = px(pageHeight - margin);
+
+        let i = startIndex;
+        while (i < lines.length) {
+          if (y + lineHeight > maxTextY) break;
+          ctx.fillText(lines[i], textX, y);
+          y += lineHeight;
+          i += 1;
+        }
+
+        return { canvas, nextIndex: i };
+      };
+
+      const tempCanvas = document.createElement("canvas");
+      const tempCtx = tempCanvas.getContext("2d");
+      if (!tempCtx) throw new Error("Canvas context not available");
+      tempCtx.font = `${(isUrdu ? 16 : 12) * scale}px ${fontFamily}`;
+      const wrapped = wrapText(tempCtx, content, contentWidth * scale);
+
+      let index = 0;
+      let first = true;
+      while (index < wrapped.length) {
+        const { canvas, nextIndex } = renderPage(
+          wrapped,
+          index,
+          category
+        );
+        const imgData = canvas.toDataURL("image/png");
+        if (!first) doc.addPage();
+        doc.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight);
+        first = false;
+        index = nextIndex;
+      }
+
+      const filename = `PTL_${category.replace(/\s+/g, "_")}_${language.toUpperCase()}.pdf`;
+      const blob = doc.output("blob");
+      downloadBlob(blob, filename);
+    } catch (error) {
+      console.error("PDF download failed:", error);
+      setDownloadError(
+        "PDF download failed. Please try again or refresh the page."
+      );
+    }
   };
 
   const currentDraft = activeTab === "en" ? draftEn : draftUr;
@@ -898,18 +1136,23 @@ export default function LegalDrafter() {
                     </button>
 
                     <button
-                      onClick={() => handleDownloadWord(activeTab)}
+                      onClick={() => handleDownloadPdf(activeTab)}
                       disabled={!currentDraft}
                       className={`flex-1 py-3 rounded-xl font-medium flex items-center justify-center gap-2 transition-all ${
                         currentDraft
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white shadow-lg shadow-blue-500/20"
+                          ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white shadow-lg shadow-red-500/20"
                           : "bg-gray-800/50 text-gray-600 cursor-not-allowed"
                       }`}
                     >
-                      <Download className="w-5 h-5" />
-                      Download Word
+                      <FileText className="w-5 h-5" />
+                      Download PDF
                     </button>
                   </div>
+                  {downloadError && (
+                    <p className="px-4 pb-4 text-xs text-red-400">
+                      {downloadError}
+                    </p>
+                  )}
                 </div>
               </div>
 

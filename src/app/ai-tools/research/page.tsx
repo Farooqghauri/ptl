@@ -20,6 +20,7 @@ import {
   HelpCircle,
   X
 } from "lucide-react";
+import { downloadText } from "@/lib/download";
 // import "../../styles/dark-theme.css";
 
 
@@ -361,14 +362,13 @@ export default function ResearchPage() {
                       {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     </button>
                     <button
-                      onClick={() => {
-                        const blob = new Blob([result.ai_explanation], { type: "text/plain" });
-                        const url = URL.createObjectURL(blob);
-                        const a = document.createElement("a");
-                        a.href = url;
-                        a.download = `legal-research-${query}.txt`;
-                        a.click();
-                      }}
+                        onClick={() => {
+                          downloadText(
+                            result.ai_explanation,
+                            `legal-research-${query}.txt`,
+                            "text/plain"
+                          );
+                        }}
                       className="p-2 hover:bg-slate-900/20 rounded-lg transition-colors text-white"
                       title="Download"
                     >

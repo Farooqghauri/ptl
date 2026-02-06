@@ -26,7 +26,6 @@ export default function Navbar() {
 
   const menuItems: MenuItem[] = [
     { name: "Home", path: "/" },
-    { name: "Dashboard", path: "/dashboard" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "Pricing", path: "/pricing" },
@@ -101,18 +100,12 @@ export default function Navbar() {
             </Link>
           </SignedOut>
           <SignedIn>
-            <Link
-              href="/dashboard"
-              className="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-medium shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-200"
-            >
-              Dashboard
-            </Link>
-            <UserButton 
-              afterSignOutUrl="/" 
+            <UserButton
+              afterSignOutUrl="/"
               appearance={{
                 elements: {
-                  avatarBox: "w-10 h-10 ring-2 ring-blue-500/20"
-                }
+                  avatarBox: "w-10 h-10 ring-2 ring-blue-500/20",
+                },
               }}
             />
           </SignedIn>
@@ -178,13 +171,6 @@ export default function Navbar() {
             </Link>
           </SignedOut>
           <SignedIn>
-            <Link
-              href="/dashboard"
-              className="px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl text-center font-medium shadow-lg"
-              onClick={() => setIsOpen(false)}
-            >
-              Dashboard
-            </Link>
             <div className="flex justify-center pt-2">
               <UserButton afterSignOutUrl="/" />
             </div>

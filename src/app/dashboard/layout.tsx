@@ -3,6 +3,7 @@ import "../globals.css";
 import "../../styles/dark-theme.css";
 import { Providers } from "../providers";
 import PwaSidebarLayout from "@/components/layout/PwaSidebarLayout";
+import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 
 
 export default function DashboardLayout({
@@ -12,7 +13,12 @@ export default function DashboardLayout({
 }) {
   return (
     <Providers>
-            <PwaSidebarLayout>{children}</PwaSidebarLayout>
+      <SignedIn>
+        <PwaSidebarLayout>{children}</PwaSidebarLayout>
+      </SignedIn>
+      <SignedOut>
+        <RedirectToSignIn />
+      </SignedOut>
     </Providers>
   );
 }
