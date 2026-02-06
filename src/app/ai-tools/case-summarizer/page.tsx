@@ -150,7 +150,7 @@ export default function CaseSummarizerPage() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
+      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "";
       
       setState("extracting");
       

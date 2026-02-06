@@ -54,6 +54,7 @@ interface Stats {
 }
 
 export default function ResearchPage() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SearchResult | null>(null);
@@ -64,7 +65,7 @@ export default function ResearchPage() {
 
   // Fetch stats on load
   useEffect(() => {
-       fetch("http://localhost:8000/api/research/stats")
+       fetch(`${API_BASE}/api/research/stats`)
       .then((res) => res.json())
       .then(setStats)
       .catch(console.error);
@@ -77,7 +78,7 @@ export default function ResearchPage() {
     setResult(null);
     
     try {
-        const response = await fetch("http://localhost:8000/api/research/search", {
+        const response = await fetch(`${API_BASE}/api/research/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: query.trim() }),
@@ -271,20 +272,22 @@ export default function ResearchPage() {
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* Search Box */}
         <div className="bg-slate-900 rounded-2xl shadow-lg border border-slate-800 p-6 mb-6">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Type section number (489F), case topic (bail murder), or ask a question..."
-              className="w-full pl-12 pr-32 py-4 text-lg border border-slate-700 rounded-xl bg-slate-950 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
-            />
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="relative flex-1">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Type section number (489F), case topic (bail murder), or ask a question..."
+                className="w-full pl-12 pr-4 py-4 text-lg border border-slate-700 rounded-xl bg-slate-950 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
+              />
+            </div>
             <button
               onClick={handleSearch}
               disabled={loading || !query.trim()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 px-6 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-medium rounded-lg transition-colors flex items-center gap-2"
+              className="w-full sm:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-700 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />

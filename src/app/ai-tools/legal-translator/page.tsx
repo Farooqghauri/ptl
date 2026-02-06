@@ -22,6 +22,7 @@ import ToolHeader from "@/components/ToolHeader";
 
 
 export default function LegalTranslator() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
   const [file, setFile] = useState<File | null>(null);
   const [originalText, setOriginalText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
@@ -83,7 +84,7 @@ export default function LegalTranslator() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/translate-document",
+        `${API_BASE}/api/translate-document`,
         {
           method: "POST",
           body: formData,

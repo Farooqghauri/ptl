@@ -12,6 +12,7 @@ interface Message {
 }
 
 export default function LegalAssistant() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     { role: "bot", content: "Hello! I am PTL AI. Ask me any question about Pakistani Law (PPC, CrPC, Family Law, etc.)." }
@@ -36,7 +37,7 @@ export default function LegalAssistant() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/assistant-chat", {
+      const response = await fetch(`${API_BASE}/api/assistant-chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
