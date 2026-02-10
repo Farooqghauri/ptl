@@ -3,8 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Send, User, Bot, Trash2 } from "lucide-react";
 import "../../../styles/dark-theme.css";
-
-
+import { API_BASE_URL } from "@/lib/constants";
 
 interface Message {
   role: "user" | "bot";
@@ -12,7 +11,7 @@ interface Message {
 }
 
 export default function LegalAssistant() {
-  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+  const API_BASE = API_BASE_URL;
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     { role: "bot", content: "Hello! I am PTL AI. Ask me any question about Pakistani Law (PPC, CrPC, Family Law, etc.)." }

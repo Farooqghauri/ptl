@@ -1,5 +1,6 @@
 import os
 import io
+import logging
 import pdfplumber
 from fastapi import APIRouter, UploadFile, File, Form, HTTPException
 from pydantic import BaseModel
@@ -10,9 +11,12 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
+
+MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024  # 10MB
 
 
-def extract_text_from_pdf(file_bytes):
+def extract_text_from_pdf(file_bytes: bytes) -> str:
     text = ""
     try:
         with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
@@ -21,7 +25,7 @@ def extract_text_from_pdf(file_bytes):
                 if extracted:
                     text += extracted + "\n"
     except Exception as e:
-        print(f"Error extracting text: {e}")
+        logger.error("Error extracting text from PDF: %s", e)
     return text
 
 
@@ -125,6 +129,7 @@ async def translate_text(request: TranslationRequest):
                         {"role": "user", "content": f"Translate fully without omitting any content. Do NOT summarize. Preserve all details and formatting:\n\n{chunk}"}
                     ],
                     temperature=0.3,
+                    timeout=60,
                 )
                 translated = completion.choices[0].message.content or ""
                 # Retry if translation is suspiciously short
@@ -133,7 +138,8 @@ async def translate_text(request: TranslationRequest):
             translated_chunks.append(translated)
         return {"translation": "\n\n".join(translated_chunks).strip()}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error("Translation failed", exc_info=True)
+        raise HTTPException(status_code=500, detail="Translation failed. Please try again.")
 
 
 # --- 2. Document Translation ---
@@ -144,12 +150,15 @@ async def translate_document(
 ):
     content = await file.read()
 
+    if len(content) > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(status_code=400, detail=f"File too large. Maximum size: {MAX_FILE_SIZE_BYTES // (1024 * 1024)}MB")
+
     if file.content_type == "application/pdf":
         doc_text = extract_text_from_pdf(content)
     else:
         try:
             doc_text = content.decode("utf-8", errors="ignore")
-        except:
+        except (UnicodeDecodeError, ValueError):
             doc_text = "Error reading document text."
 
     if not doc_text.strip():
@@ -219,6 +228,7 @@ async def translate_document(
                         {"role": "user", "content": f"Translate fully without omitting any content. Do NOT summarize. Preserve all details and formatting:\n\n{chunk}"}
                     ],
                     temperature=0.3,
+                    timeout=60,
                 )
                 translated = completion.choices[0].message.content or ""
                 if len(translated.strip()) >= max(200, int(len(chunk) * 0.7)):
@@ -229,4 +239,5 @@ async def translate_document(
             "translation": "\n\n".join(translated_chunks).strip()
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error("Document translation failed", exc_info=True)
+        raise HTTPException(status_code=500, detail="Document translation failed. Please try again.")

@@ -21,7 +21,7 @@ import {
   X
 } from "lucide-react";
 import { downloadText } from "@/lib/download";
-// import "../../styles/dark-theme.css";
+import { API_BASE_URL } from "@/lib/constants";
 
 
 
@@ -55,7 +55,7 @@ interface Stats {
 }
 
 export default function ResearchPage() {
-  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+  const API_BASE = API_BASE_URL;
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SearchResult | null>(null);

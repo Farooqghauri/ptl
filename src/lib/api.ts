@@ -11,7 +11,7 @@ export interface ApiResponse<T = unknown> {
  * - Local dev: empty string -> same origin
  * - Production (Vercel): https://ptl.onrender.com
  */
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+import { API_BASE_URL } from "@/lib/constants";
 
 /**
  * Generic API call function with error handling

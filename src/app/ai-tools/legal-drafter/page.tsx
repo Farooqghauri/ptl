@@ -53,6 +53,7 @@ import {
 import ToolHeader from "@/components/ToolHeader";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import { downloadBlob } from "@/lib/download";
+import { API_BASE_URL } from "@/lib/constants";
 import { jsPDF } from "jspdf";
 
 let urduFontLoaded = false;
@@ -587,7 +588,7 @@ const createPTLDocument = async (
 // ═══════════════════════════════════════════════════════════════
 
 export default function LegalDrafter() {
-  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+  const API_BASE = API_BASE_URL;
   const [category, setCategory] = useState("Bail Petition (Post-Arrest)");
   const [facts, setFacts] = useState("");
   const [draftEn, setDraftEn] = useState("");

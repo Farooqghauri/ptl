@@ -26,7 +26,7 @@ import {
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/nextjs";
 import ProcessFlowAnimation from "@/components/ProcessFlowAnimation";
 import { downloadBlob, downloadText } from "@/lib/download";
-// import { summaryToBrandedText, summaryToBrandedHtml } from "@/utils/ptlExport";
+import { API_BASE_URL } from "@/lib/constants";
 
 // Types
 type UploadState = "idle" | "uploading" | "extracting" | "summarizing" | "done" | "error";
@@ -151,7 +151,7 @@ export default function CaseSummarizerPage() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+      const baseUrl = API_BASE_URL;
       
       setState("extracting");
       

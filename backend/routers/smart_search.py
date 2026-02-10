@@ -1,19 +1,22 @@
 # backend/routers/smart_search.py
 
+import logging
+
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import sqlite3
 import re
 import os
 from openai import OpenAI
 
 router = APIRouter(prefix="/api/research", tags=["Smart Research"])
+logger = logging.getLogger(__name__)
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 class SearchRequest(BaseModel):
-    query: str
+    query: str = Field(..., min_length=2, max_length=500)
 
 
 class SearchResponse(BaseModel):
@@ -57,33 +60,36 @@ def extract_section_number(query: str) -> tuple:
 def lookup_sections(query: str) -> list:
     section_num, law_filter = extract_section_number(query)
     conn = get_db()
-    cursor = conn.cursor()
-    if law_filter:
-        cursor.execute("SELECT law_name, section_number, section_title, section_text FROM law_sections WHERE section_number LIKE ? AND law_name LIKE ? ORDER BY CASE WHEN section_number = ? THEN 0 ELSE 1 END, length(section_number) LIMIT 5", (f"%{section_num}%", f"%{law_filter}%", section_num))
-    else:
-        cursor.execute("SELECT law_name, section_number, section_title, section_text FROM law_sections WHERE section_number LIKE ? ORDER BY CASE WHEN section_number = ? THEN 0 ELSE 1 END, length(section_number) LIMIT 5", (f"%{section_num}%", section_num))
-    rows = cursor.fetchall()
-    conn.close()
-    return [{"law_name": row[0], "section_number": row[1], "title": row[2] if row[2] else f"Section {row[1]}", "content": row[3][:1000] + "..." if len(row[3]) > 1000 else row[3]} for row in rows]
+    try:
+        cursor = conn.cursor()
+        if law_filter:
+            cursor.execute("SELECT law_name, section_number, section_title, section_text FROM law_sections WHERE section_number LIKE ? AND law_name LIKE ? ORDER BY CASE WHEN section_number = ? THEN 0 ELSE 1 END, length(section_number) LIMIT 5", (f"%{section_num}%", f"%{law_filter}%", section_num))
+        else:
+            cursor.execute("SELECT law_name, section_number, section_title, section_text FROM law_sections WHERE section_number LIKE ? ORDER BY CASE WHEN section_number = ? THEN 0 ELSE 1 END, length(section_number) LIMIT 5", (f"%{section_num}%", section_num))
+        rows = cursor.fetchall()
+        return [{"law_name": row[0], "section_number": row[1], "title": row[2] if row[2] else f"Section {row[1]}", "content": row[3][:1000] + "..." if len(row[3]) > 1000 else row[3]} for row in rows]
+    finally:
+        conn.close()
 
 
 def search_judgments(query: str) -> list:
     conn = get_db()
-    cursor = conn.cursor()
-    keywords = query.lower().split()
-    conditions = []
-    params = []
-    for kw in keywords:
-        if len(kw) > 2:
-            conditions.append("(LOWER(title) LIKE ? OR LOWER(summary) LIKE ?)")
-            params.extend([f"%{kw}%", f"%{kw}%"])
-    if not conditions:
+    try:
+        cursor = conn.cursor()
+        keywords = query.lower().split()
+        conditions = []
+        params = []
+        for kw in keywords:
+            if len(kw) > 2:
+                conditions.append("(LOWER(title) LIKE ? OR LOWER(summary) LIKE ?)")
+                params.extend([f"%{kw}%", f"%{kw}%"])
+        if not conditions:
+            return []
+        cursor.execute(f"SELECT title, citation, judgment_date, summary FROM judgments WHERE {' AND '.join(conditions)} ORDER BY judgment_date DESC LIMIT 10", params)
+        rows = cursor.fetchall()
+        return [{"case_title": row[0], "court": "Court", "date": row[2], "citation": row[1], "summary": row[3][:500] + "..." if row[3] and len(row[3]) > 500 else row[3]} for row in rows]
+    finally:
         conn.close()
-        return []
-    cursor.execute(f"SELECT title, citation, judgment_date, summary FROM judgments WHERE {' AND '.join(conditions)} ORDER BY judgment_date DESC LIMIT 10", params)
-    rows = cursor.fetchall()
-    conn.close()
-    return [{"case_title": row[0], "court": "Court", "date": row[2], "citation": row[1], "summary": row[3][:500] + "..." if row[3] and len(row[3]) > 500 else row[3]} for row in rows]
 
 def get_ai_explanation(query: str, sections: list, judgments: list) -> str:
     context_parts = []
@@ -96,24 +102,22 @@ def get_ai_explanation(query: str, sections: list, judgments: list) -> str:
         for j in judgments[:3]:
             context_parts.append(f"\n{j['case_title']} ({j['court']}, {j['date']})\n{j['summary'][:400] if j['summary'] else ''}")
     context = "\n".join(context_parts)
-    prompt = f"""You are a Pakistani legal expert. Answer this query using the provided context.
-
-QUERY: {query}
-
-{context if context else "No specific sections or cases found."}
-
-Give a clear, helpful explanation in simple English with Urdu legal terms where appropriate."""
 
     try:
         response = client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}],
+            messages=[
+                {"role": "system", "content": "You are a Pakistani legal expert. Answer the query using the provided context. Give a clear, helpful explanation in simple English with Urdu legal terms where appropriate."},
+                {"role": "user", "content": f"QUERY: {query}\n\n{context if context else 'No specific sections or cases found.'}"}
+            ],
             max_tokens=1000,
-            temperature=0.3
+            temperature=0.3,
+            timeout=30,
         )
         return response.choices[0].message.content
     except Exception as e:
-        return f"AI explanation unavailable: {str(e)}"
+        logger.error("AI explanation failed", exc_info=True)
+        return "AI explanation is temporarily unavailable. Please try again."
 
 
 def get_suggestions(query: str, query_type: str) -> list:
@@ -153,12 +157,14 @@ async def smart_search(request: SearchRequest):
 @router.get("/stats")
 async def get_stats():
     conn = get_db()
-    cursor = conn.cursor()
-    cursor.execute("SELECT COUNT(*) FROM law_sections")
-    total_sections = cursor.fetchone()[0]
-    cursor.execute("SELECT COUNT(*) FROM judgments")
-    total_judgments = cursor.fetchone()[0]
-    cursor.execute("SELECT DISTINCT law_name FROM law_sections")
-    laws = [row[0] for row in cursor.fetchall()]
-    conn.close()
-    return {"total_sections": total_sections, "total_judgments": total_judgments, "laws_covered": laws}
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(*) FROM law_sections")
+        total_sections = cursor.fetchone()[0]
+        cursor.execute("SELECT COUNT(*) FROM judgments")
+        total_judgments = cursor.fetchone()[0]
+        cursor.execute("SELECT DISTINCT law_name FROM law_sections")
+        laws = [row[0] for row in cursor.fetchall()]
+        return {"total_sections": total_sections, "total_judgments": total_judgments, "laws_covered": laws}
+    finally:
+        conn.close()

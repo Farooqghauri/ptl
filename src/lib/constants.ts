@@ -6,6 +6,8 @@ export const APP_CONFIG = {
   version: "1.0.0",
 } as const;
 
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+
 export const LEGAL_SERVICES = [
   {
     name: "Family & Divorce Law",

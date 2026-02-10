@@ -1,6 +1,7 @@
 import os
+import logging
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from groq import Groq
 from dotenv import load_dotenv
 
@@ -9,9 +10,10 @@ load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str = Field(..., min_length=1, max_length=2000)
 
 @router.post("/api/assistant-chat")
 async def legal_chat(request: ChatRequest):
@@ -167,9 +169,11 @@ async def legal_chat(request: ChatRequest):
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": request.message}
             ],
-            temperature=0.3, # Precision focused
-            max_tokens=1000  # Allow for comprehensive answers
+            temperature=0.3,
+            max_tokens=1000,
+            timeout=30,
         )
         return {"response": completion.choices[0].message.content}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error("Legal assistant chat failed", exc_info=True)
+        raise HTTPException(status_code=500, detail="AI service is temporarily unavailable. Please try again.")

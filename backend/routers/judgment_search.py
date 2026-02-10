@@ -18,6 +18,7 @@ Endpoints:
 """
 
 import os
+import logging
 import sqlite3
 import pickle
 from typing import List, Optional, Dict, Any
@@ -147,7 +148,7 @@ def get_db_connection() -> sqlite3.Connection:
     if not os.path.exists(DB_PATH):
         raise HTTPException(
             status_code=500,
-            detail=f"Database not found at: {DB_PATH}. Please run the scraper first."
+            detail="Database not found. Please run the scraper first."
         )
 
     conn = sqlite3.connect(DB_PATH)
@@ -208,7 +209,7 @@ def generate_query_embedding(query: str) -> Optional[List[float]]:
         )
         return response.data[0].embedding
     except Exception as e:
-        print(f"Embedding generation failed: {e}")
+        logging.getLogger(__name__).error("Embedding generation failed: %s", e)
         return None
 
 
@@ -497,7 +498,7 @@ async def semantic_search(request: SemanticSearchRequest):
                 scored_results.append((row, score))
             except Exception as e:
                 # Skip documents with corrupted embeddings
-                print(f"Error processing embedding for judgment {row['id']}: {e}")
+                logging.getLogger(__name__).warning("Error processing embedding for judgment %s: %s", row['id'], e)
                 continue
 
         # Sort by similarity score (highest first)
@@ -641,7 +642,7 @@ async def health_check():
         try:
             cur.execute("SELECT * FROM judgments_fts LIMIT 1")
             health["features"]["fts5"] = True
-        except:
+        except sqlite3.OperationalError:
             health["features"]["fts5"] = False
 
         conn.close()

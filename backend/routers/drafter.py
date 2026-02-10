@@ -17,6 +17,7 @@ ARCHITECTURE:
 
 import os
 import re
+import logging
 from pathlib import Path
 from typing import Dict, Set, Optional
 
@@ -24,6 +25,8 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from openai import OpenAI
+
+logger = logging.getLogger(__name__)
 
 from services.law_rules import (
     get_applicable_sections,
@@ -210,35 +213,9 @@ YOUR TASK:
         model="gpt-4o-mini",
         temperature=0.2,
         max_tokens=4000,
+        timeout=60,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT_EN},
-            {"role": "user", "content": user_prompt},
-        ],
-    )
-    return (resp.choices[0].message.content or "").strip()
-
-
-def generate_urdu_draft(english_draft: str, doc_title: str) -> str:
-    user_prompt = f"""
-دستاویز کی قسم: {doc_title}
-
-انگریزی مسودہ:
-{english_draft}
-
-ہدایات:
-1. مکمل اردو میں ترجمہ کریں
-2. قانونی دفعات کے نمبر انگریزی میں رکھیں (مثلاً Section 302 PPC)
-3. فارمیٹ برقرار رکھیں
-
-آؤٹ پٹ صرف مسودہ
-""".strip()
-
-    resp = client.chat.completions.create(
-        model="gpt-4o-mini",
-        temperature=0.2,
-        max_tokens=4000,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT_UR},
             {"role": "user", "content": user_prompt},
         ],
     )
@@ -374,6 +351,7 @@ async def draft_legal_document(request: DraftRequest):
                 model="gpt-4o-mini",
                 temperature=0.1,  # LOWER = safer for legal fidelity
                 max_tokens=4000,
+                timeout=60,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT_UR},
                     {"role": "user", "content": user_prompt},
@@ -402,9 +380,8 @@ async def draft_legal_document(request: DraftRequest):
     except HTTPException:
         raise
     except Exception as e:
-        import traceback
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
+        logger.error("Draft generation failed", exc_info=True)
+        raise HTTPException(status_code=500, detail="An internal error occurred while generating the draft. Please try again.")
 
 
 @router.get("/api/draft/categories")

@@ -1,5 +1,6 @@
 import os
 import io
+import logging
 import pdfplumber
 import docx
 from fastapi import APIRouter, UploadFile, File, HTTPException
@@ -11,6 +12,7 @@ load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
 def extract_text_from_pdf(file_bytes: bytes) -> str:
@@ -23,7 +25,7 @@ def extract_text_from_pdf(file_bytes: bytes) -> str:
                 if extracted:
                     text += extracted + "\n"
     except Exception as e:
-        print(f"PDF extraction error: {e}")
+        logger.error("PDF extraction error: %s", e)
     return text.strip()
 
 
@@ -36,7 +38,7 @@ def extract_text_from_docx(file_bytes: bytes) -> str:
             if para.text.strip():
                 text += para.text + "\n"
     except Exception as e:
-        print(f"DOCX extraction error: {e}")
+        logger.error("DOCX extraction error: %s", e)
     return text.strip()
 
 
@@ -44,8 +46,8 @@ def extract_text_from_txt(file_bytes: bytes) -> str:
     """Extract text from plain text file."""
     try:
         return file_bytes.decode("utf-8").strip()
-    except Exception as e:
-        print(f"TXT extraction error: {e}")
+    except (UnicodeDecodeError, ValueError) as e:
+        logger.error("TXT extraction error: %s", e)
         return ""
 
 
@@ -201,6 +203,7 @@ async def summarize_case(file: UploadFile = File(...)):
             ],
             temperature=0.2,
             max_tokens=4000,
+            timeout=60,
         )
 
         summary = completion.choices[0].message.content
@@ -211,12 +214,13 @@ async def summarize_case(file: UploadFile = File(...)):
         return {"summary": summary}
 
     except Exception as e:
+        logger.error("Summarization failed", exc_info=True)
         error_msg = str(e)
         if "api_key" in error_msg.lower():
             raise HTTPException(status_code=500, detail="OpenAI API key error. Please check configuration.")
         elif "rate_limit" in error_msg.lower():
             raise HTTPException(status_code=429, detail="Too many requests. Please try again in a moment.")
         else:
-            raise HTTPException(status_code=500, detail=f"AI processing error: {error_msg}")
+            raise HTTPException(status_code=500, detail="AI processing error. Please try again.")
 
 

@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Search, BookOpen, Scale, AlertCircle, Database, Brain, FileText, ExternalLink, Clock } from "lucide-react";
+import { API_BASE_URL } from "@/lib/constants";
 
 // Types
 interface AISearchResult {
@@ -34,7 +35,7 @@ interface Stats {
   last_updated: string | null;
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+const API_URL = API_BASE_URL;
 
 export default function LegalSearch() {
   // Tab state
