@@ -52,6 +52,7 @@ load_dotenv()
 # =============================================================================
 
 router = APIRouter(prefix="/api/search", tags=["search"])
+logger = logging.getLogger(__name__)
 
 # Database path - adjust based on your project structure
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -376,7 +377,7 @@ async def keyword_search(request: KeywordSearchRequest):
 
         except sqlite3.OperationalError as e:
             # FTS5 not available or query syntax error - fallback to LIKE search
-            print(f"FTS5 search failed, using LIKE fallback: {e}")
+            logger.warning("FTS5 search failed, using LIKE fallback: %s", e)
 
             like_pattern = f'%{request.query}%'
             cur.execute("""
@@ -400,7 +401,8 @@ async def keyword_search(request: KeywordSearchRequest):
         )
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Search failed: {str(e)}")
+        logger.exception("Keyword search failed: %s", e)
+        raise HTTPException(status_code=500, detail="Search failed. Please try again.")
 
     finally:
         conn.close()
